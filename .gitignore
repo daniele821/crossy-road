@@ -1,0 +1,22 @@
+# ignore executable files
+bin/
+*.class
+
+# ignore gradle files
+build/
+.gradle/
+
+# ignore vscode files
+.vscode/
+
+# ignore idea files
+.idea/
+.metals/
+
+# ignore eclipse files
+.project
+.settings/
+.classpath
+
+# ignore mac files
+.DS_Store
