@@ -25,7 +25,7 @@ java {
 }
 
 application{
-    mainClass.set("it.unibo.project.App")
+    mainClass.set("game.App")
 }
 
 repositories {
