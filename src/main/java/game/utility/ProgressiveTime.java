@@ -17,4 +17,9 @@ public class ProgressiveTime {
         return this.deltaTime;
     }
 
+    @Override
+    public String toString() {
+        return "ProgressiveTime [timeMillisec=" + timeMillisec + ", deltaTime=" + deltaTime + "]";
+    }
+
 }
