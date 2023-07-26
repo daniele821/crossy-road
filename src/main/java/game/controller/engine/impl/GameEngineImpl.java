@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import game.controller.engine.api.GameEngine;
 import game.controller.engine.api.GameLoop;
-import game.utility.ProgressiveTime;
 
 public class GameEngineImpl implements GameEngine {
     private final GameLoop gameLoop;
@@ -75,7 +74,7 @@ public class GameEngineImpl implements GameEngine {
                 while (!isThreadKilled()) {
                     if (!isPaused()) {
                         gameLoop.processInput();
-                        gameLoop.update(new ProgressiveTime(-1, nextFrameTime));
+                        gameLoop.update(null);
                         gameLoop.render();
 
                         timeLeft = Long.max(0, nextFrameTime - System.currentTimeMillis());
