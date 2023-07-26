@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import game.controller.engine.api.GameEngine;
 import game.controller.engine.api.GameLoop;
+import game.utility.ProgressiveTime;
 
 public class GameEngineImpl implements GameEngine {
     private final GameLoop gameLoop;
@@ -68,32 +69,30 @@ public class GameEngineImpl implements GameEngine {
 
         private GameEngineThread() {
             super(() -> {
-                long nextFrameTime = System.currentTimeMillis() + FRAME_DURATION;
-                long timeLeft;
+                long totalTime = 0;
+                long elapsedTime = 0;
+                long startTime = System.currentTimeMillis();
+                long lastTime;
 
                 while (!isThreadKilled()) {
-                    if (!isPaused()) {
-                        gameLoop.processInput();
-                        gameLoop.update(null);
-                        gameLoop.render();
+                    lastTime = startTime;
+                    startTime = System.currentTimeMillis();
+                    elapsedTime = startTime - lastTime;
 
-                        timeLeft = Long.max(0, nextFrameTime - System.currentTimeMillis());
-                        nextFrameTime += FRAME_DURATION;
-                        sleepSafe(timeLeft);
-                    } else {
-                        sleepSafe(FRAME_DURATION);
+                    if (!isPaused()) {
+                        totalTime += elapsedTime;
+                        gameLoop.processInput();
+                        gameLoop.update(new ProgressiveTime(totalTime, elapsedTime));
+                        gameLoop.render();
+                    }
+
+                    try {
+                        sleep(Long.max(0, startTime + FRAME_DURATION - System.currentTimeMillis()));
+                    } catch (final InterruptedException e) {
+                        throw new IllegalStateException("engine sleep failed!", e);
                     }
                 }
             });
         }
-
-        private static void sleepSafe(final long duration) {
-            try {
-                sleep(duration);
-            } catch (final InterruptedException e) {
-                throw new IllegalStateException("engine sleep failed!", e);
-            }
-        }
-
     }
 }
