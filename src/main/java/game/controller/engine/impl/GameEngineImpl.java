@@ -70,7 +70,7 @@ public class GameEngineImpl implements GameEngine {
         private GameEngineThread() {
             super(() -> {
                 long totalTime = 0;
-                long elapsedTime = 0;
+                long elapsedTime;
                 long startTime = System.currentTimeMillis();
                 long lastTime;
 
