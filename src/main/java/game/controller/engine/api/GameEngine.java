@@ -7,8 +7,6 @@ package game.controller.engine.api;
  * one single game engine object should be created for the whole
  * duration of the application usage
  * <p/>
- * 
- * @see GameLoop
  */
 public interface GameEngine {
 

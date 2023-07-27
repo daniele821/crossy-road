@@ -2,11 +2,7 @@ package game.controller.engine.api;
 
 import game.utility.ProgressiveTime;
 
-/**
- * class GameEngine delegates the control over the game engine loop.
- * 
- * @see GameEngine
- */
+/** delegate which takes control over the game engine loop. */
 public interface GameLoop {
 
     /** phase of the game loop which takes care of processing the input. */
