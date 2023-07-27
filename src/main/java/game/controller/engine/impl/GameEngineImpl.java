@@ -16,6 +16,10 @@ public class GameEngineImpl implements GameEngine {
         this.gameLoop = gameLoop;
     }
 
+    public GameEngineImpl() {
+        this(new GameLoopImpl());
+    }
+
     @Override
     public void startThread() {
         if (this.engineThread.isEmpty()) {
