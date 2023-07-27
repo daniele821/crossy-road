@@ -5,7 +5,7 @@ import java.util.List;
 public interface GameWorld {
     List<GameObject> getAllObjctes();
 
-    void removeObject(int nth);
+    void removeObject(GameObject objectToRemove);
 
     void addObject(GameObject newObject);
 }

@@ -15,8 +15,10 @@ public class GameWorldImpl implements GameWorld {
     }
 
     @Override
-    public void removeObject(final int nth) {
-        this.objects.remove(nth);
+    public void removeObject(final GameObject objectToRemove) {
+        while (this.objects.contains(objectToRemove)) {
+            this.objects.remove(objectToRemove);
+        }
     }
 
     @Override
