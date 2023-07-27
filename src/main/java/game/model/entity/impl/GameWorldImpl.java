@@ -2,6 +2,7 @@ package game.model.entity.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import game.model.entity.api.GameObject;
 import game.model.entity.api.GameWorld;
@@ -23,7 +24,7 @@ public class GameWorldImpl implements GameWorld {
 
     @Override
     public void addObject(final GameObject newObject) {
-        this.objects.add(newObject);
+        Optional.ofNullable(newObject).ifPresent(this.objects::add);
     }
 
     @Override
