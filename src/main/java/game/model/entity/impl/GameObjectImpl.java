@@ -1,16 +1,21 @@
 package game.model.entity.impl;
 
 import game.model.entity.api.GameObject;
+import game.model.entity.api.GameObjectType;
 import game.utility.Rectangle;
 import game.utility.Vector2D;
 
 public class GameObjectImpl implements GameObject {
+    private final GameObjectType objectType;
     private Rectangle position;
     private Vector2D speed;
 
-    public GameObjectImpl(final Rectangle initialPosition, final Vector2D initialSpeed) {
+    public GameObjectImpl(final Rectangle initialPosition,
+            final Vector2D initialSpeed,
+            final GameObjectType objectType) {
         this.position = initialPosition;
         this.speed = initialSpeed;
+        this.objectType = objectType;
     }
 
     @Override
@@ -34,8 +39,13 @@ public class GameObjectImpl implements GameObject {
     }
 
     @Override
+    public GameObjectType getObjectType() {
+        return this.objectType;
+    }
+
+    @Override
     public String toString() {
-        return "GameObjectImpl [position=" + position + ", speed=" + speed + "]";
+        return "GameObjectImpl [objectType=" + objectType + ", position=" + position + ", speed=" + speed + "]";
     }
 
 }

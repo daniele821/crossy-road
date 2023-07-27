@@ -11,4 +11,6 @@ public interface GameObject {
     Vector2D getSpeed();
 
     void setSpeed(Vector2D newSpeed);
+
+    GameObjectType getObjectType();
 }
