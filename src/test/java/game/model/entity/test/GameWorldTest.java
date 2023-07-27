@@ -10,7 +10,7 @@ import game.model.entity.impl.GameObjectImpl;
 import game.model.entity.impl.GameWorldImpl;
 import game.utility.Vector2D;
 
-public class GameWorldTest {
+class GameWorldTest {
 
     @Test
     void addAndRemovalTest() {

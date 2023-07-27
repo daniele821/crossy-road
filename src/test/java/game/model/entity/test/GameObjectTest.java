@@ -26,7 +26,7 @@ class GameObjectTest {
         final var speed1 = new Vector2D(1.2, -50);
         final var speed2 = new Vector2D(1.3, 0);
         final var object = new GameObjectImpl(null, speed1, null);
-        
+
         assertEquals(speed1, object.getSpeed());
         assertDoesNotThrow(() -> object.setSpeed(speed2));
         assertEquals(speed2, object.getSpeed());
