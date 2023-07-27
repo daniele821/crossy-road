@@ -1,29 +1,19 @@
 package game.model.entity.impl;
 
 import game.model.entity.api.GameObject;
-import game.model.entity.api.GameObjectType;
 import game.utility.Rectangle;
 import game.utility.Vector2D;
 
 public class GameObjectImpl implements GameObject {
-    private GameObjectType objectType;
     private Rectangle position;
     private Vector2D speed;
-    private String imageName;
+    private GameObjectType objectType;
 
-    public GameObjectImpl(final GameObjectType objectType,
-            final Rectangle position,
-            final Vector2D speed,
-            final String imageName) {
-        this.objectType = objectType;
+    public GameObjectImpl(final Rectangle position, final Vector2D speed,
+            final GameObjectType objectType) {
         this.position = position;
         this.speed = speed;
-        this.imageName = imageName;
-    }
-
-    @Override
-    public String getImageName() {
-        return this.imageName;
+        this.objectType = objectType;
     }
 
     @Override
@@ -42,8 +32,8 @@ public class GameObjectImpl implements GameObject {
     }
 
     @Override
-    public void setImageName(final String imageName) {
-        this.imageName = imageName;
+    public void setObjectType(final GameObjectType objectType) {
+        this.objectType = objectType;
     }
 
     @Override
@@ -54,17 +44,6 @@ public class GameObjectImpl implements GameObject {
     @Override
     public void setSpeed(final Vector2D speed) {
         this.speed = speed;
-    }
-
-    @Override
-    public void setObjectType(final GameObjectType objectType) {
-        this.objectType = objectType;
-    }
-
-    @Override
-    public String toString() {
-        return "GameObjectImpl [objectType=" + objectType + ", position=" + position + ", speed=" + speed
-                + ", imageName=" + imageName + "]";
     }
 
 }
