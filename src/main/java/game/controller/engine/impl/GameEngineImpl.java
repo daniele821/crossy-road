@@ -6,6 +6,7 @@ import game.controller.engine.api.GameEngine;
 import game.controller.engine.api.GameLoop;
 import game.utility.ProgressiveTime;
 
+/** default implementation of GameEngine. */
 public class GameEngineImpl implements GameEngine {
     private static final int FPS = 60;
     private static final int FRAME_DURATION = 1000 / FPS;
@@ -14,14 +15,21 @@ public class GameEngineImpl implements GameEngine {
     private boolean killThread;
     private Optional<Thread> engineThread = Optional.empty();
 
+    /**
+     * constructor with all parameters.
+     * 
+     * @param gameLoop : object to which delegate game loop methods
+     */
     public GameEngineImpl(final GameLoop gameLoop) {
         this.gameLoop = gameLoop;
     }
 
+    /** constructor with defaults parameters. */
     public GameEngineImpl() {
         this(new GameLoopImpl());
     }
 
+    /** {@inheritDoc} */
     @Override
     public void startThread() {
         if (this.engineThread.isEmpty()) {
@@ -30,6 +38,7 @@ public class GameEngineImpl implements GameEngine {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void killThread() {
         if (this.engineThread.isPresent()) {
@@ -43,11 +52,13 @@ public class GameEngineImpl implements GameEngine {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void pauseThread() {
         setPaused(true);
     }
 
+    /** {@inheritDoc} */
     @Override
     public void unpauseThread() {
         setPaused(false);
