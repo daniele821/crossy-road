@@ -6,16 +6,29 @@ import game.utility.Rectangle;
 import game.utility.Vector2D;
 
 public class GameObjectImpl implements GameObject {
-    private final GameObjectType objectType;
+    private GameObjectType objectType;
     private Rectangle position;
     private Vector2D speed;
+    private String imageName;
 
-    public GameObjectImpl(final Rectangle initialPosition,
-            final Vector2D initialSpeed,
-            final GameObjectType objectType) {
-        this.position = initialPosition;
-        this.speed = initialSpeed;
+    public GameObjectImpl(final GameObjectType objectType,
+            final Rectangle position,
+            final Vector2D speed,
+            final String imageName) {
         this.objectType = objectType;
+        this.position = position;
+        this.speed = speed;
+        this.imageName = imageName;
+    }
+
+    @Override
+    public String getImageName() {
+        return this.imageName;
+    }
+
+    @Override
+    public GameObjectType getObjectType() {
+        return this.objectType;
     }
 
     @Override
@@ -29,23 +42,29 @@ public class GameObjectImpl implements GameObject {
     }
 
     @Override
-    public void setPosition(final Rectangle newPosition) {
-        this.position = newPosition;
+    public void setImageName(final String imageName) {
+        this.imageName = imageName;
     }
 
     @Override
-    public void setSpeed(final Vector2D newSpeed) {
-        this.speed = newSpeed;
+    public void setPosition(final Rectangle position) {
+        this.position = position;
     }
 
     @Override
-    public GameObjectType getObjectType() {
-        return this.objectType;
+    public void setSpeed(final Vector2D speed) {
+        this.speed = speed;
+    }
+
+    @Override
+    public void setObjectType(final GameObjectType objectType) {
+        this.objectType = objectType;
     }
 
     @Override
     public String toString() {
-        return "GameObjectImpl [objectType=" + objectType + ", position=" + position + ", speed=" + speed + "]";
+        return "GameObjectImpl [objectType=" + objectType + ", position=" + position + ", speed=" + speed
+                + ", imageName=" + imageName + "]";
     }
 
 }
