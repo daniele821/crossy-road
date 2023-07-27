@@ -1,22 +1,16 @@
 package game.model.entity.impl;
 
-import java.util.Optional;
-
 import game.model.entity.api.GameObject;
 import game.utility.Rectangle;
 import game.utility.Vector2D;
 
 public class GameObjectImpl implements GameObject {
     private Rectangle position;
-    private Optional<Vector2D> speed;
-    private Optional<String> spriteFileName;
+    private Vector2D speed;
 
-    public GameObjectImpl(final Rectangle initialPosition,
-            final Optional<Vector2D> initialSpeed,
-            final Optional<String> spriteFileName) {
+    public GameObjectImpl(final Rectangle initialPosition, final Vector2D initialSpeed) {
         this.position = initialPosition;
         this.speed = initialSpeed;
-        this.spriteFileName = spriteFileName;
     }
 
     @Override
@@ -25,13 +19,8 @@ public class GameObjectImpl implements GameObject {
     }
 
     @Override
-    public Optional<Vector2D> getSpeed() {
+    public Vector2D getSpeed() {
         return this.speed;
-    }
-
-    @Override
-    public Optional<String> getSprite() {
-        return this.spriteFileName;
     }
 
     @Override
@@ -40,22 +29,13 @@ public class GameObjectImpl implements GameObject {
     }
 
     @Override
-    public void setSpeed(final Optional<Vector2D> newSpeed) {
+    public void setSpeed(final Vector2D newSpeed) {
         this.speed = newSpeed;
     }
 
     @Override
-    public void setSprite(final Optional<String> newName) {
-        this.spriteFileName = newName;
-    }
-
-    @Override
     public String toString() {
-        return "AbstractGameObject (" + getClass().getSimpleName()
-                + ") [position=" + position
-                + ", speed=" + speed
-                + ", spriteFileName=" + spriteFileName
-                + "]";
+        return "GameObjectImpl [position=" + position + ", speed=" + speed + "]";
     }
 
 }
