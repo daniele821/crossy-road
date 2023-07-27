@@ -4,7 +4,6 @@ import game.utility.Rectangle;
 import game.utility.Vector2D;
 
 public interface GameObject {
-
     Rectangle getPosition();
 
     void setPosition(Rectangle newPosition);
