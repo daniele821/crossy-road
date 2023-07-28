@@ -46,7 +46,9 @@ public class GameObjectImpl implements GameObject {
 
     @Override
     public String toString() {
-        return "GameObjectImpl [position=" + position + ", speed=" + speed + ", objectType=" + objectType + "]";
+        return "GameObjectImpl [position=" + position
+                + ", speed=" + speed
+                + ", objectType=" + objectType + "]";
     }
 
 }
