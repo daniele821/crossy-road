@@ -1,27 +1,38 @@
 package game.utility;
 
+/** class to represent a point, speed or acceleration in 2D space. */
 public class Vector2D {
     private final double x;
     private final double y;
 
+    /**
+     * constructor with all parameters.
+     * 
+     * @param x : orizontal coordinate
+     * @param y : vertical coordinate
+     */
     public Vector2D(final double x, final double y) {
         this.x = x;
         this.y = y;
     }
 
+    /** @return x coordinate */
     public double getX() {
         return x;
     }
 
+    /** @return y coordinate */
     public double getY() {
         return y;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         return "Vector2D [x=" + x + ", y=" + y + "]";
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -34,6 +45,7 @@ public class Vector2D {
         return result;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(final Object obj) {
         if (this == obj) {

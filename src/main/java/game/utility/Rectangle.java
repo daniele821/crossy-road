@@ -1,11 +1,20 @@
 package game.utility;
 
+/** class to represent a rectangle shape in 2D space. */
 public class Rectangle {
     private final double positionX;
     private final double positionY;
     private final double sizeX;
     private final double sizeY;
 
+    /**
+     * constructor with all parameters.
+     * 
+     * @param positionX : topLeft corner x coordinate
+     * @param positionY : topLeft corner y coordinate
+     * @param sizeX     : orizontal length
+     * @param sizeY     : vertical length
+     */
     public Rectangle(final double positionX, final double positionY, final double sizeX, final double sizeY) {
         this.positionX = positionX;
         this.positionY = positionY;
@@ -13,28 +22,34 @@ public class Rectangle {
         this.sizeY = sizeY;
     }
 
+    /** @return topLeft corner x coordinate */
     public double getPositionX() {
         return positionX;
     }
 
+    /** @return topLeft corner y coordinate */
     public double getPositionY() {
         return positionY;
     }
 
+    /** @return orizontal length */
     public double getSizeX() {
         return sizeX;
     }
 
+    /** @return vertical length */
     public double getSizeY() {
         return sizeY;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         return "Rectangle [positionX=" + positionX + ", positionY=" + positionY + ", sizeX=" + sizeX + ", sizeY="
                 + sizeY + "]";
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -51,6 +66,7 @@ public class Rectangle {
         return result;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(final Object obj) {
         if (this == obj) {
