@@ -6,9 +6,16 @@ import java.util.Optional;
 
 import game.model.entity.api.GameObject;
 import game.model.entity.api.GameWorld;
+import game.utility.Rectangle;
 
 public class GameWorldImpl implements GameWorld {
-    private final List<GameObject> objects = new ArrayList<>();
+    private final List<GameObject> objects;
+    private Rectangle gameWorldSize;
+
+    public GameWorldImpl(final List<GameObject> objects, final Rectangle gameWorldSize) {
+        this.objects = new ArrayList<>(objects);
+        this.gameWorldSize = gameWorldSize;
+    }
 
     @Override
     public List<GameObject> getAllObjctes() {
@@ -28,8 +35,13 @@ public class GameWorldImpl implements GameWorld {
     }
 
     @Override
-    public String toString() {
-        return "GameWorldImpl [objects=" + objects + "]";
+    public Rectangle getGameWorldSize() {
+        return this.gameWorldSize;
+    }
+
+    @Override
+    public void setGameWorldSize(final Rectangle gameWorldSize) {
+        this.gameWorldSize = gameWorldSize;
     }
 
 }
