@@ -9,8 +9,7 @@ public class GameObjectImpl implements GameObject {
     private Vector2D speed;
     private GameObjectType objectType;
 
-    public GameObjectImpl(final Rectangle position, final Vector2D speed,
-            final GameObjectType objectType) {
+    public GameObjectImpl(final Rectangle position, final Vector2D speed, final GameObjectType objectType) {
         this.position = position;
         this.speed = speed;
         this.objectType = objectType;
