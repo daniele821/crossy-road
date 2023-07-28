@@ -1,8 +1,8 @@
-package game.model.entity.api;
+package game.model.entity;
 
 import java.util.List;
 
-import game.model.logic.api.GameLogic;
+import game.model.logic.GameLogic;
 import game.utility.Rectangle;
 
 // this class represent a single map

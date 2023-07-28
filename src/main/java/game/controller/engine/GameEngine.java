@@ -1,4 +1,4 @@
-package game.controller.engine.api;
+package game.controller.engine;
 
 /**
  * class to control the game engine thread.

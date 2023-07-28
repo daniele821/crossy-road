@@ -1,6 +1,5 @@
-package game.model.entity.api;
+package game.model.entity;
 
-import game.model.entity.impl.GameObjectType;
 import game.utility.Rectangle;
 import game.utility.Vector2D;
 

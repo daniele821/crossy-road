@@ -1,13 +1,11 @@
-package game.model.entity.impl;
+package game.model.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import game.model.entity.api.GameObject;
-import game.model.entity.api.GameWorld;
-import game.model.logic.api.GameLogic;
-import game.model.logic.api.GameLogicImpl;
+import game.model.logic.GameLogic;
+import game.model.logic.GameLogicImpl;
 import game.utility.Rectangle;
 
 public class GameWorldImpl implements GameWorld {

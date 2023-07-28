@@ -1,4 +1,4 @@
-package game.model.entity.impl;
+package game.model.entity;
 
 public enum GameObjectType {
 

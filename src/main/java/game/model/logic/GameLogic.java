@@ -1,6 +1,6 @@
-package game.model.logic.api;
+package game.model.logic;
 
-import game.model.entity.api.GameWorld;
+import game.model.entity.GameWorld;
 
 public interface GameLogic {
 

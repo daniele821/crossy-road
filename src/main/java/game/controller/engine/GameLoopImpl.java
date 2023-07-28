@@ -1,6 +1,5 @@
-package game.controller.engine.impl;
+package game.controller.engine;
 
-import game.controller.engine.api.GameLoop;
 import game.utility.ProgressiveTime;
 
 /** default implementation of GameLoop. */
