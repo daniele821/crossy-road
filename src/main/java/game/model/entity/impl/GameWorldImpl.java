@@ -17,6 +17,10 @@ public class GameWorldImpl implements GameWorld {
         this.gameWorldSize = gameWorldSize;
     }
 
+    public GameWorldImpl(final Rectangle gameWorldSize) {
+        this(List.of(), gameWorldSize);
+    }
+
     @Override
     public List<GameObject> getAllObjctes() {
         return List.copyOf(this.objects);
