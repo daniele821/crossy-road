@@ -1,4 +1,4 @@
-rootProject.name = "across-world"
+rootProject.name = "crossy-road"
 
 // jvm version resolver
 plugins {
