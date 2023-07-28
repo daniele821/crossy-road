@@ -6,15 +6,20 @@ import java.util.Optional;
 
 import game.model.entity.api.GameObject;
 import game.model.entity.api.GameWorld;
+import game.model.logic.api.GameLogic;
+import game.model.logic.api.GameLogicImpl;
 import game.utility.Rectangle;
 
 public class GameWorldImpl implements GameWorld {
     private final List<GameObject> objects;
     private Rectangle gameWorldSize;
+    private GameLogic gameLogic;
 
     public GameWorldImpl(final List<GameObject> objects, final Rectangle gameWorldSize) {
         this.objects = new ArrayList<>(objects);
         this.gameWorldSize = gameWorldSize;
+        this.gameLogic = new GameLogicImpl();
+        this.gameLogic.setGameWorld(this);
     }
 
     public GameWorldImpl(final Rectangle gameWorldSize) {
@@ -49,8 +54,13 @@ public class GameWorldImpl implements GameWorld {
     }
 
     @Override
-    public String toString() {
-        return "GameWorldImpl [objects=" + objects + ", gameWorldSize=" + gameWorldSize + "]";
+    public GameLogic getGameLogic() {
+        return this.gameLogic;
+    }
+
+    @Override
+    public void setGameLogic(final GameLogic gameLogic) {
+        this.gameLogic = gameLogic;
     }
 
 }
