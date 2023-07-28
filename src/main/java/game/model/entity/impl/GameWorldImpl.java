@@ -44,4 +44,9 @@ public class GameWorldImpl implements GameWorld {
         this.gameWorldSize = gameWorldSize;
     }
 
+    @Override
+    public String toString() {
+        return "GameWorldImpl [objects=" + objects + ", gameWorldSize=" + gameWorldSize + "]";
+    }
+
 }
