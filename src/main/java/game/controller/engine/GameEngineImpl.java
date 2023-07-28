@@ -7,23 +7,15 @@ import game.utility.ProgressiveTime;
 public class GameEngineImpl implements GameEngine {
     private static final int FPS = 60;
     private static final int FRAME_DURATION = 1000 / FPS;
-    private final GameLoop gameLoop;
+    private static final GameLoop gameLoop = new GameLoopImpl();
+    private Optional<Thread> engineThread = Optional.empty();
     private boolean isPaused;
     private boolean killThread;
-    private Optional<Thread> engineThread = Optional.empty();
-
-    public GameEngineImpl(final GameLoop gameLoop) {
-        this.gameLoop = gameLoop;
-    }
-
-    public GameEngineImpl() {
-        this(new GameLoopImpl());
-    }
 
     @Override
     public void startThread() {
         if (this.engineThread.isEmpty()) {
-            this.engineThread = Optional.ofNullable(getGameEngineThread(FRAME_DURATION));
+            this.engineThread = Optional.ofNullable(getGameEngineThread());
             this.engineThread.get().start();
         }
     }
@@ -67,7 +59,7 @@ public class GameEngineImpl implements GameEngine {
         this.killThread = killThread;
     }
 
-    private Thread getGameEngineThread(final int frameDuration) {
+    private Thread getGameEngineThread() {
         return new Thread(() -> {
             long totalTime = 0;
             long elapsedTime;
@@ -87,7 +79,7 @@ public class GameEngineImpl implements GameEngine {
                 }
 
                 try {
-                    Thread.sleep(Long.max(0, startTime + frameDuration - System.currentTimeMillis()));
+                    Thread.sleep(Long.max(0, startTime + FRAME_DURATION - System.currentTimeMillis()));
                 } catch (final InterruptedException e) {
                     throw new IllegalStateException("engine sleep failed!", e);
                 }
