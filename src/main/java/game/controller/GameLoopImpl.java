@@ -1,6 +1,6 @@
 package game.controller;
 
-import game.model.GameWorld;
+import game.model.world.GameWorld;
 import game.shared.AbstractGameWorldUser;
 import game.shared.ProgressiveTime;
 

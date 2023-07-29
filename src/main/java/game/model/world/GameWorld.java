@@ -1,4 +1,4 @@
-package game.model;
+package game.model.world;
 
 import java.util.List;
 
