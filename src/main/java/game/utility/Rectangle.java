@@ -1,5 +1,15 @@
 package game.utility;
 
+//  D---C
+//  |   |
+//  |   |
+//  |   |
+//  A---B
+// 
+// positionX, positionY = A(x;y) 
+// sizeX = B(x) - A(x)
+// sizeY = D(y) - A(y)
+
 public class Rectangle {
     private final double positionX;
     private final double positionY;
