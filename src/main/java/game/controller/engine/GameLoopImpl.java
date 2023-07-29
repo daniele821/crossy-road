@@ -1,13 +1,13 @@
 package game.controller.engine;
 
 import game.model.GameWorld;
+import game.utility.AbstractGameWorldUser;
 import game.utility.ProgressiveTime;
 
-public class GameLoopImpl implements GameLoop {
-    private final GameWorld gameWorld;
+public class GameLoopImpl extends AbstractGameWorldUser implements GameLoop {
 
     public GameLoopImpl(final GameWorld gameWorld) {
-        this.gameWorld = gameWorld;
+        super(gameWorld);
     }
 
     @Override
@@ -20,11 +20,6 @@ public class GameLoopImpl implements GameLoop {
 
     @Override
     public void render() {
-    }
-
-    @Override
-    public GameWorld getGameWorld() {
-        return this.gameWorld;
     }
 
 }

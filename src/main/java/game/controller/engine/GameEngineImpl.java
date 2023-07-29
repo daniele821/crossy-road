@@ -9,18 +9,13 @@ public class GameEngineImpl implements GameEngine {
     private static final int FPS = 60;
     private static final int FRAME_DURATION = 1000 / FPS;
     private Optional<Thread> engineThread = Optional.empty();
-    private GameWorld gameWorld;
     private boolean isPaused;
     private boolean killThread;
 
-    public GameEngineImpl(final GameWorld gameWorld) {
-        this.gameWorld = gameWorld;
-    }
-
     @Override
-    public void startThread() {
+    public void startThread(final GameWorld gameWorld) {
         if (this.engineThread.isEmpty()) {
-            this.engineThread = Optional.ofNullable(getGameEngineThread());
+            this.engineThread = Optional.ofNullable(getGameEngineThread(new GameLoopImpl(gameWorld)));
             this.engineThread.get().start();
         }
     }
@@ -48,16 +43,6 @@ public class GameEngineImpl implements GameEngine {
         setPaused(false);
     }
 
-    @Override
-    public GameWorld getGameWorld() {
-        return this.gameWorld;
-    }
-
-    @Override
-    public void setGameWorld(final GameWorld gameWorld) {
-        this.gameWorld = gameWorld;
-    }
-
     private synchronized boolean isPaused() {
         return this.isPaused;
     }
@@ -74,8 +59,7 @@ public class GameEngineImpl implements GameEngine {
         this.killThread = killThread;
     }
 
-    private Thread getGameEngineThread() {
-        final GameLoop gameLoop = new GameLoopImpl(gameWorld);
+    private Thread getGameEngineThread(final GameLoop gameLoop) {
         return new Thread(() -> {
             long totalTime = 0;
             long elapsedTime;

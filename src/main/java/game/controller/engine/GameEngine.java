@@ -4,15 +4,11 @@ import game.model.GameWorld;
 
 public interface GameEngine {
 
-    void startThread();
+    void startThread(GameWorld gameWorld);
 
     void killThread();
 
     void pauseThread();
 
     void unpauseThread();
-
-    GameWorld getGameWorld();
-
-    void setGameWorld(GameWorld gameWorld);
 }
