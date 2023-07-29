@@ -2,10 +2,10 @@ package game.utility;
 
 import game.model.GameWorld;
 
-public abstract class AbstractGameWorldUser {
+public class AbstractGameWorldUser {
     private final GameWorld gameWorld;
 
-    public AbstractGameWorldUser(final GameWorld gameWorld) {
+    protected AbstractGameWorldUser(final GameWorld gameWorld) {
         this.gameWorld = gameWorld;
     }
 
