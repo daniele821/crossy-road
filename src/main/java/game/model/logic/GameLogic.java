@@ -1,5 +1,5 @@
 package game.model.logic;
 
-public interface GameLogic extends GameLogicObject {
+public interface GameLogic {
 
 }
