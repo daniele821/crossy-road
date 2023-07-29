@@ -13,6 +13,10 @@ public class GameEngineImpl implements GameEngine {
     private boolean isPaused;
     private boolean killThread;
 
+    public GameEngineImpl(final GameWorld gameWorld) {
+        this.gameWorld = gameWorld;
+    }
+
     @Override
     public void startThread() {
         if (this.engineThread.isEmpty()) {

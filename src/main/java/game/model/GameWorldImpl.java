@@ -14,9 +14,9 @@ public class GameWorldImpl implements GameWorld {
     private Rectangle gameWorldSize;
     private GameLogic gameLogic;
 
-    public GameWorldImpl(final Rectangle gameWorldSize) {
+    public GameWorldImpl(final List<GameObject> objects, final Rectangle gameWorldSize) {
         this.gameWorldSize = gameWorldSize;
-        this.objects = new ArrayList<>();
+        this.objects = new ArrayList<>(objects);
         this.gameLogic = new GameLogicImpl(this);
     }
 
