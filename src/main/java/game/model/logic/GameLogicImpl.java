@@ -2,10 +2,9 @@ package game.model.logic;
 
 import game.model.GameWorld;
 
-public class GameLogicImpl implements GameLogic {
-    private final GameWorld gameWorld;
+public class GameLogicImpl extends GameLogicObject implements GameLogic {
 
     public GameLogicImpl(final GameWorld gameWorld) {
-        this.gameWorld = gameWorld;
+        super(gameWorld);
     }
 }
