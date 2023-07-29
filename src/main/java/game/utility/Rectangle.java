@@ -1,10 +1,10 @@
 package game.utility;
 
-//  D---C
-//  |   |
-//  |   |
-//  |   |
 //  A---B
+//  |   |
+//  |   |
+//  |   |
+//  D---C
 // 
 // positionX, positionY = A(x;y) 
 // sizeX = B(x) - A(x)
