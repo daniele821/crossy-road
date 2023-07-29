@@ -1,5 +1,7 @@
 package game.controller.engine;
 
+import game.model.GameWorld;
+
 public interface GameEngine {
 
     void startThread();
@@ -9,4 +11,8 @@ public interface GameEngine {
     void pauseThread();
 
     void unpauseThread();
+
+    GameWorld getGameWorld();
+
+    void setGameWorld(GameWorld gameWorld);
 }

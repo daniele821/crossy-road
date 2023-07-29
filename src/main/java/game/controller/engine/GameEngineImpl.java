@@ -2,13 +2,14 @@ package game.controller.engine;
 
 import java.util.Optional;
 
+import game.model.GameWorld;
 import game.utility.ProgressiveTime;
 
 public class GameEngineImpl implements GameEngine {
     private static final int FPS = 60;
     private static final int FRAME_DURATION = 1000 / FPS;
-    private static final GameLoop GAME_LOOP = new GameLoopImpl();
     private Optional<Thread> engineThread = Optional.empty();
+    private GameWorld gameWorld;
     private boolean isPaused;
     private boolean killThread;
 
@@ -43,6 +44,16 @@ public class GameEngineImpl implements GameEngine {
         setPaused(false);
     }
 
+    @Override
+    public GameWorld getGameWorld() {
+        return this.gameWorld;
+    }
+
+    @Override
+    public void setGameWorld(final GameWorld gameWorld) {
+        this.gameWorld = gameWorld;
+    }
+
     private synchronized boolean isPaused() {
         return this.isPaused;
     }
@@ -60,6 +71,7 @@ public class GameEngineImpl implements GameEngine {
     }
 
     private Thread getGameEngineThread() {
+        final GameLoop gameLoop = new GameLoopImpl(gameWorld);
         return new Thread(() -> {
             long totalTime = 0;
             long elapsedTime;
@@ -73,9 +85,9 @@ public class GameEngineImpl implements GameEngine {
 
                 if (!isPaused()) {
                     totalTime += elapsedTime;
-                    GAME_LOOP.processInput();
-                    GAME_LOOP.update(new ProgressiveTime(totalTime, elapsedTime));
-                    GAME_LOOP.render();
+                    gameLoop.processInput();
+                    gameLoop.update(new ProgressiveTime(totalTime, elapsedTime));
+                    gameLoop.render();
                 }
 
                 try {
