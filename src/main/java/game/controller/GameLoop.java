@@ -1,4 +1,4 @@
-package game.controller.engine;
+package game.controller;
 
 import game.shared.ProgressiveTime;
 

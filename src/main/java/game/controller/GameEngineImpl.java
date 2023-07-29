@@ -1,4 +1,4 @@
-package game.controller.engine;
+package game.controller;
 
 import java.util.Optional;
 
