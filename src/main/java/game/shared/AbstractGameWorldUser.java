@@ -1,4 +1,4 @@
-package game.utility;
+package game.shared;
 
 import game.model.GameWorld;
 

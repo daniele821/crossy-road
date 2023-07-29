@@ -1,6 +1,6 @@
 package game.controller.engine;
 
-import game.utility.ProgressiveTime;
+import game.shared.ProgressiveTime;
 
 public interface GameLoop {
 

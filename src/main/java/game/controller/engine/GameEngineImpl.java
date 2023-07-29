@@ -3,7 +3,7 @@ package game.controller.engine;
 import java.util.Optional;
 
 import game.model.GameWorld;
-import game.utility.ProgressiveTime;
+import game.shared.ProgressiveTime;
 
 public class GameEngineImpl implements GameEngine {
     private static final int FPS = 60;

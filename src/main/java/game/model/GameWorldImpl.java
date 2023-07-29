@@ -7,7 +7,7 @@ import java.util.Optional;
 import game.model.entity.GameObject;
 import game.model.logic.GameLogic;
 import game.model.logic.GameLogicImpl;
-import game.utility.Rectangle;
+import game.shared.Rectangle;
 
 public class GameWorldImpl implements GameWorld {
     private final List<GameObject> objects;

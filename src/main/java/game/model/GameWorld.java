@@ -4,7 +4,7 @@ import java.util.List;
 
 import game.model.entity.GameObject;
 import game.model.logic.GameLogic;
-import game.utility.Rectangle;
+import game.shared.Rectangle;
 
 public interface GameWorld {
     List<GameObject> getAllObjctes();

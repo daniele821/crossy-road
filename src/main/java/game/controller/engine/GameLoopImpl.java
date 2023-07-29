@@ -1,8 +1,8 @@
 package game.controller.engine;
 
 import game.model.GameWorld;
-import game.utility.AbstractGameWorldUser;
-import game.utility.ProgressiveTime;
+import game.shared.AbstractGameWorldUser;
+import game.shared.ProgressiveTime;
 
 public class GameLoopImpl extends AbstractGameWorldUser implements GameLoop {
 

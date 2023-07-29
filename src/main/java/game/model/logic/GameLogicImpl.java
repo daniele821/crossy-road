@@ -1,7 +1,7 @@
 package game.model.logic;
 
 import game.model.GameWorld;
-import game.utility.AbstractGameWorldUser;
+import game.shared.AbstractGameWorldUser;
 
 public class GameLogicImpl extends AbstractGameWorldUser implements GameLogic {
 
