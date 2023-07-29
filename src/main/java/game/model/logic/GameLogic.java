@@ -1,8 +1,5 @@
 package game.model.logic;
 
-import game.model.GameWorld;
+public interface GameLogic extends GameLogicObject {
 
-public interface GameLogic {
-
-    GameWorld getGameWorld();
 }
