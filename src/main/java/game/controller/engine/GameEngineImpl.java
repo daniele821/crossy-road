@@ -7,7 +7,7 @@ import game.utility.ProgressiveTime;
 public class GameEngineImpl implements GameEngine {
     private static final int FPS = 60;
     private static final int FRAME_DURATION = 1000 / FPS;
-    private static final GameLoop gameLoop = new GameLoopImpl();
+    private static final GameLoop GAME_LOOP = new GameLoopImpl();
     private Optional<Thread> engineThread = Optional.empty();
     private boolean isPaused;
     private boolean killThread;
@@ -73,9 +73,9 @@ public class GameEngineImpl implements GameEngine {
 
                 if (!isPaused()) {
                     totalTime += elapsedTime;
-                    gameLoop.processInput();
-                    gameLoop.update(new ProgressiveTime(totalTime, elapsedTime));
-                    gameLoop.render();
+                    GAME_LOOP.processInput();
+                    GAME_LOOP.update(new ProgressiveTime(totalTime, elapsedTime));
+                    GAME_LOOP.render();
                 }
 
                 try {
