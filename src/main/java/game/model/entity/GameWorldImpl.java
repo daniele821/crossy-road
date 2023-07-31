@@ -1,10 +1,9 @@
-package game.model.world;
+package game.model.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import game.model.entity.GameObject;
 import game.model.logic.GameLogic;
 import game.model.logic.GameLogicImpl;
 import game.shared.Rectangle;

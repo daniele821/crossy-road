@@ -1,6 +1,6 @@
 package game.shared;
 
-import game.model.world.GameWorld;
+import game.model.entity.GameWorld;
 
 public class GameWorldUser {
     private final GameWorld gameWorld;

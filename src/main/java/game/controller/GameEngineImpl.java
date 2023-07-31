@@ -2,7 +2,7 @@ package game.controller;
 
 import java.util.Optional;
 
-import game.model.world.GameWorld;
+import game.model.entity.GameWorld;
 import game.shared.ProgressiveTime;
 
 public class GameEngineImpl implements GameEngine {
