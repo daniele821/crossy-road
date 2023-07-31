@@ -26,4 +26,18 @@ public class Algorithms {
 
         return Optional.of(new Rectangle(maxLeft, maxUp, minRight - maxLeft, minDown - maxUp));
     }
+
+    public Vector2D add(final Vector2D vect1, Vector2D vect2) {
+        return new Vector2D(
+                vect1.getX() + vect2.getX(),
+                vect1.getY() + vect2.getY());
+    }
+
+    public Rectangle add(final Rectangle pos, final Vector2D move) {
+        return new Rectangle(
+                pos.getPositionX() + move.getX(),
+                pos.getPositionY() + move.getY(),
+                pos.getSizeX(),
+                pos.getSizeY());
+    }
 }
