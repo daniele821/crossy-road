@@ -1,6 +1,6 @@
 package game.controller;
 
-import game.model.world.GameWorld;
+import game.model.entity.GameWorld;
 
 public interface GameEngine {
 

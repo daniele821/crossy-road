@@ -1,8 +1,7 @@
-package game.model.world;
+package game.model.entity;
 
 import java.util.List;
 
-import game.model.entity.GameObject;
 import game.model.logic.GameLogic;
 import game.shared.Rectangle;
 

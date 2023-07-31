@@ -1,7 +1,7 @@
 package game.model.logic;
 
 import game.model.entity.GameObject;
-import game.model.world.GameWorld;
+import game.model.entity.GameWorld;
 import game.shared.ProgressiveTime;
 import game.shared.Vector2D;
 
