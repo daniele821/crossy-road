@@ -28,9 +28,7 @@ public class Algorithms {
     }
 
     public Vector2D add(final Vector2D vect1, Vector2D vect2) {
-        return new Vector2D(
-                vect1.getX() + vect2.getX(),
-                vect1.getY() + vect2.getY());
+        return new Vector2D(vect1.getX() + vect2.getX(), vect1.getY() + vect2.getY());
     }
 
     public Rectangle add(final Rectangle pos, final Vector2D move) {
@@ -40,4 +38,9 @@ public class Algorithms {
                 pos.getSizeX(),
                 pos.getSizeY());
     }
+
+    public Vector2D multiply(final Vector2D vector, final double factor) {
+        return new Vector2D(vector.getX() * factor, vector.getY() * factor);
+    }
+
 }
