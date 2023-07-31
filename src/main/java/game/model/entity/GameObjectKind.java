@@ -5,6 +5,7 @@ public enum GameObjectKind {
     PLAYER,
     ENEMY,
     OBSTACLE,
+    TRUNK,
     COIN,
     POWERUP;
 }
