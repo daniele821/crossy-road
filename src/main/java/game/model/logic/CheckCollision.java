@@ -1,5 +1,12 @@
 package game.model.logic;
 
-public interface CheckCollision {
+import game.model.world.GameWorld;
+import game.shared.AbstractGameWorldUser;
+
+public class CheckCollision extends AbstractGameWorldUser {
+
+    CheckCollision(final GameWorld gameWorld) {
+        super(gameWorld);
+    }
 
 }

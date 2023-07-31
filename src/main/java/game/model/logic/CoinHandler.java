@@ -1,5 +1,12 @@
 package game.model.logic;
 
-public interface CoinHandler {
+import game.model.world.GameWorld;
+import game.shared.AbstractGameWorldUser;
+
+public class CoinHandler extends AbstractGameWorldUser {
+
+    CoinHandler(final GameWorld gameWorld) {
+        super(gameWorld);
+    }
 
 }

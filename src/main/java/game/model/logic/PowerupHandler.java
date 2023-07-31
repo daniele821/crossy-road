@@ -1,5 +1,12 @@
 package game.model.logic;
 
-public interface PowerupHandler {
+import game.model.world.GameWorld;
+import game.shared.AbstractGameWorldUser;
+
+public class PowerupHandler extends AbstractGameWorldUser {
+
+    PowerupHandler(final GameWorld gameWorld) {
+        super(gameWorld);
+    }
 
 }
