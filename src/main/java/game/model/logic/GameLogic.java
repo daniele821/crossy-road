@@ -9,6 +9,7 @@ import game.shared.Vector2D;
 public interface GameLogic {
     void updateAll(ProgressiveTime elapsedTime);
 
-    void movePlayer(GameObject gameObject, Vector2D direction);
+    // direction vector is multiplied by background cell dimension
+    void moveObject(GameObject gameObject, Vector2D direction);
 
 }

@@ -17,7 +17,7 @@ public class GameLogicImpl extends AbstractGameWorldUser implements GameLogic {
     }
 
     @Override
-    public void movePlayer(final GameObject gameObject, final Vector2D direction) {
+    public void moveObject(final GameObject gameObject, final Vector2D direction) {
     }
 
 }
