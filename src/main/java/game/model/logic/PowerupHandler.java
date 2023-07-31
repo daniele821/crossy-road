@@ -1,9 +1,9 @@
 package game.model.logic;
 
 import game.model.world.GameWorld;
-import game.shared.AbstractGameWorldUser;
+import game.shared.GameWorldUser;
 
-public class PowerupHandler extends AbstractGameWorldUser {
+public class PowerupHandler extends GameWorldUser {
 
     PowerupHandler(final GameWorld gameWorld) {
         super(gameWorld);

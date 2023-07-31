@@ -1,10 +1,10 @@
 package game.controller;
 
 import game.model.world.GameWorld;
-import game.shared.AbstractGameWorldUser;
+import game.shared.GameWorldUser;
 import game.shared.ProgressiveTime;
 
-public class GameLoopImpl extends AbstractGameWorldUser implements GameLoop {
+public class GameLoopImpl extends GameWorldUser implements GameLoop {
 
     public GameLoopImpl(final GameWorld gameWorld) {
         super(gameWorld);

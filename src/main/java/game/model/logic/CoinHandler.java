@@ -1,9 +1,9 @@
 package game.model.logic;
 
 import game.model.world.GameWorld;
-import game.shared.AbstractGameWorldUser;
+import game.shared.GameWorldUser;
 
-public class CoinHandler extends AbstractGameWorldUser {
+public class CoinHandler extends GameWorldUser {
 
     CoinHandler(final GameWorld gameWorld) {
         super(gameWorld);

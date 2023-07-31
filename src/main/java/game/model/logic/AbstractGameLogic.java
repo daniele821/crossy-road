@@ -1,9 +1,9 @@
 package game.model.logic;
 
 import game.model.world.GameWorld;
-import game.shared.AbstractGameWorldUser;
+import game.shared.GameWorldUser;
 
-public abstract class AbstractGameLogic extends AbstractGameWorldUser implements GameLogic {
+public abstract class AbstractGameLogic extends GameWorldUser implements GameLogic {
     private final CoinHandler coinHandler;
     private final PowerupHandler powerupHandler;
     private final CheckCollision checkCollision;

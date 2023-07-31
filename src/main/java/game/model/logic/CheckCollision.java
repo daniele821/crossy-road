@@ -1,9 +1,9 @@
 package game.model.logic;
 
 import game.model.world.GameWorld;
-import game.shared.AbstractGameWorldUser;
+import game.shared.GameWorldUser;
 
-public class CheckCollision extends AbstractGameWorldUser {
+public class CheckCollision extends GameWorldUser {
 
     CheckCollision(final GameWorld gameWorld) {
         super(gameWorld);
