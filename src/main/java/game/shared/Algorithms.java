@@ -43,4 +43,8 @@ public class Algorithms {
         return new Vector2D(vector.getX() * factor, vector.getY() * factor);
     }
 
+    public Rectangle move(final Rectangle rect, final Vector2D speed, final ProgressiveTime elapsedTime) {
+        return add(rect, multiply(speed, (double) elapsedTime.getDeltaTime() / 1000.0));
+    }
+
 }
