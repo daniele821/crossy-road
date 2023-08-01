@@ -1,6 +1,11 @@
 package game.model.entity;
 
-import static game.model.entity.GameObjectKind.*;
+import static game.model.entity.GameObjectKind.BACKGROUND;
+import static game.model.entity.GameObjectKind.COIN;
+import static game.model.entity.GameObjectKind.ENEMY;
+import static game.model.entity.GameObjectKind.OBSTACLE;
+import static game.model.entity.GameObjectKind.PLAYER;
+import static game.model.entity.GameObjectKind.POWERUP;
 
 public enum GameObjectType {
     BAC_BIKE_LANE("game/entity/background/bike_lane.png", BACKGROUND),
@@ -9,13 +14,13 @@ public enum GameObjectType {
     BAC_ROAD("game/entity/background/road.png", BACKGROUND),
     BAC_WATER("game/entity/background/water.png", BACKGROUND),
     COI_COIN("game/entity/coin/coin.png", COIN),
-    ENE_TRAIN("game/entity/enemy/train.png",ENEMY),
-    ENE_TRAIN_2_SX("game/entity/enemy/train_2_sx.png",ENEMY),
-    ENE_TRAIN_2_DX("game/entity/enemy/train_2_dx.png",ENEMY),
-    ENE_TRAIN_3_SX("game/entity/enemy/train_3_sx.png",ENEMY),
-    ENE_TRAIN_3_DX("game/entity/enemy/train_3_dx.png",ENEMY),
-    ENE_TRAIN_4_SX("game/entity/enemy/train_4_sx.png",ENEMY),
-    ENE_TRAIN_4_DX("game/entity/enemy/train_4_dx.png",ENEMY),
+    ENE_TRAIN("game/entity/enemy/train.png", ENEMY),
+    ENE_TRAIN_2_SX("game/entity/enemy/train_2_sx.png", ENEMY),
+    ENE_TRAIN_2_DX("game/entity/enemy/train_2_dx.png", ENEMY),
+    ENE_TRAIN_3_SX("game/entity/enemy/train_3_sx.png", ENEMY),
+    ENE_TRAIN_3_DX("game/entity/enemy/train_3_dx.png", ENEMY),
+    ENE_TRAIN_4_SX("game/entity/enemy/train_4_sx.png", ENEMY),
+    ENE_TRAIN_4_DX("game/entity/enemy/train_4_dx.png", ENEMY),
     OBS_BUSH("game/entity/obstacle/bush.png", OBSTACLE),
     OBS_TREE("game/entity/obstacle/tree.png", OBSTACLE),
     PLA_DEFAULT("game/entity/player/default.png", PLAYER),
@@ -31,7 +36,7 @@ public enum GameObjectType {
     private final String imageClassPath;
     private final GameObjectKind objectKind;
 
-    private GameObjectType(final String imageClassPath, final GameObjectKind objectKind) {
+    GameObjectType(final String imageClassPath, final GameObjectKind objectKind) {
         this.imageClassPath = imageClassPath;
         this.objectKind = objectKind;
     }
