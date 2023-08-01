@@ -16,7 +16,7 @@ public class GameLogicImpl extends AbstractGameLogic {
 
     @Override
     public void updateAll(final ProgressiveTime elapsedTime) {
-        getGameWorld().getAllObjctes().forEach(obj -> ALGORITHMS.move(obj, elapsedTime));
+        getGameWorld().getAllObjctes().forEach(obj -> obj.setPosition(ALGORITHMS.move(obj, elapsedTime)));
     }
 
     @Override

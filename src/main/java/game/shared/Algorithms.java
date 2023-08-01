@@ -3,7 +3,6 @@ package game.shared;
 import java.util.Optional;
 
 import game.model.entity.GameObject;
-import game.model.entity.GameObjectImpl;
 
 public class Algorithms {
     public Optional<Rectangle> getIntersection(final Rectangle rect1, final Rectangle rect2) {
@@ -50,9 +49,8 @@ public class Algorithms {
         return add(rect, multiply(speed, (double) elapsedTime.getDeltaTime() / 1000.0));
     }
 
-    public GameObject move(final GameObject obj, final ProgressiveTime elapsedTime) {
-        final var newPosition = move(obj.getPosition(), obj.getSpeed(), elapsedTime);
-        return new GameObjectImpl(newPosition, obj.getSpeed(), obj.getObjectType());
+    public Rectangle move(final GameObject obj, final ProgressiveTime elapsedTime) {
+        return move(obj.getPosition(), obj.getSpeed(), elapsedTime);
     }
 
 }
