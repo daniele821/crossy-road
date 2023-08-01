@@ -5,11 +5,23 @@ import java.util.Optional;
 import game.shared.ProgressiveTime;
 
 public class GameEngineImpl implements GameEngine {
-    private static final int FPS = 60;
-    private static final int FRAME_DURATION = 1000 / FPS;
+    private static final int DEFAULT_FPS = 60;
+    private final int frameDuration;
     private Optional<Thread> engineThread = Optional.empty();
     private boolean isPaused;
     private boolean killThread;
+
+    public GameEngineImpl(final int fps) {
+        if (fps > 0) {
+            this.frameDuration = 1000 / fps;
+        } else {
+            this.frameDuration = 1000 / DEFAULT_FPS;
+        }
+    }
+
+    public GameEngineImpl() {
+        this(DEFAULT_FPS);
+    }
 
     @Override
     public void startThread(final GameLoop gameLoop) {
@@ -78,7 +90,7 @@ public class GameEngineImpl implements GameEngine {
                 }
 
                 try {
-                    Thread.sleep(Long.max(0, startTime + FRAME_DURATION - System.currentTimeMillis()));
+                    Thread.sleep(Long.max(0, startTime + frameDuration - System.currentTimeMillis()));
                 } catch (final InterruptedException e) {
                     throw new IllegalStateException("engine sleep failed!", e);
                 }
