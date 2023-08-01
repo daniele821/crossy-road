@@ -5,10 +5,15 @@ import java.util.function.Consumer;
 
 import game.model.entity.GameWorld;
 import game.shared.Algorithms;
+import game.shared.GameWorldUser;
 import game.shared.ProgressiveTime;
 
-public class GameLogicImpl extends AbstractGameLogic {
+public class GameLogicImpl extends GameWorldUser implements GameLogic {
     private static final Algorithms ALGORITHMS = new Algorithms();
+    // private final CoinHandler coinHandler = new CoinHandler(getGameWorld());
+    // private final PowerupHandler powerupHandler = new PowerupHandler(getGameWorld());
+    // private final CheckCollision checkCollision = new CheckCollision(getGameWorld());
+    private Optional<Consumer<GameWorld>> storedAction = Optional.empty();
 
     public GameLogicImpl(final GameWorld gameWorld) {
         super(gameWorld);
@@ -21,15 +26,15 @@ public class GameLogicImpl extends AbstractGameLogic {
 
     @Override
     public void storeInputAction(final Consumer<GameWorld> action) {
-        if (getStoredAction().isEmpty()) {
-            setStoreAction(Optional.of(action));
+        if (this.storedAction.isEmpty()) {
+            this.storedAction = Optional.ofNullable(action);
         }
     }
 
     @Override
     public void executeInputAction() {
-        getStoredAction().ifPresent(action -> action.accept(getGameWorld()));
-        setStoreAction(Optional.empty());
+        this.storedAction.ifPresent(action -> action.accept(getGameWorld()));
+        this.storedAction = Optional.empty();
     }
 
 }
