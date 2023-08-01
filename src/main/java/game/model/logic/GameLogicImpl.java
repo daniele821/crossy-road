@@ -4,9 +4,11 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 import game.model.entity.GameWorld;
+import game.shared.Algorithms;
 import game.shared.ProgressiveTime;
 
 public class GameLogicImpl extends AbstractGameLogic {
+    private static final Algorithms ALGORITHMS = new Algorithms();
 
     public GameLogicImpl(final GameWorld gameWorld) {
         super(gameWorld);
@@ -14,6 +16,7 @@ public class GameLogicImpl extends AbstractGameLogic {
 
     @Override
     public void updateAll(final ProgressiveTime elapsedTime) {
+        getGameWorld().getAllObjctes().forEach(obj -> ALGORITHMS.move(obj, elapsedTime));
     }
 
     @Override
