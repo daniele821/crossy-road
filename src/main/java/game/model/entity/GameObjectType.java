@@ -8,12 +8,16 @@ public enum GameObjectType {
     BG_RAIL("game/entity/background/rail.png", BACKGROUND),
     BG_ROAD("game/entity/background/road.png", BACKGROUND),
     BG_WATER("game/entity/background/water.png", BACKGROUND),
+    CO_COIN("game/entity/coin/coin.png", COIN),
     PL_DEFAULT("game/entity/player/default.png", PLAYER),
     PL_HULK("game/entity/player/hulk.png", PLAYER),
     PL_SPONGEBOB("game/entity/player/spongebob.png", PLAYER),
     PL_STEVE("game/entity/player/steve.png", PLAYER),
     PL_SUPERMAN("game/entity/player/superman.png", PLAYER),
-    PL_THIEF("game/entity/player/thief.png", PLAYER);
+    PL_THIEF("game/entity/player/thief.png", PLAYER),
+    PO_IMMORTALITY("game/entity/powerup/immortality.png", POWERUP),
+    PO_MAGNET("game/entity/powerup/magnet.png", POWERUP),
+    PO_MULTIPLIER("game/entity/powerup/multiplier.png", POWERUP);
 
     private final String imageClassPath;
     private final GameObjectKind objectKind;
