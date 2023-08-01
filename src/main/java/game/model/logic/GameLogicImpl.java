@@ -1,9 +1,10 @@
 package game.model.logic;
 
-import game.model.entity.GameObject;
+import java.util.Optional;
+import java.util.function.Consumer;
+
 import game.model.entity.GameWorld;
 import game.shared.ProgressiveTime;
-import game.shared.Vector2D;
 
 public class GameLogicImpl extends AbstractGameLogic {
 
@@ -16,7 +17,15 @@ public class GameLogicImpl extends AbstractGameLogic {
     }
 
     @Override
-    public void moveObject(final GameObject gameObject, final Vector2D direction) {
+    public void storeInputAction(final Consumer<GameWorld> action) {
+        if (getStoredAction().isEmpty()) {
+            setStoreAction(Optional.of(action));
+        }
+    }
+
+    @Override
+    public void executeInputAction() {
+        getStoredAction().ifPresent(action -> action.accept(getGameWorld()));
     }
 
 }
