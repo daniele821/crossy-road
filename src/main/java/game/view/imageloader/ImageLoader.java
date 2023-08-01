@@ -1,7 +1,8 @@
 package game.view.imageloader;
 
 import java.awt.Image;
+import java.util.Optional;
 
 public interface ImageLoader {
-    Image load(String classPath);
+    Optional<Image> load(String classPath);
 }
