@@ -17,6 +17,7 @@ public abstract class AbstractGameLogic extends GameWorldUser implements GameLog
         this.coinHandler = new CoinHandler(gameWorld);
         this.powerupHandler = new PowerupHandler(gameWorld);
         this.checkCollision = new CheckCollision(gameWorld);
+        this.storedAction = Optional.empty();
     }
 
     protected CoinHandler getCoinHandler() {
