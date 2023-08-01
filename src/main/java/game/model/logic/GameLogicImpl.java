@@ -29,6 +29,7 @@ public class GameLogicImpl extends AbstractGameLogic {
     @Override
     public void executeInputAction() {
         getStoredAction().ifPresent(action -> action.accept(getGameWorld()));
+        setStoreAction(Optional.empty());
     }
 
 }
