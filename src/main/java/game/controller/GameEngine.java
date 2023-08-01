@@ -1,10 +1,8 @@
 package game.controller;
 
-import game.model.entity.GameWorld;
-
 public interface GameEngine {
 
-    void startThread(GameWorld gameWorld);
+    void startThread(GameLoop gameLoop);
 
     void killThread();
 

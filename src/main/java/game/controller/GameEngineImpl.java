@@ -2,7 +2,6 @@ package game.controller;
 
 import java.util.Optional;
 
-import game.model.entity.GameWorld;
 import game.shared.ProgressiveTime;
 
 public class GameEngineImpl implements GameEngine {
@@ -13,9 +12,9 @@ public class GameEngineImpl implements GameEngine {
     private boolean killThread;
 
     @Override
-    public void startThread(final GameWorld gameWorld) {
+    public void startThread(final GameLoop gameLoop) {
         if (this.engineThread.isEmpty()) {
-            this.engineThread = Optional.ofNullable(getGameEngineThread(new GameLoopImpl(gameWorld)));
+            this.engineThread = Optional.ofNullable(getGameEngineThread(gameLoop));
             this.engineThread.get().start();
         }
     }
