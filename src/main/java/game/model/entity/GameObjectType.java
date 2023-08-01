@@ -3,6 +3,11 @@ package game.model.entity;
 import static game.model.entity.GameObjectKind.*;
 
 public enum GameObjectType {
+    BG_BIKE_LANE("game/entity/background/bike_lane.png", BACKGROUND),
+    BG_GRASS("game/entity/background/grass.png", BACKGROUND),
+    BG_RAIL("game/entity/background/rail.png", BACKGROUND),
+    BG_ROAD("game/entity/background/road.png", BACKGROUND),
+    BG_WATER("game/entity/background/water.png", BACKGROUND),
     PL_DEFAULT("game/entity/player/default.png", PLAYER),
     PL_HULK("game/entity/player/hulk.png", PLAYER),
     PL_SPONGEBOB("game/entity/player/spongebob.png", PLAYER),
