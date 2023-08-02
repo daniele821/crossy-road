@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import game.model.entity.GameWorld;
 
-public class MapLoaderImpl implements MapLoader {
+public class MapWorldLoaderImpl implements MapWorldLoader {
 
     @Override
     public Optional<GameWorld> loadWorld(final List<String> lines) {

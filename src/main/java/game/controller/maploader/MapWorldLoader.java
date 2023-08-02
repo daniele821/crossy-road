@@ -5,6 +5,6 @@ import java.util.Optional;
 
 import game.model.entity.GameWorld;
 
-public interface MapLoader {
+public interface MapWorldLoader {
     Optional<GameWorld> loadWorld(List<String> lines);
 }
