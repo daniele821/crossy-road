@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MapLoaderImpl implements MapLoader {
+public class MapFileLoaderImpl implements MapFileLoader {
     private final Map<String, List<String>> maps = new HashMap<>();
 
     @Override
