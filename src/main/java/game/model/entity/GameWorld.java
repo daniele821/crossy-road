@@ -4,6 +4,7 @@ import java.util.List;
 
 import game.model.logic.GameLogic;
 import game.shared.Rectangle;
+import game.shared.Vector2D;
 
 public interface GameWorld {
     List<GameObject> getAllObjctes();
@@ -16,7 +17,9 @@ public interface GameWorld {
 
     void setGameWorldSize(Rectangle gameWorldSize);
 
-    GameLogic getGameLogic();
+    Vector2D getBackgroundCellDimension();
 
-    void setGameLogic(GameLogic gameLogic);
+    void setBackgroundCellDimension(Vector2D backgroundCellSize);
+
+    GameLogic getGameLogic();
 }

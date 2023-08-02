@@ -1,11 +1,11 @@
 package game.model.entity;
 
-import static game.model.entity.GameObjectKind.BACKGROUND;
-import static game.model.entity.GameObjectKind.COIN;
-import static game.model.entity.GameObjectKind.ENEMY;
-import static game.model.entity.GameObjectKind.OBSTACLE;
-import static game.model.entity.GameObjectKind.PLAYER;
-import static game.model.entity.GameObjectKind.POWERUP;
+import static game.model.entity.GameObjectType.GameObjectKind.BACKGROUND;
+import static game.model.entity.GameObjectType.GameObjectKind.COIN;
+import static game.model.entity.GameObjectType.GameObjectKind.ENEMY;
+import static game.model.entity.GameObjectType.GameObjectKind.OBSTACLE;
+import static game.model.entity.GameObjectType.GameObjectKind.PLAYER;
+import static game.model.entity.GameObjectType.GameObjectKind.POWERUP;
 
 public enum GameObjectType {
     BAC_BIKE_LANE("game/entity/background/bike_lane.png", BACKGROUND),
@@ -57,4 +57,13 @@ public enum GameObjectType {
         return this.objectKind;
     }
 
+    public enum GameObjectKind {
+        BACKGROUND,
+        PLAYER,
+        ENEMY,
+        OBSTACLE,
+        TRUNK,
+        COIN,
+        POWERUP;
+    }
 }

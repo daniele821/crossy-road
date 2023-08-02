@@ -7,14 +7,20 @@ import java.util.Optional;
 import game.model.logic.GameLogic;
 import game.model.logic.GameLogicImpl;
 import game.shared.Rectangle;
+import game.shared.Vector2D;
 
 public class GameWorldImpl implements GameWorld {
     private final List<GameObject> objects;
+    private final GameLogic gameLogic;
     private Rectangle gameWorldSize;
-    private GameLogic gameLogic;
+    private Vector2D backgroundCellSize;
 
-    public GameWorldImpl(final List<GameObject> objects, final Rectangle gameWorldSize) {
+    public GameWorldImpl(
+            final List<GameObject> objects,
+            final Rectangle gameWorldSize,
+            final Vector2D backgroundCellSize) {
         this.gameWorldSize = gameWorldSize;
+        this.backgroundCellSize = backgroundCellSize;
         this.objects = new ArrayList<>(objects);
         this.gameLogic = new GameLogicImpl(this);
     }
@@ -42,25 +48,31 @@ public class GameWorldImpl implements GameWorld {
     }
 
     @Override
-    public void setGameWorldSize(final Rectangle gameWorldSize) {
-        this.gameWorldSize = gameWorldSize;
-    }
-
-    @Override
     public GameLogic getGameLogic() {
         return this.gameLogic;
     }
 
     @Override
-    public void setGameLogic(final GameLogic gameLogic) {
-        this.gameLogic = gameLogic;
+    public Vector2D getBackgroundCellDimension() {
+        return this.backgroundCellSize;
+    }
+
+    @Override
+    public void setBackgroundCellDimension(final Vector2D backgroundCellSize) {
+        this.backgroundCellSize = backgroundCellSize;
+    }
+
+    @Override
+    public void setGameWorldSize(final Rectangle gameWorldSize) {
+        this.gameWorldSize = gameWorldSize;
     }
 
     @Override
     public String toString() {
         return "GameWorldImpl [objects=" + objects
                 + ", gameWorldSize=" + gameWorldSize
-                + ", gameLogic=" + gameLogic + "]";
+                + ", gameLogic=" + gameLogic
+                + ", backgroundCellSize=" + backgroundCellSize + "]";
     }
 
 }
