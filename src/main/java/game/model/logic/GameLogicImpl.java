@@ -5,23 +5,20 @@ import java.util.function.Consumer;
 
 import game.model.entity.GameWorld;
 import game.shared.Algorithms;
-import game.shared.GameWorldUser;
 import game.shared.ProgressiveTime;
 
-public class GameLogicImpl extends GameWorldUser implements GameLogic {
+public class GameLogicImpl implements GameLogic {
     private static final Algorithms ALGORITHMS = new Algorithms();
-    // private final CoinHandler coinHandler = new CoinHandler(getGameWorld());
-    // private final PowerupHandler powerupHandler = new PowerupHandler(getGameWorld());
-    // private final CheckCollision checkCollision = new CheckCollision(getGameWorld());
+    private final GameWorld gameWorld;
     private Optional<Consumer<GameWorld>> storedAction = Optional.empty();
 
     public GameLogicImpl(final GameWorld gameWorld) {
-        super(gameWorld);
+        this.gameWorld = gameWorld;
     }
 
     @Override
     public void updateAll(final ProgressiveTime elapsedTime) {
-        getGameWorld().getAllObjctes().forEach(obj -> obj.setPosition(ALGORITHMS.move(obj, elapsedTime)));
+        this.gameWorld.getAllObjctes().forEach(obj -> obj.setPosition(ALGORITHMS.move(obj, elapsedTime)));
     }
 
     @Override
@@ -33,7 +30,7 @@ public class GameLogicImpl extends GameWorldUser implements GameLogic {
 
     @Override
     public void executeInputAction() {
-        this.storedAction.ifPresent(action -> action.accept(getGameWorld()));
+        this.storedAction.ifPresent(action -> action.accept(this.gameWorld));
         this.storedAction = Optional.empty();
     }
 

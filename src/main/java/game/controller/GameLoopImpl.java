@@ -1,26 +1,26 @@
 package game.controller;
 
 import game.model.entity.GameWorld;
-import game.shared.GameWorldUser;
 import game.shared.ProgressiveTime;
 import game.view.Window;
 
-public class GameLoopImpl extends GameWorldUser implements GameLoop {
+public class GameLoopImpl implements GameLoop {
+    private final GameWorld gameWorld;
     private final Window window;
 
     public GameLoopImpl(final GameWorld gameWorld, final Window window) {
-        super(gameWorld);
+        this.gameWorld = gameWorld;
         this.window = window;
     }
 
     @Override
     public void processInput() {
-        getGameWorld().getGameLogic().executeInputAction();
+        this.gameWorld.getGameLogic().executeInputAction();
     }
 
     @Override
     public void update(final ProgressiveTime elapsedTime) {
-        getGameWorld().getGameLogic().updateAll(elapsedTime);
+        this.gameWorld.getGameLogic().updateAll(elapsedTime);
     }
 
     @Override
