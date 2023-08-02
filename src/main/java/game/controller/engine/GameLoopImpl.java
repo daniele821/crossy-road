@@ -1,8 +1,8 @@
-package game.controller;
+package game.controller.engine;
 
 import game.model.entity.GameWorld;
 import game.shared.ProgressiveTime;
-import game.view.Window;
+import game.view.window.Window;
 
 public class GameLoopImpl implements GameLoop {
     private final GameWorld gameWorld;

@@ -1,4 +1,4 @@
-package game.view;
+package game.view.window;
 
 public interface Window {
     void update();
