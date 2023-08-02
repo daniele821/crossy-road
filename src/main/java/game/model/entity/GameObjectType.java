@@ -13,7 +13,7 @@ public enum GameObjectType {
     BAC_RAIL("rail.png", BACKGROUND, 16, 16),
     BAC_ROAD("road.png", BACKGROUND, 16, 16),
     BAC_WATER("water.png", BACKGROUND, 16, 16),
-    COI_COIN("coin.png", COIN, 10, 10),
+    COI_DEFAULT("coin.png", COIN, 10, 10),
     ENE_CAR_1_DX("car_1_dx.png", ENEMY, 14, 8),
     ENE_CAR_1_SX("car_1_sx.png", ENEMY, 14, 8),
     ENE_CAR_2_DX("car_2_dx.png", ENEMY, 14, 9),
