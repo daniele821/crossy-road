@@ -18,7 +18,7 @@ public class MapFileLoaderImpl implements MapFileLoader {
             if (input == null) {
                 return List.of();
             }
-            try (final BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
                 final List<String> lines = new ArrayList<>();
                 while (reader.ready()) {
                     lines.add(reader.readLine());
