@@ -21,6 +21,9 @@ public class ImageLoaderImpl implements ImageLoader {
                     return Optional.empty();
                 }
                 final Image image = ImageIO.read(input);
+                if (image == null) {
+                    return Optional.empty();
+                }
                 this.images.put(classPath, image);
             } catch (IOException e) {
                 throw new IllegalStateException("image" + classPath + "failed loading!", e);
