@@ -9,10 +9,13 @@ import game.shared.Vector2D;
 public class GameLogicImpl implements GameLogic {
     private static final Algorithms ALGORITHMS = new Algorithms();
     private final GameWorld gameWorld;
-    private final InputHandler inputHandler = new InputHandler();
+    private final InputHandler inputHandler;
+    private final MoveObject moveObject;
 
     public GameLogicImpl(final GameWorld gameWorld) {
         this.gameWorld = gameWorld;
+        this.inputHandler = new InputHandler();
+        this.moveObject = new MoveObject();
     }
 
     @Override
@@ -20,17 +23,18 @@ public class GameLogicImpl implements GameLogic {
         this.gameWorld.getAllObjctes()
                 .stream()
                 .filter(obj -> !obj.getSpeed().equals(new Vector2D(0, 0)))
-                .forEach(obj -> {
-                    obj.setPosition(ALGORITHMS.move(obj, elapsedTime));
-                });
+                .forEach(obj -> this.moveObject.moveObject(obj, ALGORITHMS.move(obj, elapsedTime)));
 
     }
 
     @Override
     public void executeInputAction() {
-        this.inputHandler.getStoredAction().forEach(pair -> {
-            pair.getA().setPosition(ALGORITHMS.add(pair.getA().getPosition(), pair.getB()));
-        });
+        this.inputHandler.getStoredAction()
+                .forEach(pair -> {
+                    final var obj = pair.getA();
+                    final var move = pair.getB();
+                    this.moveObject.moveObject(obj, ALGORITHMS.add(obj.getPosition(), move));
+                });
     }
 
     @Override
@@ -38,6 +42,11 @@ public class GameLogicImpl implements GameLogic {
         this.inputHandler.storeAction(gameObject, moveVector);
     }
 
-    // TODO add: toString
+    @Override
+    public String toString() {
+        return "GameLogicImpl [gameWorld=" + gameWorld
+                + ", inputHandler=" + inputHandler
+                + ", moveObject=" + moveObject + "]";
+    }
 
 }
