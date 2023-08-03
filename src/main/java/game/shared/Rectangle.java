@@ -56,7 +56,7 @@ public class Rectangle {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -66,7 +66,7 @@ public class Rectangle {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Rectangle other = (Rectangle) obj;
+        final Rectangle other = (Rectangle) obj;
         if (Double.doubleToLongBits(positionX) != Double.doubleToLongBits(other.positionX)) {
             return false;
         }
@@ -76,7 +76,7 @@ public class Rectangle {
         if (Double.doubleToLongBits(sizeX) != Double.doubleToLongBits(other.sizeX)) {
             return false;
         }
-        return (Double.doubleToLongBits(sizeY) == Double.doubleToLongBits(other.sizeY));
+        return Double.doubleToLongBits(sizeY) == Double.doubleToLongBits(other.sizeY);
     }
 
     @Override

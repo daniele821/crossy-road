@@ -85,7 +85,7 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
     private List<GameObject> getObjects(final List<String> allLines, final GameWorld gameWorld) {
         final List<GameObject> objects = new ArrayList<>();
         List<String> lines = allLines.stream().dropWhile(str -> !str.startsWith(OBJECT_START)).toList();
-        while (lines.size() > 0) {
+        while (!lines.isEmpty()) {
             objects.addAll(getObject(lines, gameWorld));
             lines = lines.stream().skip(1).dropWhile(str -> !str.startsWith(OBJECT_START)).toList();
         }

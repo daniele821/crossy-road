@@ -30,7 +30,7 @@ public class Vector2D {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -40,11 +40,11 @@ public class Vector2D {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Vector2D other = (Vector2D) obj;
+        final Vector2D other = (Vector2D) obj;
         if (Double.doubleToLongBits(x) != Double.doubleToLongBits(other.x)) {
             return false;
         }
-        return (Double.doubleToLongBits(y) == Double.doubleToLongBits(other.y));
+        return Double.doubleToLongBits(y) == Double.doubleToLongBits(other.y);
     }
 
     @Override

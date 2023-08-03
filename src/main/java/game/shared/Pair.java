@@ -28,7 +28,7 @@ public class Pair<A, B> {
 
     @Override
     @SuppressWarnings("rawtypes")
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -38,7 +38,7 @@ public class Pair<A, B> {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Pair other = (Pair) obj;
+        final Pair other = (Pair) obj;
         if (a == null) {
             if (other.a != null) {
                 return false;
