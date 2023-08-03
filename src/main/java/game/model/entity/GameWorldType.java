@@ -1,7 +1,7 @@
 package game.model.entity;
 
 public enum GameWorldType {
-    MAP_1("1.toml");
+    MAP_1("1.map");
 
     private final String mapPath;
 
