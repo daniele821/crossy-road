@@ -11,16 +11,20 @@ import game.model.entity.GameObjectImpl;
 import game.model.entity.GameObjectType;
 import game.model.entity.GameWorld;
 import game.model.entity.GameWorldImpl;
+import game.shared.Algorithms;
 import game.shared.Rectangle;
 import game.shared.Vector2D;
 
 public class MapWorldLoaderImpl implements MapWorldLoader {
+    private static final String EMPTY = "";
     private static final String COMMENT = "#";
     private static final String VALUE_SEP = " ";
     private static final String ELEM_SEP = ",";
     private static final String ENTRY_SEP = "=";
     private static final String OBJECT_START = "[";
     private static final String OBJECT_END = "]";
+    private static final String CELL_POS_NAME = "pos_cell";
+    private final Algorithms algorithms = new Algorithms();
 
     private List<String> removeCommentedAndEmptyLines(final List<String> lines) {
         return lines.stream()
@@ -59,22 +63,30 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
         return Optional.of(new GameWorldImpl(List.of(), worldRect, cellDim));
     }
 
-    private List<GameObject> getObject(final List<String> lines) {
+    private List<GameObject> getObject(final List<String> lines, final GameWorld gameWorld) {
         if (lines.size() < 3) {
             return List.of();
         }
-        final String typeStr = lines.get(0).strip().replace(OBJECT_START, "").replace(OBJECT_END, "").strip();
+        final String typeStr = lines.get(0).strip().replace(OBJECT_START, EMPTY).replace(OBJECT_END, EMPTY);
         final GameObjectType type = GameObjectType.valueOf(typeStr);
         final Vector2D speed = readVector2D(removeTitle(lines.get(1)));
-        final List<Vector2D> position = readElements(removeTitle(lines.get(2)), this::readVector2D);
+        final List<Vector2D> position = new ArrayList<>(readElements(removeTitle(lines.get(2)), this::readVector2D));
+        if (lines.get(2).strip().startsWith(CELL_POS_NAME)) {
+            final List<Vector2D> buffer = new ArrayList<>(position.stream()
+                    .map(vect -> this.algorithms.multiplyMembers(vect, gameWorld.getBackgroundCellDimension()))
+                    .map(vect -> new Vector2D(vect.getX() + type.getDeltaX(), vect.getY() + type.getDeltaY()))
+                    .toList());
+            position.clear();
+            position.addAll(buffer);
+        }
         return position.stream().map(pos -> (GameObject) new GameObjectImpl(pos, speed, type)).toList();
     }
 
-    private List<GameObject> getObjects(final List<String> allLines) {
+    private List<GameObject> getObjects(final List<String> allLines, final GameWorld gameWorld) {
         final List<GameObject> objects = new ArrayList<>();
         List<String> lines = allLines.stream().dropWhile(str -> !str.startsWith(OBJECT_START)).toList();
         while (lines.size() > 0) {
-            objects.addAll(getObject(lines));
+            objects.addAll(getObject(lines, gameWorld));
             lines = lines.stream().skip(1).dropWhile(str -> !str.startsWith(OBJECT_START)).toList();
         }
         return objects;
@@ -87,7 +99,7 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
         if (world.isEmpty()) {
             Optional.empty();
         }
-        getObjects(cleanedLines).forEach(world.get()::addObject);
+        getObjects(cleanedLines, world.get()).forEach(obj -> world.get().addObject(obj));
         return world;
     }
 
