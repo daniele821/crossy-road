@@ -17,9 +17,12 @@ public class GameLogicImpl implements GameLogic {
 
     @Override
     public void updateAll(final ProgressiveTime elapsedTime) {
-        this.gameWorld.getAllObjctes().forEach(obj -> {
-            obj.setPosition(ALGORITHMS.move(obj, elapsedTime));
-        });
+        this.gameWorld.getAllObjctes()
+                .stream()
+                .filter(obj -> !obj.getSpeed().equals(new Vector2D(0, 0)))
+                .forEach(obj -> {
+                    obj.setPosition(ALGORITHMS.move(obj, elapsedTime));
+                });
 
     }
 
