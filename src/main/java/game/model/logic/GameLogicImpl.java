@@ -7,7 +7,7 @@ import game.shared.ProgressiveTime;
 import game.shared.Vector2D;
 
 public class GameLogicImpl implements GameLogic {
-    private static final Algorithms ALGORITHMS = new Algorithms();
+    private final Algorithms algorithms = new Algorithms();
     private final GameWorld gameWorld;
     private final InputHandler inputHandler = new InputHandler();
 
@@ -17,7 +17,7 @@ public class GameLogicImpl implements GameLogic {
 
     @Override
     public void updateAll(final ProgressiveTime elapsedTime) {
-        this.gameWorld.getAllObjctes().forEach(obj -> obj.setPosition(ALGORITHMS.move(obj, elapsedTime)));
+        this.gameWorld.getAllObjctes().forEach(obj -> obj.setPosition(this.algorithms.move(obj, elapsedTime)));
 
     }
 
