@@ -46,12 +46,10 @@ public class Pair<A, B> {
         } else if (!a.equals(other.a)) {
             return false;
         }
-        if (b == null) {
-            if (other.b != null) {
-                return false;
-            }
+        if (b == null && other.b != null) {
+            return false;
         }
-        return b.equals(other.b);
+        return b != null && b.equals(other.b);
     }
 
     @Override

@@ -97,7 +97,7 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
         final List<String> cleanedLines = removeCommentedAndEmptyLines(lines);
         final Optional<GameWorld> world = initWorld(cleanedLines);
         if (world.isEmpty()) {
-            Optional.empty();
+            return world;
         }
         getObjects(cleanedLines, world.get()).forEach(obj -> world.get().addObject(obj));
         return world;
