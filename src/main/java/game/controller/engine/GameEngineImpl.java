@@ -97,4 +97,13 @@ public class GameEngineImpl implements GameEngine {
             }
         });
     }
+
+    @Override
+    public String toString() {
+        return "GameEngineImpl [frameDuration=" + frameDuration
+                + ", engineThread=" + engineThread
+                + ", isPaused=" + isPaused()
+                + ", killThread=" + isThreadKilled() + "]";
+    }
+
 }

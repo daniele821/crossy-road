@@ -31,4 +31,6 @@ public class GameLogicImpl implements GameLogic {
         this.inputHandler.storeAction(gameObject, moveVector);
     }
 
+    // TODO add: toString
+
 }

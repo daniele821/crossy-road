@@ -32,4 +32,11 @@ public class MapLoaderImpl implements MapLoader {
         return Optional.ofNullable(this.maps.get(mapPath));
     }
 
+    @Override
+    public String toString() {
+        return "MapLoaderImpl [mapFileLoader=" + mapFileLoader
+                + ", mapWorldLoader=" + mapWorldLoader
+                + ", maps=" + maps + "]";
+    }
+
 }

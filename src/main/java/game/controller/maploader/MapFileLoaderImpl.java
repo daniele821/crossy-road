@@ -25,4 +25,9 @@ public class MapFileLoaderImpl implements MapFileLoader {
         }
     }
 
+    @Override
+    public String toString() {
+        return "MapFileLoaderImpl []";
+    }
+
 }

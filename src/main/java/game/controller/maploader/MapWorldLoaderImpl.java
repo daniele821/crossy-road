@@ -24,7 +24,7 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
     private static final String OBJECT_START = "[";
     private static final String OBJECT_END = "]";
     private static final String CELL_POS_NAME = "pos_cell";
-    private final Algorithms algorithms = new Algorithms();
+    private static final Algorithms ALGORITHMS = new Algorithms();
 
     private List<String> removeCommentedAndEmptyLines(final List<String> lines) {
         return lines.stream()
@@ -73,7 +73,7 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
         final List<Vector2D> position = new ArrayList<>(readElements(removeTitle(lines.get(2)), this::readVector2D));
         if (lines.get(2).strip().startsWith(CELL_POS_NAME)) {
             final List<Vector2D> buffer = new ArrayList<>(position.stream()
-                    .map(vect -> this.algorithms.multiplyMembers(vect, gameWorld.getBackgroundCellDimension()))
+                    .map(vect -> ALGORITHMS.multiplyMembers(vect, gameWorld.getBackgroundCellDimension()))
                     .map(vect -> new Vector2D(vect.getX() + type.getDeltaX(), vect.getY() + type.getDeltaY()))
                     .toList());
             position.clear();
@@ -101,6 +101,11 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
         }
         getObjects(cleanedLines, world.get()).forEach(obj -> world.get().addObject(obj));
         return world;
+    }
+
+    @Override
+    public String toString() {
+        return "MapWorldLoaderImpl []";
     }
 
 }

@@ -57,4 +57,9 @@ public class Algorithms {
         return move(obj.getPosition(), obj.getSpeed(), elapsedTime);
     }
 
+    @Override
+    public String toString() {
+        return "Algorithms []";
+    }
+
 }

@@ -28,4 +28,9 @@ public class GameLoopImpl implements GameLoop {
         this.window.update();
     }
 
+    @Override
+    public String toString() {
+        return "GameLoopImpl [gameWorld=" + gameWorld + ", window=" + window + "]";
+    }
+
 }

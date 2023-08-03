@@ -27,4 +27,10 @@ public class InputHandler {
         this.objects.clear();
         return buffer;
     }
+
+    @Override
+    public String toString() {
+        return "InputHandler [actions=" + actions + ", objects=" + objects + "]";
+    }
+
 }
