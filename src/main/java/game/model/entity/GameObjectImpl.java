@@ -8,6 +8,10 @@ public class GameObjectImpl implements GameObject {
     private Vector2D speed;
     private GameObjectType objectType;
 
+    public static GameObject clone(final GameObject gameObject) {
+        return new GameObjectImpl(gameObject.getPosition(), gameObject.getSpeed(), gameObject.getObjectType());
+    }
+
     private GameObjectImpl(final Rectangle position, final Vector2D speed, final GameObjectType objectType) {
         this.position = Rectangle.clone(position);
         this.speed = Vector2D.clone(speed);
