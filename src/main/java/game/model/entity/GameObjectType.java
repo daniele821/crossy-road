@@ -1,11 +1,11 @@
 package game.model.entity;
 
-import static game.model.entity.GameObjectKind.BACKGROUND;
-import static game.model.entity.GameObjectKind.COIN;
-import static game.model.entity.GameObjectKind.ENEMY;
-import static game.model.entity.GameObjectKind.OBSTACLE;
-import static game.model.entity.GameObjectKind.PLAYER;
-import static game.model.entity.GameObjectKind.POWERUP;
+import static game.model.entity.GameObjectType.GameObjectKind.BACKGROUND;
+import static game.model.entity.GameObjectType.GameObjectKind.COIN;
+import static game.model.entity.GameObjectType.GameObjectKind.ENEMY;
+import static game.model.entity.GameObjectType.GameObjectKind.OBSTACLE;
+import static game.model.entity.GameObjectType.GameObjectKind.PLAYER;
+import static game.model.entity.GameObjectType.GameObjectKind.POWERUP;
 
 public enum GameObjectType {
     BAC_BIKE_LANE("bike_lane.png", BACKGROUND, 16, 16, 0, 0),
@@ -48,8 +48,7 @@ public enum GameObjectType {
     private final double deltaX;
     private final double deltaY;
 
-    GameObjectType(
-            final String imagePath, final GameObjectKind objectKind,
+    GameObjectType(final String imagePath, final GameObjectKind objectKind,
             final double imageLenX, final double imageLenY,
             final double deltaX, final double deltaY) {
         this.imagePath = objectKind.getDirPath() + imagePath;
@@ -82,5 +81,25 @@ public enum GameObjectType {
 
     public double getDeltaY() {
         return this.deltaY;
+    }
+
+    public static enum GameObjectKind {
+        BACKGROUND("game/entity/background/"),
+        PLAYER("game/entity/player/"),
+        ENEMY("game/entity/enemy/"),
+        OBSTACLE("game/entity/obstacle/"),
+        TRUNK("game/entity/trunk/"),
+        COIN("game/entity/coin/"),
+        POWERUP("game/entity/powerup/");
+
+        private final String dirPath;
+
+        GameObjectKind(final String dirPath) {
+            this.dirPath = dirPath;
+        }
+
+        public String getDirPath() {
+            return this.dirPath;
+        }
     }
 }
