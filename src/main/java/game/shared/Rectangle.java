@@ -16,23 +16,15 @@ public class Rectangle {
     public final double lenX;
     public final double lenY;
 
+    public static Rectangle clone(final Rectangle rect) {
+        return new Rectangle(rect.x, rect.y, rect.lenX, rect.lenY);
+    }
+
     public Rectangle(final double positionX, final double positionY, final double sizeX, final double sizeY) {
         this.x = positionX;
         this.y = positionY;
         this.lenX = sizeX;
         this.lenY = sizeY;
-    }
-
-    public Rectangle(final Vector2D position, final Vector2D size) {
-        this(position.x, position.y, size.x, size.y);
-    }
-
-    public Vector2D getPosition() {
-        return new Vector2D(this.x, this.y);
-    }
-
-    public Vector2D getSize() {
-        return new Vector2D(this.x, this.y);
     }
 
     @Override

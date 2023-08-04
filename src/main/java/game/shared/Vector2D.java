@@ -4,6 +4,10 @@ public class Vector2D {
     public final double x;
     public final double y;
 
+    public static Vector2D clone(final Vector2D vector) {
+        return new Vector2D(vector.x, vector.y);
+    }
+
     public Vector2D(final double x, final double y) {
         this.x = x;
         this.y = y;
