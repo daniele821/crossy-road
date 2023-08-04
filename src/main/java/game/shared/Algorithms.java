@@ -6,14 +6,14 @@ import game.model.entity.GameObject;
 
 public class Algorithms {
     public Optional<Rectangle> getIntersection(final Rectangle rect1, final Rectangle rect2) {
-        final double maxLeft = Double.max(rect1.x, rect2.x);
-        final double minRight = Double.min(rect1.x + rect1.lenX, rect2.x + rect2.lenX);
+        final double maxLeft = Double.max(rect1.getX(), rect2.getX());
+        final double minRight = Double.min(rect1.getX() + rect1.getLenX(), rect2.getX() + rect2.getLenX());
         if (maxLeft > minRight) {
             return Optional.empty();
         }
 
-        final double maxUp = Double.max(rect1.y, rect2.y);
-        final double minDown = Double.min(rect1.y + rect1.lenY, rect2.y + rect2.lenY);
+        final double maxUp = Double.max(rect1.getY(), rect2.getY());
+        final double minDown = Double.min(rect1.getY() + rect1.getLenY(), rect2.getY() + rect2.getLenY());
         if (maxUp > minDown) {
             return Optional.empty();
         }
@@ -26,7 +26,7 @@ public class Algorithms {
     }
 
     public Rectangle add(final Rectangle pos, final Vector2D move) {
-        return new Rectangle(pos.x + move.x, pos.y + move.y, pos.lenX, pos.lenY);
+        return new Rectangle(pos.getX() + move.x, pos.getY() + move.y, pos.getLenX(), pos.getLenY());
     }
 
     public Vector2D multiply(final Vector2D vector, final double factor) {
@@ -38,7 +38,7 @@ public class Algorithms {
     }
 
     public Rectangle move(final Rectangle rect, final Vector2D speed, final ProgressiveTime elapsedTime) {
-        return add(rect, multiply(speed, (double) elapsedTime.deltaTime / 1000.0));
+        return add(rect, multiply(speed, (double) elapsedTime.getDeltaTime() / 1000.0));
     }
 
     public Rectangle move(final GameObject obj, final ProgressiveTime elapsedTime) {

@@ -11,16 +11,32 @@ package game.shared;
 // sizeY = D(y) - A(y)
 
 public class Rectangle {
-    public final double x;
-    public final double y;
-    public final double lenX;
-    public final double lenY;
+    private final double x;
+    private final double y;
+    private final double lenX;
+    private final double lenY;
 
     public Rectangle(final double positionX, final double positionY, final double sizeX, final double sizeY) {
         this.x = positionX;
         this.y = positionY;
         this.lenX = sizeX;
         this.lenY = sizeY;
+    }
+
+    public double getX() {
+        return this.x;
+    }
+
+    public double getY() {
+        return this.y;
+    }
+
+    public double getLenX() {
+        return this.lenX;
+    }
+
+    public double getLenY() {
+        return this.lenY;
     }
 
     @Override

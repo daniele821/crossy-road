@@ -15,7 +15,7 @@ public class GameObjectImpl implements GameObject {
     }
 
     public GameObjectImpl(final Vector2D pos, final Vector2D speed, final GameObjectType type) {
-        this(new Rectangle(pos.x, pos.y, type.lenX, type.lenY), speed, type);
+        this(new Rectangle(pos.getX(), pos.getY(), type.lenX, type.lenY), speed, type);
     }
 
     @Override
