@@ -1,8 +1,14 @@
 package game.shared;
 
+import java.util.function.UnaryOperator;
+
 public class Pair<A, B> {
     public final A a;
     public final B b;
+
+    public static <A, B> Pair<A, B> clone(final Pair<A, B> pair, final UnaryOperator<A> a, final UnaryOperator<B> b) {
+        return new Pair<A, B>(a.apply(pair.a), b.apply(pair.b));
+    }
 
     public Pair(final A a, final B b) {
         this.a = a;
