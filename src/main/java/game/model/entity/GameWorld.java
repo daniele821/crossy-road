@@ -1,19 +1,11 @@
 package game.model.entity;
 
 public interface GameWorld {
-    // List<GameObject> getAllObjctes();
+    GameWorldInfo getGameWorldInfo();
 
-    // void removeObject(GameObject objectToRemove);
+    void setGameWorldInfo(GameWorldInfo gameWorldInfo);
 
-    // void addObject(GameObject newObject);
+    GameWorldStatus getGameWorldStatus();
 
-    // Rectangle getGameWorldSize();
-
-    // void setGameWorldSize(Rectangle gameWorldSize);
-
-    // Vector2D getBackgroundCellDimension();
-
-    // void setBackgroundCellDimension(Vector2D backgroundCellSize);
-
-    // GameLogic getGameLogic();
+    void setGameWorldStatus(GameWorldStatus gameWorldStatus);
 }

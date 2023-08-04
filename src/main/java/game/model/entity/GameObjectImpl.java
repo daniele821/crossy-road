@@ -9,8 +9,8 @@ public class GameObjectImpl implements GameObject {
     private GameObjectType objectType;
 
     private GameObjectImpl(final Rectangle position, final Vector2D speed, final GameObjectType objectType) {
-        this.position = position;
-        this.speed = speed;
+        this.position = Rectangle.clone(position);
+        this.speed = Vector2D.clone(speed);
         this.objectType = objectType;
     }
 
@@ -40,12 +40,12 @@ public class GameObjectImpl implements GameObject {
 
     @Override
     public void setPosition(final Rectangle position) {
-        this.position = position;
+        this.position = Rectangle.clone(position);
     }
 
     @Override
     public void setSpeed(final Vector2D speed) {
-        this.speed = speed;
+        this.speed = Vector2D.clone(speed);
     }
 
     @Override
