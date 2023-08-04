@@ -4,6 +4,8 @@ import game.shared.Rectangle;
 import game.shared.Vector2D;
 
 public interface GameObject {
+    GameObject copy();
+
     Rectangle getPosition();
 
     void setPosition(Rectangle position);

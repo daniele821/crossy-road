@@ -19,6 +19,11 @@ public class GameObjectImpl implements GameObject {
     }
 
     @Override
+    public GameObject copy() {
+        return new GameObjectImpl(this.position, this.speed, this.objectType);
+    }
+
+    @Override
     public GameObjectType getObjectType() {
         return this.objectType;
     }

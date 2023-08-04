@@ -6,13 +6,13 @@ public class Pair<A, B> {
     public final A a;
     public final B b;
 
-    public static <A, B> Pair<A, B> clone(final Pair<A, B> pair, final UnaryOperator<A> a, final UnaryOperator<B> b) {
-        return new Pair<>(a.apply(pair.a), b.apply(pair.b));
-    }
-
     public Pair(final A a, final B b) {
         this.a = a;
         this.b = b;
+    }
+
+    public Pair<A, B> copy(final UnaryOperator<A> copyA, final UnaryOperator<B> copyB) {
+        return new Pair<>(copyA.apply(this.a), copyB.apply(this.b));
     }
 
     @Override

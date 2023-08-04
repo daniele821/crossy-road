@@ -13,6 +13,11 @@ public class GameWorldInfoImpl implements GameWorldInfo {
     }
 
     @Override
+    public GameWorldInfo copy() {
+        return new GameWorldInfoImpl(this.bounds, this.cellSize);
+    }
+
+    @Override
     public Rectangle getWorldBounds() {
         return this.bounds;
     }
