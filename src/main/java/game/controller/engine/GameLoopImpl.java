@@ -15,12 +15,12 @@ public class GameLoopImpl implements GameLoop {
 
     @Override
     public void processInput() {
-        this.gameWorld.getGameLogic().executeInputAction();
+        // TODO
     }
 
     @Override
     public void update(final ProgressiveTime elapsedTime) {
-        this.gameWorld.getGameLogic().updateAll(elapsedTime);
+        // TODO
     }
 
     @Override

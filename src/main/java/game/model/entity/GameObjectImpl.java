@@ -25,12 +25,12 @@ public class GameObjectImpl implements GameObject {
 
     @Override
     public Rectangle getPosition() {
-        return this.position;
+        return Rectangle.clone(this.position);
     }
 
     @Override
     public Vector2D getSpeed() {
-        return this.speed;
+        return Vector2D.clone(this.speed);
     }
 
     @Override
