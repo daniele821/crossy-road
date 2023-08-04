@@ -8,13 +8,9 @@ public class GameObjectImpl implements GameObject {
     private Vector2D speed;
     private GameObjectType objectType;
 
-    public static GameObject clone(final GameObject gameObject) {
-        return new GameObjectImpl(gameObject.getPosition(), gameObject.getSpeed(), gameObject.getObjectType());
-    }
-
     private GameObjectImpl(final Rectangle position, final Vector2D speed, final GameObjectType objectType) {
-        this.position = Rectangle.clone(position);
-        this.speed = Vector2D.clone(speed);
+        this.position = position;
+        this.speed = speed;
         this.objectType = objectType;
     }
 
@@ -29,12 +25,12 @@ public class GameObjectImpl implements GameObject {
 
     @Override
     public Rectangle getPosition() {
-        return Rectangle.clone(this.position);
+        return this.position;
     }
 
     @Override
     public Vector2D getSpeed() {
-        return Vector2D.clone(this.speed);
+        return this.speed;
     }
 
     @Override
@@ -44,12 +40,12 @@ public class GameObjectImpl implements GameObject {
 
     @Override
     public void setPosition(final Rectangle position) {
-        this.position = Rectangle.clone(position);
+        this.position = position;
     }
 
     @Override
     public void setSpeed(final Vector2D speed) {
-        this.speed = Vector2D.clone(speed);
+        this.speed = speed;
     }
 
     @Override

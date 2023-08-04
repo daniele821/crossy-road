@@ -16,10 +16,6 @@ public class Rectangle {
     public final double lenX;
     public final double lenY;
 
-    public static Rectangle clone(final Rectangle rect) {
-        return new Rectangle(rect.x, rect.y, rect.lenX, rect.lenY);
-    }
-
     public Rectangle(final double positionX, final double positionY, final double sizeX, final double sizeY) {
         this.x = positionX;
         this.y = positionY;

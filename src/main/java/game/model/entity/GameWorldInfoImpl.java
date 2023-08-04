@@ -7,33 +7,29 @@ public class GameWorldInfoImpl implements GameWorldInfo {
     private Rectangle bounds;
     private Vector2D cellSize;
 
-    public static GameWorldInfo clone(final GameWorldInfo gameWorldInfo) {
-        return new GameWorldInfoImpl(gameWorldInfo.getWorldBounds(), gameWorldInfo.getCellSize());
-    }
-
     public GameWorldInfoImpl(final Rectangle bounds, final Vector2D cellSize) {
-        this.bounds = Rectangle.clone(bounds);
-        this.cellSize = Vector2D.clone(cellSize);
+        this.bounds = bounds;
+        this.cellSize = cellSize;
     }
 
     @Override
     public Rectangle getWorldBounds() {
-        return Rectangle.clone(this.bounds);
+        return this.bounds;
     }
 
     @Override
     public void setWorldBounds(final Rectangle bounds) {
-        this.bounds = Rectangle.clone(bounds);
+        this.bounds = bounds;
     }
 
     @Override
     public Vector2D getCellSize() {
-        return Vector2D.clone(this.cellSize);
+        return this.cellSize;
     }
 
     @Override
     public void setCellSize(final Vector2D cellSize) {
-        this.cellSize = Vector2D.clone(cellSize);
+        this.cellSize = cellSize;
     }
 
 }
