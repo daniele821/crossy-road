@@ -3,8 +3,8 @@ package game.shared;
 import java.util.function.UnaryOperator;
 
 public class Pair<A, B> {
-    public final A a;
-    public final B b;
+    private final A a;
+    private final B b;
 
     public Pair(final A a, final B b) {
         this.a = a;
@@ -13,6 +13,14 @@ public class Pair<A, B> {
 
     public Pair<A, B> copy(final UnaryOperator<A> copyA, final UnaryOperator<B> copyB) {
         return new Pair<>(copyA.apply(this.a), copyB.apply(this.b));
+    }
+
+    public A getA() {
+        return this.a;
+    }
+
+    public B getB() {
+        return this.b;
     }
 
     @Override
