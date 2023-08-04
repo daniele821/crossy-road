@@ -1,11 +1,11 @@
 package game.model.entity;
 
-public enum GameWorldType {
+public enum GameWorldLevel {
     MAP_1("1.map");
 
     public final String path;
 
-    GameWorldType(final String path) {
+    GameWorldLevel(final String path) {
         this.path = "game/map/" + path;
     }
 }
