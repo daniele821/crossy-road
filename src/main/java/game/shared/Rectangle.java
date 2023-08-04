@@ -69,10 +69,7 @@ public class Rectangle {
 
     @Override
     public String toString() {
-        return "Rectangle [positionX=" + x
-                + ", positionY=" + y
-                + ", sizeX=" + lenX
-                + ", sizeY=" + lenY + "]";
+        return "Rectangle [positionX=" + x + ", positionY=" + y + ", sizeX=" + lenX + ", sizeY=" + lenY + "]";
     }
 
 }
