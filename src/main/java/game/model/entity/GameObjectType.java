@@ -41,19 +41,19 @@ public enum GameObjectType {
     POW_MAGNET("game/entity/powerup/magnet.png", POWERUP, 12, 10, 2, 3),
     POW_MULTIPLIER("game/entity/powerup/multiplier.png", POWERUP, 10, 10, 3, 3);
 
-    public final String imagePath;
-    public final GameObjectKind objectKind;
-    public final double imageLenX;
-    public final double imageLenY;
+    public final String path;
+    public final GameObjectKind kind;
+    public final double lenX;
+    public final double lenY;
     public final double deltaX;
     public final double deltaY;
 
-    GameObjectType(final String imagePath, final GameObjectKind objectKind, final double imageLenX,
-            final double imageLenY, final double deltaX, final double deltaY) {
-        this.imagePath = imagePath;
-        this.objectKind = objectKind;
-        this.imageLenX = imageLenX;
-        this.imageLenY = imageLenY;
+    GameObjectType(final String path, final GameObjectKind kind, final double lenX, final double lenY,
+            final double deltaX, final double deltaY) {
+        this.path = path;
+        this.kind = kind;
+        this.lenX = lenX;
+        this.lenY = lenY;
         this.deltaX = deltaX;
         this.deltaY = deltaY;
     }
