@@ -74,7 +74,7 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
         if (lines.get(2).strip().startsWith(CELL_POS_NAME)) {
             final List<Vector2D> buffer = new ArrayList<>(position.stream()
                     .map(vect -> ALGORITHMS.multiplyMembers(vect, gameWorld.getBackgroundCellDimension()))
-                    .map(vect -> new Vector2D(vect.getX() + type.getDeltaX(), vect.getY() + type.getDeltaY()))
+                    .map(vect -> new Vector2D(vect.x + type.getDeltaX(), vect.y + type.getDeltaY()))
                     .toList());
             position.clear();
             position.addAll(buffer);

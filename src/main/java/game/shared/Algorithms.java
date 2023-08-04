@@ -6,22 +6,14 @@ import game.model.entity.GameObject;
 
 public class Algorithms {
     public Optional<Rectangle> getIntersection(final Rectangle rect1, final Rectangle rect2) {
-        final double left1 = rect1.getPositionX();
-        final double right1 = rect1.getPositionX() + rect1.getSizeX();
-        final double left2 = rect2.getPositionX();
-        final double right2 = rect2.getPositionX() + rect2.getSizeX();
-        final double maxLeft = Double.max(left1, left2);
-        final double minRight = Double.min(right1, right2);
+        final double maxLeft = Double.max(rect1.x, rect2.x);
+        final double minRight = Double.min(rect1.x + rect1.lenX, rect2.x + rect2.lenX);
         if (maxLeft > minRight) {
             return Optional.empty();
         }
 
-        final double up1 = rect1.getPositionY();
-        final double down1 = rect1.getPositionY() + rect1.getSizeY();
-        final double up2 = rect2.getPositionY();
-        final double down2 = rect2.getPositionY() + rect2.getSizeY();
-        final double maxUp = Double.max(up1, up2);
-        final double minDown = Double.min(down1, down2);
+        final double maxUp = Double.max(rect1.y, rect2.y);
+        final double minDown = Double.min(rect1.y + rect1.lenY, rect2.y + rect2.lenY);
         if (maxUp > minDown) {
             return Optional.empty();
         }
@@ -30,27 +22,23 @@ public class Algorithms {
     }
 
     public Vector2D add(final Vector2D vect1, final Vector2D vect2) {
-        return new Vector2D(vect1.getX() + vect2.getX(), vect1.getY() + vect2.getY());
+        return new Vector2D(vect1.x + vect2.x, vect1.y + vect2.y);
     }
 
     public Rectangle add(final Rectangle pos, final Vector2D move) {
-        return new Rectangle(
-                pos.getPositionX() + move.getX(),
-                pos.getPositionY() + move.getY(),
-                pos.getSizeX(),
-                pos.getSizeY());
+        return new Rectangle(pos.x + move.x, pos.y + move.y, pos.lenX, pos.lenY);
     }
 
     public Vector2D multiply(final Vector2D vector, final double factor) {
-        return new Vector2D(vector.getX() * factor, vector.getY() * factor);
+        return new Vector2D(vector.x * factor, vector.y * factor);
     }
 
     public Vector2D multiplyMembers(final Vector2D vect1, final Vector2D vect2) {
-        return new Vector2D(vect1.getX() * vect2.getX(), vect1.getY() * vect2.getY());
+        return new Vector2D(vect1.x * vect2.x, vect1.y * vect2.y);
     }
 
     public Rectangle move(final Rectangle rect, final Vector2D speed, final ProgressiveTime elapsedTime) {
-        return add(rect, multiply(speed, (double) elapsedTime.getDeltaTime() / 1000.0));
+        return add(rect, multiply(speed, (double) elapsedTime.deltaTime / 1000.0));
     }
 
     public Rectangle move(final GameObject obj, final ProgressiveTime elapsedTime) {

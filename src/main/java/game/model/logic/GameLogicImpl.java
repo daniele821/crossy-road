@@ -31,9 +31,7 @@ public class GameLogicImpl implements GameLogic {
     public void executeInputAction() {
         this.inputHandler.getStoredAction()
                 .forEach(pair -> {
-                    final var obj = pair.getA();
-                    final var move = pair.getB();
-                    this.moveObject.moveObject(obj, ALGORITHMS.add(obj.getPosition(), move));
+                    this.moveObject.moveObject(pair.a, ALGORITHMS.add(pair.a.getPosition(), pair.b));
                 });
     }
 

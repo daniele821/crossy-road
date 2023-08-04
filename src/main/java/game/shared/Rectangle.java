@@ -11,32 +11,28 @@ package game.shared;
 // sizeY = D(y) - A(y)
 
 public class Rectangle {
-    private final double positionX;
-    private final double positionY;
-    private final double sizeX;
-    private final double sizeY;
+    public final double x;
+    public final double y;
+    public final double lenX;
+    public final double lenY;
 
     public Rectangle(final double positionX, final double positionY, final double sizeX, final double sizeY) {
-        this.positionX = positionX;
-        this.positionY = positionY;
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
+        this.x = positionX;
+        this.y = positionY;
+        this.lenX = sizeX;
+        this.lenY = sizeY;
     }
 
-    public double getPositionX() {
-        return positionX;
+    public Rectangle(final Vector2D position, final Vector2D size) {
+        this(position.x, position.y, size.x, size.y);
     }
 
-    public double getPositionY() {
-        return positionY;
+    public Vector2D getPosition() {
+        return new Vector2D(this.x, this.y);
     }
 
-    public double getSizeX() {
-        return sizeX;
-    }
-
-    public double getSizeY() {
-        return sizeY;
+    public Vector2D getSize() {
+        return new Vector2D(this.x, this.y);
     }
 
     @Override
@@ -44,13 +40,13 @@ public class Rectangle {
         final int prime = 31;
         int result = 1;
         long temp;
-        temp = Double.doubleToLongBits(positionX);
+        temp = Double.doubleToLongBits(x);
         result = prime * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(positionY);
+        temp = Double.doubleToLongBits(y);
         result = prime * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(sizeX);
+        temp = Double.doubleToLongBits(lenX);
         result = prime * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(sizeY);
+        temp = Double.doubleToLongBits(lenY);
         result = prime * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
@@ -67,24 +63,24 @@ public class Rectangle {
             return false;
         }
         final Rectangle other = (Rectangle) obj;
-        if (Double.doubleToLongBits(positionX) != Double.doubleToLongBits(other.positionX)) {
+        if (Double.doubleToLongBits(x) != Double.doubleToLongBits(other.x)) {
             return false;
         }
-        if (Double.doubleToLongBits(positionY) != Double.doubleToLongBits(other.positionY)) {
+        if (Double.doubleToLongBits(y) != Double.doubleToLongBits(other.y)) {
             return false;
         }
-        if (Double.doubleToLongBits(sizeX) != Double.doubleToLongBits(other.sizeX)) {
+        if (Double.doubleToLongBits(lenX) != Double.doubleToLongBits(other.lenX)) {
             return false;
         }
-        return Double.doubleToLongBits(sizeY) == Double.doubleToLongBits(other.sizeY);
+        return Double.doubleToLongBits(lenY) == Double.doubleToLongBits(other.lenY);
     }
 
     @Override
     public String toString() {
-        return "Rectangle [positionX=" + positionX
-                + ", positionY=" + positionY
-                + ", sizeX=" + sizeX
-                + ", sizeY=" + sizeY + "]";
+        return "Rectangle [positionX=" + x
+                + ", positionY=" + y
+                + ", sizeX=" + lenX
+                + ", sizeY=" + lenY + "]";
     }
 
 }
