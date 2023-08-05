@@ -37,4 +37,9 @@ public class GameWorldInfoImpl implements GameWorldInfo {
         this.cellSize = cellSize;
     }
 
+    @Override
+    public String toString() {
+        return "GameWorldInfoImpl [bounds=" + bounds + ", cellSize=" + cellSize + "]";
+    }
+
 }

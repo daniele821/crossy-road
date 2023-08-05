@@ -62,4 +62,12 @@ public class GameObjectImpl implements GameObject {
         this.isPresent = isPresent;
     }
 
+    @Override
+    public String toString() {
+        return "GameObjectImpl [objectType=" + objectType
+                + ", position=" + position
+                + ", speed=" + speed
+                + ", isPresent=" + isPresent + "]";
+    }
+
 }

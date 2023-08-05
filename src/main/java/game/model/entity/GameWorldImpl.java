@@ -36,4 +36,9 @@ public class GameWorldImpl implements GameWorld {
         return List.copyOf(this.objects);
     }
 
+    @Override
+    public String toString() {
+        return "GameWorldImpl [objects=" + objects + ", gameWorldInfo=" + gameWorldInfo + "]";
+    }
+
 }
