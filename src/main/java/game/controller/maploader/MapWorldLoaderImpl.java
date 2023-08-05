@@ -63,4 +63,6 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
 
         this.objects.addAll(this.mapObjectsParser.getObjects());
     }
+
+    // TODO: refactor this class to make it more mantainable!
 }
