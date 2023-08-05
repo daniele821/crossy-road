@@ -1,4 +1,4 @@
-package game.shared;
+package game.common;
 
 public class ProgressiveTime {
     private final long timeMillisec;

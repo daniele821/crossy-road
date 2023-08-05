@@ -1,4 +1,4 @@
-package game.shared;
+package game.common;
 
 //  A---B
 //  |   |

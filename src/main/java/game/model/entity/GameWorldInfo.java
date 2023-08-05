@@ -1,7 +1,7 @@
 package game.model.entity;
 
-import game.shared.Rectangle;
-import game.shared.Vector2D;
+import game.common.Rectangle;
+import game.common.Vector2D;
 
 public interface GameWorldInfo {
     GameWorldInfo copy();
