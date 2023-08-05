@@ -1,17 +1,19 @@
 package game.model.entity;
 
-public class GameWorldImpl implements GameWorld {
-    private GameWorldInfo gameWorldInfo;
-    private GameWorldStatus gameWorldStatus;
+import java.util.List;
 
-    public GameWorldImpl(final GameWorldInfo gameWorldInfo, final GameWorldStatus gameWorldStatus) {
+public class GameWorldImpl implements GameWorld {
+    private final List<GameObject> objects;
+    private GameWorldInfo gameWorldInfo;
+
+    public GameWorldImpl(final List<GameObject> objects, final GameWorldInfo gameWorldInfo) {
+        this.objects = List.copyOf(objects.stream().map(GameObject::copy).toList());
         this.gameWorldInfo = gameWorldInfo.copy();
-        this.gameWorldStatus = gameWorldStatus.copy();
     }
 
     @Override
     public GameWorld copy() {
-        return new GameWorldImpl(gameWorldInfo, gameWorldStatus);
+        return new GameWorldImpl(this.objects, this.gameWorldInfo);
     }
 
     @Override
@@ -25,13 +27,13 @@ public class GameWorldImpl implements GameWorld {
     }
 
     @Override
-    public GameWorldStatus getGameWorldStatus() {
-        return this.gameWorldStatus.copy();
+    public List<GameObject> getObjects() {
+        return List.copyOf(objects.stream().map(GameObject::copy).toList());
     }
 
     @Override
-    public void setGameWorldStatus(final GameWorldStatus gameWorldStatus) {
-        this.gameWorldStatus = gameWorldStatus.copy();
+    public List<GameObject> modifyObjects() {
+        return List.copyOf(this.objects);
     }
 
 }

@@ -1,5 +1,7 @@
 package game.model.entity;
 
+import java.util.List;
+
 public interface GameWorld {
     GameWorld copy();
 
@@ -7,7 +9,7 @@ public interface GameWorld {
 
     void setGameWorldInfo(GameWorldInfo gameWorldInfo);
 
-    GameWorldStatus getGameWorldStatus();
+    List<GameObject> getObjects();
 
-    void setGameWorldStatus(GameWorldStatus gameWorldStatus);
+    List<GameObject> modifyObjects();
 }
