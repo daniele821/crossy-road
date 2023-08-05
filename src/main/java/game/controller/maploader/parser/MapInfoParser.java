@@ -16,17 +16,19 @@ public class MapInfoParser {
         final var lineSplitted = this.mapParser.splitLine(line);
         switch (lineSplitted.getA()) {
             case "cell_size":
-                this.cellSize = Optional.of(this.mapParser.parseVector2D(lineSplitted.getB()));
+                this.cellSize = Optional.ofNullable(this.mapParser.parseVector2D(lineSplitted.getB()));
                 break;
             case "world_rect":
-                this.worldSize = Optional.of(this.mapParser.parseRectangle(lineSplitted.getB()));
+                this.worldSize = Optional.ofNullable(this.mapParser.parseRectangle(lineSplitted.getB()));
                 break;
             case "world_size":
                 final Vector2D size = this.mapParser.parseVector2D(lineSplitted.getB());
                 final Rectangle rect = new Rectangle(0, 0,
                         size.getX() * this.cellSize.get().getX(),
                         size.getY() * this.cellSize.get().getY());
-                this.worldSize = Optional.of(rect);
+                this.worldSize = Optional.ofNullable(rect);
+                break;
+            default:
                 break;
         }
     }
