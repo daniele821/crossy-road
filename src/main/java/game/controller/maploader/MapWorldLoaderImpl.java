@@ -101,7 +101,7 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
         // }
         // getObjects(cleanedLines, world.get()).forEach(obj -> world.get().addObject(obj));
         // return world;
-        return null;
+        return Optional.empty();
     }
 
     @Override

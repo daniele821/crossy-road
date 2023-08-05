@@ -9,7 +9,7 @@ public class GameLoopImpl implements GameLoop {
     private final Window window;
 
     public GameLoopImpl(final GameWorld gameWorld, final Window window) {
-        this.gameWorld = gameWorld;
+        this.gameWorld = gameWorld.copy();
         this.window = window;
     }
 
