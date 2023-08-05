@@ -41,13 +41,7 @@ public class MapObjectsParser {
                 break;
             case "pos_cell":
                 for (final var pos : this.mapParser.splitElem(lineSplitted.getB())) {
-                    final Vector2D position = ALGORITHMS.multiplyMembers(
-                            this.mapParser.parseVector2D(pos),
-                            this.gameWorldInfo.getCellSize());
-                    final Vector2D position2 = new Vector2D(
-                            position.getX() + this.gameWorldInfo.getWorldBounds().getX(),
-                            position.getY() + this.gameWorldInfo.getWorldBounds().getY());
-                    this.position.add(position2);
+                    this.position.add(convertCellToPos(this.mapParser.parseVector2D(pos)));
                 }
                 break;
             case "pos_rect":
@@ -59,6 +53,14 @@ public class MapObjectsParser {
             default:
                 break;
         }
+    }
+
+    private Vector2D convertCellToPos(final Vector2D cell) {
+        final Vector2D position = ALGORITHMS.multiplyMembers(cell, this.gameWorldInfo.getCellSize());
+        final Vector2D position2 = new Vector2D(
+                position.getX() + this.gameWorldInfo.getWorldBounds().getX(),
+                position.getY() + this.gameWorldInfo.getWorldBounds().getY());
+        return position2;
     }
 
     public List<GameObject> getObjects() {
