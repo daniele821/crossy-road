@@ -83,7 +83,7 @@ public enum GameObjectType {
         return this.deltaY;
     }
 
-    public static enum GameObjectKind {
+    public enum GameObjectKind {
         BACKGROUND,
         PLAYER,
         ENEMY,
