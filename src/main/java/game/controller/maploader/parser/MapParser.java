@@ -26,6 +26,13 @@ public class MapParser {
         return split(str, ELEM_SPLITTER).stream().map(String::strip).toList();
     }
 
+    public Double parseDouble(final String str) {
+        if (str.isEmpty()) {
+            return null;
+        }
+        return Double.parseDouble(str);
+    }
+
     public Vector2D parseVector2D(final String str) {
         if (str.isEmpty()) {
             return null;
