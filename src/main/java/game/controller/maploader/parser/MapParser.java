@@ -27,16 +27,10 @@ public class MapParser {
     }
 
     public Double parseDouble(final String str) {
-        if (str.isEmpty()) {
-            return null;
-        }
         return Double.parseDouble(str);
     }
 
     public Vector2D parseVector2D(final String str) {
-        if (str.isEmpty()) {
-            return null;
-        }
         final var splitted = split(str, OBJECT_SPLITTER);
         final var x = Double.parseDouble(splitted.get(0));
         final var y = Double.parseDouble(splitted.get(1));
@@ -44,9 +38,6 @@ public class MapParser {
     }
 
     public Rectangle parseRectangle(final String str) {
-        if (str.isEmpty()) {
-            return null;
-        }
         final var splitted = split(str, OBJECT_SPLITTER);
         final var x = Double.parseDouble(splitted.get(0));
         final var y = Double.parseDouble(splitted.get(1));
