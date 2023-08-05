@@ -1,6 +1,6 @@
 package game.controller.engine;
 
-import game.common.ProgressiveTime;
+import game.utility.ProgressiveTime;
 
 public class GameLoopImpl implements GameLoop {
 

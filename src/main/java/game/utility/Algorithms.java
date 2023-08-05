@@ -1,4 +1,4 @@
-package game.common;
+package game.utility;
 
 import java.util.Optional;
 

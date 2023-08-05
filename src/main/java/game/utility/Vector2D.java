@@ -1,4 +1,4 @@
-package game.common;
+package game.utility;
 
 public class Vector2D {
     final double x;

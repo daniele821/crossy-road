@@ -2,7 +2,7 @@ package game.controller.engine;
 
 import java.util.Optional;
 
-import game.common.ProgressiveTime;
+import game.utility.ProgressiveTime;
 
 public class GameEngineImpl implements GameEngine {
     private static final int DEFAULT_FPS = 60;

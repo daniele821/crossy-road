@@ -1,4 +1,4 @@
-package game.common;
+package game.utility;
 
 //  A---B
 //  |   |
