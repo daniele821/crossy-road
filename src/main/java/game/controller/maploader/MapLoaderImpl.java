@@ -2,7 +2,6 @@ package game.controller.maploader;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import game.model.entity.GameWorld;
 
@@ -21,15 +20,12 @@ public class MapLoaderImpl implements MapLoader {
     }
 
     @Override
-    public Optional<GameWorld> loadWorld(final String mapPath) {
+    public GameWorld loadWorld(final String mapPath) {
         if (!this.maps.containsKey(mapPath)) {
-            final Optional<GameWorld> world = this.mapWorldLoader.loadWorld(this.mapFileLoader.load(mapPath));
-            if (world.isEmpty()) {
-                return Optional.empty();
-            }
-            this.maps.put(mapPath, world.get());
+            final GameWorld world = this.mapWorldLoader.loadWorld(this.mapFileLoader.load(mapPath));
+            this.maps.put(mapPath, world);
         }
-        return Optional.ofNullable(this.maps.get(mapPath));
+        return this.maps.get(mapPath);
     }
 
 }
