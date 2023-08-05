@@ -4,19 +4,22 @@ import game.shared.Rectangle;
 import game.shared.Vector2D;
 
 public class GameObjectImpl implements GameObject {
+    private GameObjectType objectType;
     private Rectangle position;
     private Vector2D speed;
-    private GameObjectType objectType;
+    private boolean isPresent;
 
-    public GameObjectImpl(final Rectangle position, final Vector2D speed, final GameObjectType objectType) {
-        this.position = position;
+    public GameObjectImpl(final Rectangle pos, final Vector2D speed, final GameObjectType type,
+            final boolean isPresent) {
+        this.position = pos;
         this.speed = speed;
-        this.objectType = objectType;
+        this.objectType = type;
+        this.isPresent = isPresent;
     }
 
     @Override
     public GameObject copy() {
-        return new GameObjectImpl(this.position, this.speed, this.objectType);
+        return new GameObjectImpl(this.position, this.speed, this.objectType, this.isPresent);
     }
 
     @Override
@@ -35,6 +38,11 @@ public class GameObjectImpl implements GameObject {
     }
 
     @Override
+    public boolean isPresent() {
+        return this.isPresent;
+    }
+
+    @Override
     public void setObjectType(final GameObjectType objectType) {
         this.objectType = objectType;
     }
@@ -50,8 +58,8 @@ public class GameObjectImpl implements GameObject {
     }
 
     @Override
-    public String toString() {
-        return "GameObjectImpl [position=" + position + ", speed=" + speed + ", objectType=" + objectType + "]";
+    public void setPresent(final boolean isPresent) {
+        this.isPresent = isPresent;
     }
 
 }

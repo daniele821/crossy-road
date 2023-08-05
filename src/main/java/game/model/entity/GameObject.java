@@ -14,6 +14,10 @@ public interface GameObject {
 
     void setSpeed(Vector2D speed);
 
+    boolean isPresent();
+
+    void setPresent(boolean isPresent);
+
     GameObjectType getObjectType();
 
     void setObjectType(GameObjectType objectType);
