@@ -14,7 +14,7 @@ public class MapParser {
     private static final String OBJECT_SPLITTER = " ";
 
     public List<String> split(final String str, final String splitter) {
-        return Arrays.asList(str.split(splitter));
+        return Arrays.asList(str.split(splitter)).stream().map(String::strip).toList();
     }
 
     public Pair<String, String> splitLine(final String str) {
@@ -23,7 +23,7 @@ public class MapParser {
     }
 
     public List<String> splitElem(final String str) {
-        return split(str, ELEM_SPLITTER);
+        return split(str, ELEM_SPLITTER).stream().map(String::strip).toList();
     }
 
     public Vector2D parseVector2D(final String str) {
