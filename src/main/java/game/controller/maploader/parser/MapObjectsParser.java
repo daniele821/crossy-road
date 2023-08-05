@@ -45,10 +45,9 @@ public class MapObjectsParser {
                 }
                 break;
             case "pos_rect":
-                // TODO
-                break;
-            case "pos_line":
-                // TODO
+                for (final var pos : this.mapParser.splitElem(lineSplitted.getB())) {
+                    this.position.addAll(convertRectToCellsToPos(this.mapParser.parseRectangle(pos)));
+                }
                 break;
             default:
                 break;
@@ -61,6 +60,20 @@ public class MapObjectsParser {
                 position.getX() + this.gameWorldInfo.getWorldBounds().getX(),
                 position.getY() + this.gameWorldInfo.getWorldBounds().getY());
         return position2;
+    }
+
+    private List<Vector2D> convertRectToCellsToPos(final Rectangle rect) {
+        final List<Vector2D> res = new ArrayList<>();
+        final double x1 = rect.getX();
+        final double y1 = rect.getY();
+        final double x2 = rect.getLenX();
+        final double y2 = rect.getLenY();
+        for (double x = Double.min(x1, x2); x <= Double.max(x1, x2); x++) {
+            for (double y = Double.min(y1, y2); y <= Double.max(y1, y2); y++) {
+                res.add(convertCellToPos(new Vector2D(x, y)));
+            }
+        }
+        return res;
     }
 
     public List<GameObject> getObjects() {
