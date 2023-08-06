@@ -20,3 +20,9 @@ build/
 
 # ignore mac files
 .DS_Store
+
+# ignore vim tmp files
+*.swp
+
+# ignore class to do manual tests
+/src/main/java/game/Testing.java

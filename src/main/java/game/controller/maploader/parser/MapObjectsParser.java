@@ -56,8 +56,9 @@ public class MapObjectsParser {
 
     private Vector2D convertCellToPos(final Vector2D cell) {
         final Vector2D position = ALGORITHMS.multiplyMembers(cell, this.gameWorldInfo.getCellSize());
-        return new Vector2D(position.getX() + this.gameWorldInfo.getWorldBounds().getX(),
-                position.getY() + this.gameWorldInfo.getWorldBounds().getY());
+        return new Vector2D(
+                this.type.getDeltaX() + position.getX() + this.gameWorldInfo.getWorldBounds().getX(),
+                this.type.getDeltaY() + position.getY() + this.gameWorldInfo.getWorldBounds().getY());
     }
 
     private List<Vector2D> convertRectToCellsToPos(final Rectangle rect) {
