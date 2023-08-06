@@ -30,7 +30,9 @@ public class GameLogicImpl implements GameLogic {
         final var objects = this.gameWorld.getObjects();
         for (int i = 0; i < objects.size(); i++) {
             final var object = objects.get(i);
-            moveObject(i, ALGORITHMS.moveVector(object.getPosition(), object.getSpeed(), elapsedTime));
+            if (!object.getSpeed().equals(new Vector2D(0, 0))) {
+                moveObject(i, ALGORITHMS.moveVector(object.getPosition(), object.getSpeed(), elapsedTime));
+            }
         }
     }
 
