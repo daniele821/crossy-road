@@ -2,8 +2,6 @@ package game.utility;
 
 import java.util.Optional;
 
-import game.model.entity.GameObject;
-
 public class Algorithms {
     public Optional<Rectangle> getIntersection(final Rectangle rect1, final Rectangle rect2) {
         final double maxLeft = Double.max(rect1.getX(), rect2.getX());
@@ -37,12 +35,8 @@ public class Algorithms {
         return new Vector2D(vect1.getX() * vect2.getX(), vect1.getY() * vect2.getY());
     }
 
-    public Rectangle move(final Rectangle rect, final Vector2D speed, final ProgressiveTime elapsedTime) {
-        return add(rect, multiply(speed, (double) elapsedTime.getDeltaTime() / 1000.0));
-    }
-
-    public Rectangle move(final GameObject obj, final ProgressiveTime elapsedTime) {
-        return move(obj.getPosition(), obj.getSpeed(), elapsedTime);
+    public Vector2D moveVector(final Rectangle rect, final Vector2D speed, final ProgressiveTime elapsedTime) {
+        return multiply(speed, (double) elapsedTime.getDeltaTime() / 1000.0);
     }
 
     @Override
