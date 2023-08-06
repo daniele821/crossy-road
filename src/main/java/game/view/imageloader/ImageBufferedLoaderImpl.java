@@ -14,6 +14,7 @@ public class ImageBufferedLoaderImpl extends ImageLoaderImpl implements ImageBuf
 
         if (!this.images.containsKey(imageInfo)) {
             this.images.put(imageInfo, image.getScaledInstance(x, y, Image.SCALE_SMOOTH));
+            System.out.println(this);
         }
 
         return this.images.get(imageInfo);
@@ -82,4 +83,10 @@ public class ImageBufferedLoaderImpl extends ImageLoaderImpl implements ImageBuf
         }
 
     }
+
+    @Override
+    public String toString() {
+        return "ImageBufferedLoaderImpl [images=" + images + "]";
+    }
+
 }

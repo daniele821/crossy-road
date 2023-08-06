@@ -21,4 +21,10 @@ public class ImageLoaderImpl implements ImageLoader {
         }
         return this.images.get(classPath);
     }
+
+    @Override
+    public String toString() {
+        return "ImageLoaderImpl [images=" + images + "]";
+    }
+
 }
