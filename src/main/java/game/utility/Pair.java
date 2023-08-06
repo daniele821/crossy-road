@@ -15,6 +15,10 @@ public class Pair<A, B> {
         return new Pair<>(copyA.apply(this.a), copyB.apply(this.b));
     }
 
+    public Pair<A, B> copy() {
+        return new Pair<>(this.a, this.b);
+    }
+
     public A getA() {
         return this.a;
     }
