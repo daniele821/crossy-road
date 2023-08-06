@@ -23,7 +23,7 @@ public class ImageBufferedLoaderImpl implements ImageBufferedLoader {
         final var image = this.imageLoader.loadImage(classPath);
 
         if (!this.images.containsKey(imageInfo)) {
-            this.images.put(imageInfo, image.getScaledInstance(y, x, Image.SCALE_SMOOTH));
+            this.images.put(imageInfo, image.getScaledInstance(x, y, Image.SCALE_SMOOTH));
         }
 
         return this.images.get(imageInfo);
