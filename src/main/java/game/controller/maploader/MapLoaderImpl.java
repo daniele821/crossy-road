@@ -22,7 +22,7 @@ public class MapLoaderImpl implements MapLoader {
     @Override
     public GameWorld loadWorld(final String mapPath) {
         if (!this.maps.containsKey(mapPath)) {
-            final GameWorld world = this.mapWorldLoader.loadWorld(this.mapFileLoader.load(mapPath));
+            final GameWorld world = this.mapWorldLoader.loadWorld(this.mapFileLoader.loadFile(mapPath));
             this.maps.put(mapPath, world);
         }
         return this.maps.get(mapPath).copy();

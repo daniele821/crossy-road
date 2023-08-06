@@ -12,7 +12,7 @@ public class MapFileLoaderImpl implements MapFileLoader {
     private static final Charset ENCODING = StandardCharsets.UTF_8;
 
     @Override
-    public List<String> load(final String mapPath) {
+    public List<String> loadFile(final String mapPath) {
         final var input = ClassLoader.getSystemResourceAsStream(mapPath);
         if (input == null) {
             return List.of();
