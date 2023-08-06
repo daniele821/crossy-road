@@ -9,6 +9,10 @@ public interface GameWorld {
 
     void setGameWorldInfo(GameWorldInfo gameWorldInfo);
 
+    GameWorldStatus getGameWorldStatus();
+
+    void setGameWorldStatus(GameWorldStatus gameWorldStatus);
+
     List<GameObject> getObjects();
 
     List<GameObject> modifyObjects();

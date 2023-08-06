@@ -39,4 +39,9 @@ public class GameWorldStatusImpl implements GameWorldStatus {
         this.powerups = powerups.stream().map(Pair::copy).toList();
     }
 
+    @Override
+    public String toString() {
+        return "GameWorldStatusImpl [powerups=" + powerups + ", coins=" + coins + "]";
+    }
+
 }

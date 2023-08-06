@@ -5,15 +5,18 @@ import java.util.List;
 public class GameWorldImpl implements GameWorld {
     private final List<GameObject> objects;
     private GameWorldInfo gameWorldInfo;
+    private GameWorldStatus gameWorldStatus;
 
-    public GameWorldImpl(final List<GameObject> objects, final GameWorldInfo gameWorldInfo) {
+    public GameWorldImpl(final List<GameObject> objects, final GameWorldInfo gameWorldInfo,
+            final GameWorldStatus gameWorldStatus) {
         this.objects = List.copyOf(objects.stream().map(GameObject::copy).toList());
         this.gameWorldInfo = gameWorldInfo.copy();
+        this.gameWorldStatus = gameWorldStatus.copy();
     }
 
     @Override
     public GameWorld copy() {
-        return new GameWorldImpl(this.objects, this.gameWorldInfo);
+        return new GameWorldImpl(this.objects, this.gameWorldInfo, this.gameWorldStatus);
     }
 
     @Override
@@ -37,8 +40,20 @@ public class GameWorldImpl implements GameWorld {
     }
 
     @Override
+    public GameWorldStatus getGameWorldStatus() {
+        return this.gameWorldStatus.copy();
+    }
+
+    @Override
+    public void setGameWorldStatus(final GameWorldStatus gameWorldStatus) {
+        this.gameWorldStatus = gameWorldStatus.copy();
+    }
+
+    @Override
     public String toString() {
-        return "GameWorldImpl [objects=" + objects + ", gameWorldInfo=" + gameWorldInfo + "]";
+        return "GameWorldImpl [objects=" + objects
+                + ", gameWorldInfo=" + gameWorldInfo
+                + ", gameWorldStatus=" + gameWorldStatus + "]";
     }
 
 }

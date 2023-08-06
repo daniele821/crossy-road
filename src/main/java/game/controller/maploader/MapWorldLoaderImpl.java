@@ -11,6 +11,7 @@ import game.model.entity.GameObjectType;
 import game.model.entity.GameWorld;
 import game.model.entity.GameWorldImpl;
 import game.model.entity.GameWorldInfo;
+import game.model.entity.GameWorldStatusImpl;
 
 public class MapWorldLoaderImpl implements MapWorldLoader {
     private static final String COMMENT = "#";
@@ -35,7 +36,7 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
         }
 
         // GameWorld
-        return new GameWorldImpl(this.objects, this.gameWorldInfo);
+        return new GameWorldImpl(this.objects, this.gameWorldInfo, new GameWorldStatusImpl(0, List.of()));
     }
 
     private void loadObjects(final List<String> linesLeft) {
