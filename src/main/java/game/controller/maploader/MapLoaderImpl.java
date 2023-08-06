@@ -25,7 +25,7 @@ public class MapLoaderImpl implements MapLoader {
             final GameWorld world = this.mapWorldLoader.loadWorld(this.mapFileLoader.load(mapPath));
             this.maps.put(mapPath, world);
         }
-        return this.maps.get(mapPath);
+        return this.maps.get(mapPath).copy();
     }
 
 }
