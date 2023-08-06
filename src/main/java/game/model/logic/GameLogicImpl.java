@@ -19,6 +19,9 @@ public class GameLogicImpl implements GameLogic {
             return;
         }
         final var object = this.gameWorld.modifyObjects().get(objectId);
+        if (object.getSpeed().equals(new Vector2D(0, 0)) || !object.isPresent()) {
+            return;
+        }
         final var newPos = ALGORITHMS.add(object.getPosition(), movement);
         object.setPosition(newPos);
 
@@ -30,9 +33,7 @@ public class GameLogicImpl implements GameLogic {
         final var objects = this.gameWorld.getObjects();
         for (int i = 0; i < objects.size(); i++) {
             final var object = objects.get(i);
-            if (!object.getSpeed().equals(new Vector2D(0, 0))) {
-                moveObject(i, ALGORITHMS.moveVector(object.getPosition(), object.getSpeed(), elapsedTime));
-            }
+            moveObject(i, ALGORITHMS.moveVector(object.getPosition(), object.getSpeed(), elapsedTime));
         }
     }
 
