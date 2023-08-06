@@ -14,19 +14,18 @@ public class ImageBufferedLoaderImpl extends ImageLoaderImpl implements ImageBuf
 
         if (!this.images.containsKey(imageInfo)) {
             this.images.put(imageInfo, image.getScaledInstance(x, y, Image.SCALE_SMOOTH));
-            System.out.println(this);
         }
 
         return this.images.get(imageInfo);
     }
 
     private class ImageInfo {
-        private final String ImagePath;
+        private final String imagePath;
         private final int x;
         private final int y;
 
         private ImageInfo(final String imagePath, final int x, final int y) {
-            this.ImagePath = imagePath;
+            this.imagePath = imagePath;
             this.x = x;
             this.y = y;
         }
@@ -36,7 +35,7 @@ public class ImageBufferedLoaderImpl extends ImageLoaderImpl implements ImageBuf
             final int prime = 31;
             int result = 1;
             result = prime * result + getEnclosingInstance().hashCode();
-            result = prime * result + ((ImagePath == null) ? 0 : ImagePath.hashCode());
+            result = prime * result + ((imagePath == null) ? 0 : imagePath.hashCode());
             result = prime * result + x;
             result = prime * result + y;
             return result;
@@ -53,24 +52,21 @@ public class ImageBufferedLoaderImpl extends ImageLoaderImpl implements ImageBuf
             if (getClass() != obj.getClass()) {
                 return false;
             }
-            ImageInfo other = (ImageInfo) obj;
+            final ImageInfo other = (ImageInfo) obj;
             if (!getEnclosingInstance().equals(other.getEnclosingInstance())) {
                 return false;
             }
-            if (ImagePath == null) {
-                if (other.ImagePath != null) {
+            if (imagePath == null) {
+                if (other.imagePath != null) {
                     return false;
                 }
-            } else if (!ImagePath.equals(other.ImagePath)) {
+            } else if (!imagePath.equals(other.imagePath)) {
                 return false;
             }
             if (x != other.x) {
                 return false;
             }
-            if (y != other.y) {
-                return false;
-            }
-            return true;
+            return other != null && y == other.y;
         }
 
         private ImageBufferedLoaderImpl getEnclosingInstance() {
@@ -79,7 +75,7 @@ public class ImageBufferedLoaderImpl extends ImageLoaderImpl implements ImageBuf
 
         @Override
         public String toString() {
-            return "ImageInfo [ImagePath=" + ImagePath + ", x=" + x + ", y=" + y + "]";
+            return "ImageInfo [ImagePath=" + imagePath + ", x=" + x + ", y=" + y + "]";
         }
 
     }
