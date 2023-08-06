@@ -2,21 +2,20 @@ cell_size = 16 16
 world_size = 5 5
 
 > BAC_GRASS
-speed = 0 0
 pos_rect = 0 0 4 0, 0 2 4 4
 
 > BAC_ROAD
-speed = 0 0
 pos_rect = 0 1 4 1
 
 > OBS_TREE
-speed = 0 0
 pos_cell = 3 3, 0 4, 1 0
 
 > ENE_CAR_2_DX
 speed = 1 0
 pos_cell = 0 1
 
+> COI_DEFAULT
+pos_cell = 2 2
+
 > PLA_DEFAULT
-speed = 0 0
 pos_cell = 2 4
