@@ -22,19 +22,19 @@ public class Algorithms {
     }
 
     public Vector2D add(final Vector2D vect1, final Vector2D vect2) {
-        return new Vector2D(vect1.x + vect2.x, vect1.y + vect2.y);
+        return new Vector2D(vect1.getX() + vect2.getX(), vect1.getY() + vect2.getY());
     }
 
     public Rectangle add(final Rectangle pos, final Vector2D move) {
-        return new Rectangle(pos.getX() + move.x, pos.getY() + move.y, pos.getLenX(), pos.getLenY());
+        return new Rectangle(pos.getX() + move.getX(), pos.getY() + move.getY(), pos.getLenX(), pos.getLenY());
     }
 
     public Vector2D multiply(final Vector2D vector, final double factor) {
-        return new Vector2D(vector.x * factor, vector.y * factor);
+        return new Vector2D(vector.getX() * factor, vector.getY() * factor);
     }
 
     public Vector2D multiplyMembers(final Vector2D vect1, final Vector2D vect2) {
-        return new Vector2D(vect1.x * vect2.x, vect1.y * vect2.y);
+        return new Vector2D(vect1.getX() * vect2.getX(), vect1.getY() * vect2.getY());
     }
 
     public Rectangle move(final Rectangle rect, final Vector2D speed, final ProgressiveTime elapsedTime) {

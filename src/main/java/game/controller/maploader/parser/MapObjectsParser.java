@@ -18,7 +18,7 @@ public class MapObjectsParser {
     private final GameWorldInfo gameWorldInfo;
     private Vector2D speed = new Vector2D(0, 0);
     private boolean isPresent = true;
-    private List<Vector2D> position = new ArrayList<>();
+    private final List<Vector2D> position = new ArrayList<>();
 
     public MapObjectsParser(final GameObjectType type, final GameWorldInfo gameWorldInfo) {
         this.type = type;
@@ -56,10 +56,8 @@ public class MapObjectsParser {
 
     private Vector2D convertCellToPos(final Vector2D cell) {
         final Vector2D position = ALGORITHMS.multiplyMembers(cell, this.gameWorldInfo.getCellSize());
-        final Vector2D position2 = new Vector2D(
-                position.getX() + this.gameWorldInfo.getWorldBounds().getX(),
+        return new Vector2D(position.getX() + this.gameWorldInfo.getWorldBounds().getX(),
                 position.getY() + this.gameWorldInfo.getWorldBounds().getY());
-        return position2;
     }
 
     private List<Vector2D> convertRectToCellsToPos(final Rectangle rect) {

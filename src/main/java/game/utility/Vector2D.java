@@ -1,8 +1,8 @@
 package game.utility;
 
 public class Vector2D {
-    final double x;
-    final double y;
+    private final double x;
+    private final double y;
 
     public Vector2D(final double x, final double y) {
         this.x = x;

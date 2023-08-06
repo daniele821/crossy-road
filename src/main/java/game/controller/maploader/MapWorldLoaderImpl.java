@@ -15,18 +15,17 @@ import game.model.entity.GameWorldInfo;
 public class MapWorldLoaderImpl implements MapWorldLoader {
     private static final String COMMENT = "#";
     private static final String OBJECT_LINE = ">";
-    private MapInfoParser mapInfoParser = new MapInfoParser();
-    private MapObjectsParser mapObjectsParser;
+    private final List<GameObject> objects = new ArrayList<>();
     private GameWorldInfo gameWorldInfo;
-    private List<GameObject> objects = new ArrayList<>();
 
     @Override
     public GameWorld loadWorld(final List<String> lines) {
         final List<String> clearedLines = clearLines(lines);
 
         // GameWorldInfo
+        final var mapInfoParser = new MapInfoParser();
         getUntilNextObject(clearedLines).forEach(mapInfoParser::parseLine);
-        this.gameWorldInfo = this.mapInfoParser.getGameWorldInfo();
+        this.gameWorldInfo = mapInfoParser.getGameWorldInfo();
 
         // GameObjects
         List<String> linesLeft = getFromNextObject(clearedLines);
@@ -41,9 +40,9 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
 
     private void loadObjects(final List<String> linesLeft) {
         final GameObjectType type = GameObjectType.valueOf(linesLeft.get(0).replace(OBJECT_LINE, "").strip());
-        this.mapObjectsParser = new MapObjectsParser(type, this.gameWorldInfo);
+        final var mapObjectsParser = new MapObjectsParser(type, this.gameWorldInfo);
         getUntilNextObject(linesLeft).forEach(mapObjectsParser::parseLine);
-        this.objects.addAll(this.mapObjectsParser.getObjects());
+        this.objects.addAll(mapObjectsParser.getObjects());
     }
 
     private List<String> clearLines(final List<String> lines) {
