@@ -1,6 +1,5 @@
 cell_size = 16 16
 world_size = 5 5
-world_rect = 1 4 160 160
 
 > BAC_GRASS
 speed = 0 0
