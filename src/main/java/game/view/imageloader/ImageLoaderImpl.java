@@ -11,7 +11,7 @@ public class ImageLoaderImpl implements ImageLoader {
     private final Map<String, Image> images = new HashMap<>();
 
     @Override
-    public Image load(final String classPath) {
+    public Image loadImage(final String classPath) {
         if (!images.containsKey(classPath)) {
             try {
                 this.images.put(classPath, ImageIO.read(ClassLoader.getSystemResourceAsStream(classPath)));
