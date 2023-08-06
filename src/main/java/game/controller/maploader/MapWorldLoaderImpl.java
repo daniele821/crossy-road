@@ -24,16 +24,18 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
     public GameWorld loadWorld(final List<String> lines) {
         final List<String> clearedLines = clearLines(lines);
 
+        // GameWorldInfo
         getUntilNextObject(clearedLines).forEach(mapInfoParser::parseLine);
         this.gameWorldInfo = this.mapInfoParser.getGameWorldInfo();
 
+        // GameObjects
         List<String> linesLeft = getFromNextObject(clearedLines);
-
         while (!linesLeft.isEmpty()) {
             loadObjects(linesLeft);
             linesLeft = getFromNextObject(linesLeft);
         }
 
+        // GameWorld
         return new GameWorldImpl(this.objects, this.gameWorldInfo);
     }
 
