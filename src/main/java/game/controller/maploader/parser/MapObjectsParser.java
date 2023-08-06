@@ -22,7 +22,7 @@ public class MapObjectsParser {
 
     public MapObjectsParser(final GameObjectType type, final GameWorldInfo gameWorldInfo) {
         this.type = type;
-        this.gameWorldInfo = gameWorldInfo;
+        this.gameWorldInfo = gameWorldInfo.copy();
     }
 
     public void parseLine(final String line) {
