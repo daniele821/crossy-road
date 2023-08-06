@@ -26,7 +26,7 @@ public class GameLogicImpl implements GameLogic {
     }
 
     @Override
-    public void moveAll(final ProgressiveTime elapsedTime) {
+    public void updateAll(final ProgressiveTime elapsedTime) {
         final var objects = this.gameWorld.getObjects();
         for (int i = 0; i < objects.size(); i++) {
             final var object = objects.get(i);

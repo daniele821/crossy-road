@@ -4,9 +4,9 @@ import game.utility.ProgressiveTime;
 
 public interface GameLoop {
 
-    void processInput();
+    void processInput(final ProgressiveTime elapsedTime);
 
     void update(ProgressiveTime elapsedTime);
 
-    void render();
+    void render(final ProgressiveTime elapsedTime);
 }

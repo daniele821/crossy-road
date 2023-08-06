@@ -84,9 +84,9 @@ public class GameEngineImpl implements GameEngine {
 
                 if (!isPaused()) {
                     totalTime += elapsedTime;
-                    gameLoop.processInput();
+                    gameLoop.processInput(new ProgressiveTime(totalTime, elapsedTime));
                     gameLoop.update(new ProgressiveTime(totalTime, elapsedTime));
-                    gameLoop.render();
+                    gameLoop.render(new ProgressiveTime(totalTime, elapsedTime));
                 }
 
                 try {
