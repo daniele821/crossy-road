@@ -4,23 +4,13 @@ import java.awt.Image;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ImageBufferedLoaderImpl implements ImageBufferedLoader {
-    private final ImageLoader imageLoader;
-    private final Map<ImageInfo, Image> images;
-
-    public ImageBufferedLoaderImpl(final ImageLoader imageLoader) {
-        this.imageLoader = imageLoader;
-        this.images = new HashMap<>();
-    }
-
-    public ImageBufferedLoaderImpl() {
-        this(new ImageLoaderImpl());
-    }
+public class ImageBufferedLoaderImpl extends ImageLoaderImpl implements ImageBufferedLoader {
+    private final Map<ImageInfo, Image> images = new HashMap<>();
 
     @Override
     public Image loadImage(final String classPath, final int x, final int y) {
         final var imageInfo = new ImageInfo(classPath, x, y);
-        final var image = this.imageLoader.loadImage(classPath);
+        final var image = loadImage(classPath);
 
         if (!this.images.containsKey(imageInfo)) {
             this.images.put(imageInfo, image.getScaledInstance(x, y, Image.SCALE_SMOOTH));
