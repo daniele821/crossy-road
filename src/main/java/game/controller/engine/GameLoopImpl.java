@@ -8,7 +8,7 @@ import game.view.window.Window;
 public class GameLoopImpl implements GameLoop {
     @Override
     public void processInput(final ProgressiveTime elapsedTime, final Window window, final GameWorld gameWorld) {
-        window.executeStoredActions(gameWorld);
+        window.executeStoredActions(elapsedTime, gameWorld);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class GameLoopImpl implements GameLoop {
 
     @Override
     public void render(final ProgressiveTime elapsedTime, final Window window) {
-        window.update();
+        window.update(elapsedTime);
     }
 
     @Override

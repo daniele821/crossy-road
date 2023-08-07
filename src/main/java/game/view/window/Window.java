@@ -1,9 +1,10 @@
 package game.view.window;
 
 import game.model.entity.GameWorld;
+import game.utility.ProgressiveTime;
 
 public interface Window {
-    void update();
+    void update(ProgressiveTime elapsedTime);
 
-    void executeStoredActions(GameWorld gameWorld);
+    void executeStoredActions(ProgressiveTime elapsedTime, GameWorld gameWorld);
 }
