@@ -6,26 +6,18 @@ import game.utility.ProgressiveTime;
 import game.view.window.Window;
 
 public class GameLoopImpl implements GameLoop {
-    private final GameWorld gameWorld;
-    private final Window window;
-
-    public GameLoopImpl(final GameWorld gameWorld, final Window window) {
-        this.gameWorld = gameWorld;
-        this.window = window;
+    @Override
+    public void processInput(final ProgressiveTime elapsedTime, final Window window, final GameWorld gameWorld) {
+        window.executeStoredActions(gameWorld);
     }
 
     @Override
-    public void processInput(final ProgressiveTime elapsedTime) {
-        this.window.executeStoredActions(gameWorld);
+    public void update(final ProgressiveTime elapsedTime, final GameWorld gameWorld) {
+        new GameLogicImpl().updateAll(elapsedTime, gameWorld);
     }
 
     @Override
-    public void update(final ProgressiveTime elapsedTime) {
-        new GameLogicImpl(this.gameWorld).updateAll(elapsedTime);
-    }
-
-    @Override
-    public void render(final ProgressiveTime elapsedTime) {
-        this.window.update();
+    public void render(final ProgressiveTime elapsedTime, final Window window) {
+        window.update();
     }
 }

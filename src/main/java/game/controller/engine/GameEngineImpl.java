@@ -2,10 +2,13 @@ package game.controller.engine;
 
 import java.util.Optional;
 
+import game.model.entity.GameWorld;
 import game.utility.ProgressiveTime;
+import game.view.window.Window;
 
 public class GameEngineImpl implements GameEngine {
     private static final int DEFAULT_FPS = 60;
+    private final GameLoop gameLoop = new GameLoopImpl();
     private final int frameDuration;
     private Optional<Thread> engineThread = Optional.empty();
     private boolean isPaused;
@@ -24,9 +27,9 @@ public class GameEngineImpl implements GameEngine {
     }
 
     @Override
-    public void startThread(final GameLoop gameLoop) {
+    public void startThread(final Window window, final GameWorld gameWorld) {
         if (this.engineThread.isEmpty()) {
-            this.engineThread = Optional.ofNullable(getGameEngineThread(gameLoop));
+            this.engineThread = Optional.ofNullable(getGameEngineThread(window, gameWorld));
             this.engineThread.get().start();
         }
     }
@@ -70,7 +73,7 @@ public class GameEngineImpl implements GameEngine {
         this.killThread = killThread;
     }
 
-    private Thread getGameEngineThread(final GameLoop gameLoop) {
+    private Thread getGameEngineThread(final Window window, final GameWorld gameWorld) {
         return new Thread(() -> {
             long totalTime = 0;
             long elapsedTime;
@@ -84,9 +87,10 @@ public class GameEngineImpl implements GameEngine {
 
                 if (!isPaused()) {
                     totalTime += elapsedTime;
-                    gameLoop.processInput(new ProgressiveTime(totalTime, elapsedTime));
-                    gameLoop.update(new ProgressiveTime(totalTime, elapsedTime));
-                    gameLoop.render(new ProgressiveTime(totalTime, elapsedTime));
+                    final var time = new ProgressiveTime(totalTime, elapsedTime);
+                    gameLoop.processInput(time, window, gameWorld);
+                    gameLoop.update(time, gameWorld);
+                    gameLoop.render(time, window);
                 }
 
                 try {
