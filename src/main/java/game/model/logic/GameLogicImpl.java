@@ -14,7 +14,7 @@ public class GameLogicImpl implements GameLogic {
             return;
         }
         final var object = gameWorld.modifyObjects().get(objectId);
-        if (object.getSpeed().equals(new Vector2D(0, 0)) || !object.isPresent()) {
+        if (movement.equals(new Vector2D(0, 0)) || !object.isPresent()) {
             return;
         }
         final var newPos = ALGORITHMS.add(object.getPosition(), movement);
