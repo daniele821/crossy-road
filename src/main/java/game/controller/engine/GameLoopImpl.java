@@ -7,15 +7,7 @@ import game.utility.ProgressiveTime;
 import game.view.window.Window;
 
 public class GameLoopImpl implements GameLoop {
-    private final GameLogic gameLogic;
-
-    public GameLoopImpl(final GameLogic gameLogic) {
-        this.gameLogic = gameLogic;
-    }
-
-    public GameLoopImpl() {
-        this(new GameLogicImpl());
-    }
+    private final GameLogic gameLogic = new GameLogicImpl();
 
     @Override
     public void processInput(final ProgressiveTime elapsedTime, final Window window, final GameWorld gameWorld) {
