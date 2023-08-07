@@ -1,11 +1,22 @@
 package game.controller.engine;
 
 import game.model.entity.GameWorld;
+import game.model.logic.GameLogic;
 import game.model.logic.GameLogicImpl;
 import game.utility.ProgressiveTime;
 import game.view.window.Window;
 
 public class GameLoopImpl implements GameLoop {
+    private final GameLogic gameLogic;
+
+    public GameLoopImpl(final GameLogic gameLogic) {
+        this.gameLogic = gameLogic;
+    }
+
+    public GameLoopImpl() {
+        this(new GameLogicImpl());
+    }
+
     @Override
     public void processInput(final ProgressiveTime elapsedTime, final Window window, final GameWorld gameWorld) {
         window.executeStoredActions(elapsedTime, gameWorld);
@@ -13,7 +24,7 @@ public class GameLoopImpl implements GameLoop {
 
     @Override
     public void update(final ProgressiveTime elapsedTime, final GameWorld gameWorld) {
-        new GameLogicImpl().updateAll(elapsedTime, gameWorld);
+        this.gameLogic.updateAll(elapsedTime, gameWorld);
     }
 
     @Override
