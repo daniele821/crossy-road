@@ -19,7 +19,7 @@ public class ImageBufferedLoaderImpl extends ImageLoaderImpl implements ImageBuf
         return this.images.get(imageInfo);
     }
 
-    private class ImageInfo {
+    private final class ImageInfo {
         private final String imagePath;
         private final int x;
         private final int y;
@@ -66,7 +66,7 @@ public class ImageBufferedLoaderImpl extends ImageLoaderImpl implements ImageBuf
             if (x != other.x) {
                 return false;
             }
-            return other != null && y == other.y;
+            return y == other.y;
         }
 
         private ImageBufferedLoaderImpl getEnclosingInstance() {
