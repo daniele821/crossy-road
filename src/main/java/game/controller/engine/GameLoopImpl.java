@@ -20,4 +20,10 @@ public class GameLoopImpl implements GameLoop {
     public void render(final ProgressiveTime elapsedTime, final Window window) {
         window.update();
     }
+
+    @Override
+    public String toString() {
+        return "GameLoopImpl []";
+    }
+
 }

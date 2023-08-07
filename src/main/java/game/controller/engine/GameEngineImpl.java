@@ -8,18 +8,19 @@ import game.view.window.Window;
 
 public class GameEngineImpl implements GameEngine {
     private static final int DEFAULT_FPS = 60;
-    private final GameLoop gameLoop = new GameLoopImpl();
+    private final GameLoop gameLoop;
     private final int frameDuration;
     private Optional<Thread> engineThread = Optional.empty();
     private boolean isPaused;
     private boolean killThread;
 
+    public GameEngineImpl(final int fps, final GameLoop gameLoop) {
+        this.frameDuration = fps > 0 ? 1000 / fps : 1000 / DEFAULT_FPS;
+        this.gameLoop = gameLoop;
+    }
+
     public GameEngineImpl(final int fps) {
-        if (fps > 0) {
-            this.frameDuration = 1000 / fps;
-        } else {
-            this.frameDuration = 1000 / DEFAULT_FPS;
-        }
+        this(fps, new GameLoopImpl());
     }
 
     public GameEngineImpl() {
@@ -100,6 +101,15 @@ public class GameEngineImpl implements GameEngine {
                 }
             }
         });
+    }
+
+    @Override
+    public String toString() {
+        return "GameEngineImpl [gameLoop=" + gameLoop
+                + ", frameDuration=" + frameDuration
+                + ", engineThread=" + engineThread
+                + ", isPaused=" + isPaused()
+                + ", killThread=" + isThreadKilled() + "]";
     }
 
 }
