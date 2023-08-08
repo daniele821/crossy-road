@@ -4,4 +4,6 @@ import javax.swing.JFrame;
 
 public interface SwingFrame {
     JFrame getFrame();
+
+    void setSwingPanel(SwingPanel panel);
 }

@@ -8,7 +8,7 @@ public class SwingWindow extends AbstractWindow {
     private final SwingPanel gamePanel = new SwingGamePanel();
 
     public SwingWindow() {
-        this.frame.getFrame().add(this.gamePanel.getPanel());
+        this.frame.setSwingPanel(gamePanel);
     }
 
     @Override
