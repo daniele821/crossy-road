@@ -4,11 +4,11 @@ import game.utility.ProgressiveTime;
 import game.view.window.AbstractWindow;
 
 public class SwingWindow extends AbstractWindow {
-    private final SwingFrame frame = new SwingFrame();
-    private final SwingGamePanel gamePanel = new SwingGamePanel();
+    private final SwingFrame frame = new SwingFrameImpl();
+    private final SwingPanel gamePanel = new SwingGamePanel();
 
     public SwingWindow() {
-        this.frame.add(this.gamePanel);
+        this.frame.getFrame().add(this.gamePanel.getPanel());
     }
 
     @Override
