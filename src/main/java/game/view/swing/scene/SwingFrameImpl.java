@@ -1,10 +1,12 @@
 package game.view.swing.scene;
 
+import java.util.Optional;
+
 import javax.swing.JFrame;
 
 public class SwingFrameImpl extends JFrame implements SwingFrame {
     private static final long serialVersionUID = -1492508066498442465L;
-    private SwingPanel panel;
+    private Optional<SwingPanel> panel;
 
     public SwingFrameImpl() {
         setTitle("Crossy-Road");
@@ -20,10 +22,14 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
 
     @Override
     public void setSwingPanel(final SwingPanel panel) {
-        getFrame().remove(this.panel.getPanel());
-        this.panel = panel;
-        getFrame().add(this.panel.getPanel());
-        getFrame().validate();
+        this.panel.map(SwingPanel::getPanel).ifPresent(getFrame()::remove);
+        Optional.ofNullable(panel).map(SwingPanel::getPanel).ifPresent(getFrame()::add);
         getFrame().repaint();
+        getFrame().validate();
+    }
+
+    @Override
+    public Optional<SwingPanel> getSwingPanel() {
+        return this.panel;
     }
 }
