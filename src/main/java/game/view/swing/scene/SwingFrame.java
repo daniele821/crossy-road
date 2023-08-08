@@ -1,7 +1,5 @@
 package game.view.swing.scene;
 
-import java.util.Optional;
-
 import javax.swing.JFrame;
 
 public interface SwingFrame {
@@ -9,5 +7,5 @@ public interface SwingFrame {
 
     void setSwingPanel(SwingPanel panel);
 
-    Optional<SwingPanel> getSwingPanel();
+    SwingPanel getSwingPanel();
 }

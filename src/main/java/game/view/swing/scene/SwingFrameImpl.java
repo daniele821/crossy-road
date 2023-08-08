@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 
 public class SwingFrameImpl extends JFrame implements SwingFrame {
     private static final long serialVersionUID = -1492508066498442465L;
-    private Optional<SwingPanel> panel;
+    private SwingPanel panel;
 
     public SwingFrameImpl() {
         setTitle("Crossy-Road");
@@ -22,15 +22,14 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
 
     @Override
     public void setSwingPanel(final SwingPanel panel) {
-        this.panel.map(SwingPanel::getPanel).ifPresent(getFrame()::remove);
-        this.panel = Optional.ofNullable(panel);
-        Optional.ofNullable(panel).map(SwingPanel::getPanel).ifPresent(getFrame()::add);
-        getFrame().repaint();
+        Optional.ofNullable(this.panel).map(SwingPanel::getPanel).ifPresent(getFrame()::remove);
+        this.panel = panel;
+        Optional.ofNullable(this.panel).map(SwingPanel::getPanel).ifPresent(getFrame()::add);
         getFrame().validate();
     }
 
     @Override
-    public Optional<SwingPanel> getSwingPanel() {
+    public SwingPanel getSwingPanel() {
         return this.panel;
     }
 }
