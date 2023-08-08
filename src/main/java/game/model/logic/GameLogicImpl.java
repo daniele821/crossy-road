@@ -1,7 +1,10 @@
 package game.model.logic;
 
+import java.util.stream.IntStream;
+
 import game.model.entity.GameWorld;
 import game.utility.Algorithms;
+import game.utility.Pair;
 import game.utility.ProgressiveTime;
 import game.utility.Vector2D;
 
@@ -26,11 +29,9 @@ public class GameLogicImpl implements GameLogic {
     @Override
     public void updateAll(final ProgressiveTime elapsedTime, final GameWorld gameWorld) {
         final var objects = gameWorld.getObjects();
-        for (int i = 0; i < objects.size(); i++) {
-            final var object = objects.get(i);
-            final var move = ALGORITHMS.moveVector(object.getPosition(), object.getSpeed(), elapsedTime);
-            moveObject(i, move, gameWorld);
-        }
+        IntStream.range(0, objects.size())
+                .mapToObj(i -> new Pair<>(i, ALGORITHMS.moveVector(objects.get(i), elapsedTime)))
+                .forEach(pair -> moveObject(pair.getA(), pair.getB(), gameWorld));
     }
 
 }

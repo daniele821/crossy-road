@@ -41,8 +41,12 @@ public class Algorithms {
         return new Vector2D(vect1.getX() * vect2.getX(), vect1.getY() * vect2.getY());
     }
 
-    public Vector2D moveVector(final Rectangle rect, final Vector2D speed, final ProgressiveTime elapsedTime) {
+    public Vector2D moveVector(final Vector2D speed, final ProgressiveTime elapsedTime) {
         return multiply(speed, (double) elapsedTime.getDeltaTime() / 1000.0);
+    }
+
+    public Vector2D moveVector(final GameObject obj, final ProgressiveTime elapsedTime) {
+        return moveVector(obj.getSpeed(), elapsedTime);
     }
 
     @Override
