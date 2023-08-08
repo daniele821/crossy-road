@@ -7,11 +7,12 @@ import game.model.entity.GameWorldInfoImpl;
 import game.utility.Rectangle;
 import game.utility.Vector2D;
 
-public class MapInfoParser {
-    private final MapParser mapParser = new MapParser();
+public class MapInfoParser implements MapParser<GameWorldInfo> {
+    private final MapParserUtils mapParser = new MapParserUtils();
     private Optional<Vector2D> cellSize = Optional.empty();
     private Optional<Rectangle> worldSize = Optional.empty();
 
+    @Override
     public void parseLine(final String line) {
         final var lineSplitted = this.mapParser.splitLine(line);
         switch (lineSplitted.getA()) {
@@ -33,7 +34,8 @@ public class MapInfoParser {
         }
     }
 
-    public GameWorldInfo getGameWorldInfo() {
+    @Override
+    public GameWorldInfo getParsedObject() {
         return new GameWorldInfoImpl(this.worldSize.get(), this.cellSize.get());
     }
 }

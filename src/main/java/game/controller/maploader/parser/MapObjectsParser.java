@@ -11,9 +11,9 @@ import game.utility.Algorithms;
 import game.utility.Rectangle;
 import game.utility.Vector2D;
 
-public class MapObjectsParser {
+public class MapObjectsParser implements MapParser<List<GameObject>> {
     private static final Algorithms ALGORITHMS = new Algorithms();
-    private final MapParser mapParser = new MapParser();
+    private final MapParserUtils mapParser = new MapParserUtils();
     private final GameObjectType type;
     private final GameWorldInfo gameWorldInfo;
     private Vector2D speed = new Vector2D(0, 0);
@@ -25,6 +25,7 @@ public class MapObjectsParser {
         this.gameWorldInfo = gameWorldInfo.copy();
     }
 
+    @Override
     public void parseLine(final String line) {
         final var lineSplitted = this.mapParser.splitLine(line);
         switch (lineSplitted.getA()) {
@@ -54,6 +55,14 @@ public class MapObjectsParser {
         }
     }
 
+    @Override
+    public List<GameObject> getParsedObject() {
+        return this.position.stream()
+                .map(vect -> new Rectangle(vect.getX(), vect.getY(), type.getLenX(), type.getLenY()))
+                .map(rect -> (GameObject) new GameObjectImpl(rect, speed, type, isPresent))
+                .toList();
+    }
+
     private Vector2D convertCellToPos(final Vector2D cell) {
         final Vector2D position = ALGORITHMS.multiplyMembers(cell, this.gameWorldInfo.getCellSize());
         return new Vector2D(
@@ -75,10 +84,4 @@ public class MapObjectsParser {
         return res;
     }
 
-    public List<GameObject> getObjects() {
-        return this.position.stream()
-                .map(vect -> new Rectangle(vect.getX(), vect.getY(), type.getLenX(), type.getLenY()))
-                .map(rect -> (GameObject) new GameObjectImpl(rect, speed, type, isPresent))
-                .toList();
-    }
 }

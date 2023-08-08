@@ -26,7 +26,7 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
         // GameWorldInfo
         final var mapInfoParser = new MapInfoParser();
         getUntilNextObject(clearedLines).forEach(mapInfoParser::parseLine);
-        this.gameWorldInfo = mapInfoParser.getGameWorldInfo();
+        this.gameWorldInfo = mapInfoParser.getParsedObject();
 
         // GameObjects
         List<String> linesLeft = getFromNextObject(clearedLines);
@@ -43,7 +43,7 @@ public class MapWorldLoaderImpl implements MapWorldLoader {
         final GameObjectType type = GameObjectType.valueOf(linesLeft.get(0).replace(OBJECT_LINE, "").strip());
         final var mapObjectsParser = new MapObjectsParser(type, this.gameWorldInfo);
         getUntilNextObject(linesLeft).forEach(mapObjectsParser::parseLine);
-        this.objects.addAll(mapObjectsParser.getObjects());
+        this.objects.addAll(mapObjectsParser.getParsedObject());
     }
 
     private List<String> clearLines(final List<String> lines) {
