@@ -28,7 +28,7 @@ public class SwingGamePanel extends JPanel implements SwingPanel {
     protected void paintComponent(final Graphics drawer) {
         super.paintComponent(drawer);
 
-        // TODO: implement with a concept of camera
+        // TODO implement with a concept of camera
     }
 
 }
