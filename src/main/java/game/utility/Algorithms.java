@@ -2,6 +2,8 @@ package game.utility;
 
 import java.util.Optional;
 
+import game.model.entity.GameObject;
+
 public class Algorithms {
     public Optional<Rectangle> getIntersection(final Rectangle rect1, final Rectangle rect2) {
         final double maxLeft = Double.max(rect1.getX(), rect2.getX());
@@ -17,6 +19,10 @@ public class Algorithms {
         }
 
         return Optional.of(new Rectangle(maxLeft, maxUp, minRight - maxLeft, minDown - maxUp));
+    }
+
+    public Optional<Rectangle> getIntersection(final GameObject obj1, final GameObject obj2) {
+        return getIntersection(obj1.getPosition(), obj2.getPosition());
     }
 
     public Vector2D add(final Vector2D vect1, final Vector2D vect2) {
