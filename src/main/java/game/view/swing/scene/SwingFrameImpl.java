@@ -1,5 +1,6 @@
 package game.view.swing.scene;
 
+import java.awt.Toolkit;
 import java.util.Optional;
 
 import javax.swing.JFrame;
@@ -26,6 +27,8 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
         this.panel = panel;
         Optional.ofNullable(this.panel).map(SwingPanel::getPanel).ifPresent(getFrame()::add);
         getFrame().validate();
+        getFrame().repaint();
+        Toolkit.getDefaultToolkit().sync();
     }
 
     @Override
