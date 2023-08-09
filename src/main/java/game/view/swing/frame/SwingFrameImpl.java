@@ -1,11 +1,11 @@
-package game.view.swing.scene.frame;
+package game.view.swing.frame;
 
 import java.awt.Toolkit;
 import java.util.Optional;
 
 import javax.swing.JFrame;
 
-import game.view.swing.scene.panel.SwingPanel;
+import game.view.swing.panel.SwingPanel;
 
 public class SwingFrameImpl extends JFrame implements SwingFrame {
     private static final long serialVersionUID = -1492508066498442465L;

@@ -1,6 +1,6 @@
 package game.view.window;
 
-import game.view.swing.scene.SwingWindow;
+import game.view.swing.SwingWindow;
 
 public class WindowFactoryImpl implements WindowFactory {
 

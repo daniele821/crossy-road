@@ -1,4 +1,4 @@
-package game.view.swing.scene;
+package game.view.swing;
 
 import game.utility.ProgressiveTime;
 import game.view.window.AbstractWindow;
