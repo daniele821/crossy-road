@@ -1,4 +1,4 @@
-package game.view.swing.scene;
+package game.view.swing.scene.panel;
 
 import javax.swing.JPanel;
 

@@ -1,15 +1,17 @@
-package game.view.swing.scene;
+package game.view.swing.scene.frame;
 
 import java.awt.Toolkit;
 import java.util.Optional;
 
 import javax.swing.JFrame;
 
-public class SwingMainFrame extends JFrame implements SwingFrame {
+import game.view.swing.scene.panel.SwingPanel;
+
+public class SwingFrameImpl extends JFrame implements SwingFrame {
     private static final long serialVersionUID = -1492508066498442465L;
     private SwingPanel panel;
 
-    public SwingMainFrame() {
+    public SwingFrameImpl() {
         setTitle("Crossy-Road");
         setLocationByPlatform(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
