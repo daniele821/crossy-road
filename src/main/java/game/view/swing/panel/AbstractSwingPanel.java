@@ -33,15 +33,16 @@ public abstract class AbstractSwingPanel extends JPanel implements SwingPanel {
     }
 
     @Override
-    public void putAction(final KeyStroke keyStroke, final List<SwingAction> swingAction) {
-        getPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(keyStroke, ++this.actionId);
-        swingAction.forEach(action -> {
-            getPanel().getActionMap().put(this.actionId, new AbstractAction() {
-                @Override
-                public void actionPerformed(final ActionEvent actionEvent) {
-                    action.actionPerformed(actionEvent);
-                }
-            });
+    public void putAction(final List<KeyStroke> keyStrokes, final SwingAction swingAction) {
+        final var actionId = ++this.actionId;
+        final var inputMap = getPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        final var actionMap = getPanel().getActionMap();
+        keyStrokes.forEach(key -> inputMap.put(key, actionId));
+        actionMap.put(actionId, new AbstractAction() {
+            @Override
+            public void actionPerformed(final ActionEvent event) {
+                swingAction.actionPerformed(event);
+            }
         });
     }
 

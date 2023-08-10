@@ -17,7 +17,7 @@ public interface SwingPanel {
 
     void destroy();
 
-    void putAction(KeyStroke keyStroke, List<SwingAction> swingAction);
+    void putAction(List<KeyStroke> keyStrokes, SwingAction swingAction);
 
     void clearActions();
 }
