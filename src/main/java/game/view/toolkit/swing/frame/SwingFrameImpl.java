@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import javax.swing.JFrame;
 
-import game.view.toolkit.swing.SwingWindow;
 import game.view.toolkit.swing.panel.SwingPanel;
+import game.view.toolkit.swing.window.SwingWindow;
 
 public class SwingFrameImpl extends JFrame implements SwingFrame {
     private static final long serialVersionUID = -1492508066498442465L;

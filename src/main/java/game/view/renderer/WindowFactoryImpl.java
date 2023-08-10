@@ -1,6 +1,6 @@
 package game.view.renderer;
 
-import game.view.toolkit.swing.SwingWindow;
+import game.view.toolkit.swing.window.SwingWindow;
 
 public class WindowFactoryImpl implements WindowFactory {
 
