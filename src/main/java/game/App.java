@@ -1,7 +1,8 @@
 package game;
 
-import game.view.window.WindowFactoryImpl;
-import static game.view.window.WindowFactory.GraphicalRenderer;
+import static game.view.renderer.WindowFactory.GraphicalRenderer;
+
+import game.view.renderer.WindowFactoryImpl;
 
 public final class App {
     private App() {

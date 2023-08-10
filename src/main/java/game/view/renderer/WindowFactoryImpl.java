@@ -1,4 +1,4 @@
-package game.view.window;
+package game.view.renderer;
 
 import game.view.toolkit.swing.SwingWindow;
 

@@ -4,7 +4,7 @@ import game.model.entity.GameWorld;
 import game.model.logic.GameLogic;
 import game.model.logic.GameLogicImpl;
 import game.utility.ProgressiveTime;
-import game.view.window.Window;
+import game.view.renderer.Window;
 
 public class GameLoopImpl implements GameLoop {
     private final GameLogic gameLogic = new GameLogicImpl();

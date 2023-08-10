@@ -2,7 +2,7 @@ package game.controller.engine;
 
 import game.model.entity.GameWorld;
 import game.utility.ProgressiveTime;
-import game.view.window.Window;
+import game.view.renderer.Window;
 
 public interface GameLoop {
 

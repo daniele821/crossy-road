@@ -3,10 +3,10 @@ package game.view.toolkit.swing;
 import java.awt.Toolkit;
 
 import game.utility.ProgressiveTime;
+import game.view.renderer.AbstractWindow;
 import game.view.toolkit.swing.frame.SwingFrame;
 import game.view.toolkit.swing.frame.SwingFrameImpl;
 import game.view.toolkit.swing.panel.SwingMenuPanelImpl;
-import game.view.window.AbstractWindow;
 
 public class SwingWindow extends AbstractWindow {
     private final SwingFrame frame = new SwingFrameImpl();

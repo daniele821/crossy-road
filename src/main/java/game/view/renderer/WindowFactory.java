@@ -1,4 +1,4 @@
-package game.view.window;
+package game.view.renderer;
 
 public interface WindowFactory {
     Window createWindow(GraphicalRenderer graphicalRenderer);

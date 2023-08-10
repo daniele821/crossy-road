@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import game.model.entity.GameWorld;
 import game.utility.ProgressiveTime;
-import game.view.window.Window;
+import game.view.renderer.Window;
 
 public class GameEngineImpl implements GameEngine {
     private static final int DEFAULT_FPS = 60;

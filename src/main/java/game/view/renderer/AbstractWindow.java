@@ -1,4 +1,4 @@
-package game.view.window;
+package game.view.renderer;
 
 import java.util.ArrayList;
 import java.util.List;
