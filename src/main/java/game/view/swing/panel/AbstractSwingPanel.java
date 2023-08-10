@@ -13,8 +13,8 @@ import game.view.swing.frame.SwingFrame;
 
 public abstract class AbstractSwingPanel extends JPanel implements SwingPanel {
     private static final long serialVersionUID = 2115458124524211780L;
-    private SwingFrame frame;
-    private int actionId = 0;
+    private transient SwingFrame frame;
+    private transient int actionId = 0;
 
     @Override
     public JPanel getPanel() {

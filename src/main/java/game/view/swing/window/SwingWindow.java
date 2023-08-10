@@ -11,7 +11,8 @@ import game.view.window.AbstractWindow;
 public class SwingWindow extends AbstractWindow {
     private final SwingFrame frame = new SwingFrameImpl();
 
-    public SwingWindow() {
+    @Override
+    public void start() {
         this.frame.setSwingWindow(this);
         this.frame.setSwingPanel(new SwingMenuPanelImpl());
     }
