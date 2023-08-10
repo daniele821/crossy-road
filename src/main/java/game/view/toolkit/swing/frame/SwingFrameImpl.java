@@ -38,6 +38,7 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
         this.panel = Optional.ofNullable(panel);
         this.panel.ifPresent(panelTmp -> panelTmp.setFrame(this));
         this.panel.map(SwingPanel::getPanel).ifPresent(getFrame()::add);
+        this.panel.ifPresent(SwingPanel::start);
         getFrame().validate();
         getFrame().repaint();
         Toolkit.getDefaultToolkit().sync();
