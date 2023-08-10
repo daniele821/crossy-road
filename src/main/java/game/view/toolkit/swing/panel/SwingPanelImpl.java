@@ -18,6 +18,16 @@ public class SwingPanelImpl extends JPanel implements SwingPanel {
     private transient int actionId;
 
     @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void destroy() {
+
+    }
+
+    @Override
     public JPanel getPanel() {
         return this;
     }
@@ -51,11 +61,6 @@ public class SwingPanelImpl extends JPanel implements SwingPanel {
         this.actionId = 0;
         getPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).clear();
         getPanel().getActionMap().clear();
-    }
-
-    @Override
-    public void destroy() {
-
     }
 
 }

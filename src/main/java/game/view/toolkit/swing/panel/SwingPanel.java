@@ -9,13 +9,15 @@ import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 
 public interface SwingPanel {
+    void start();
+
+    void destroy();
+
     JPanel getPanel();
 
     SwingFrame getFrame();
 
     void setFrame(SwingFrame frame);
-
-    void destroy();
 
     void putAction(List<KeyStroke> keyStrokes, SwingAction swingAction);
 
