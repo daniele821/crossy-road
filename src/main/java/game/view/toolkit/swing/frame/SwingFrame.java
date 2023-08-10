@@ -6,6 +6,9 @@ import game.view.toolkit.swing.panel.SwingPanel;
 import game.view.toolkit.swing.window.SwingWindow;
 
 public interface SwingFrame {
+
+    void start();
+
     JFrame getFrame();
 
     SwingPanel getSwingPanel();

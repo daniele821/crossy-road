@@ -13,7 +13,8 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
     private transient Optional<SwingPanel> panel = Optional.empty();
     private transient Optional<SwingWindow> window = Optional.empty();
 
-    public SwingFrameImpl() {
+    @Override
+    public void start() {
         setTitle("Crossy-Road");
         setLocationByPlatform(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

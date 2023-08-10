@@ -15,6 +15,7 @@ public class SwingWindow extends AbstractWindow {
     public void start() {
         this.frame.setSwingWindow(this);
         this.frame.setSwingPanel(new SwingMenuPanelImpl());
+        this.frame.start();
     }
 
     @Override
