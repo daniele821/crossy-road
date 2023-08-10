@@ -33,7 +33,9 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
     @Override
     public void setSwingPanel(final SwingPanel panel) {
         Optional.ofNullable(this.panel).map(SwingPanel::getPanel).ifPresent(getFrame()::remove);
+        Optional.ofNullable(this.panel).ifPresent(panelTmp -> panelTmp.destroy());
         this.panel = panel;
+        Optional.ofNullable(this.panel).ifPresent(panelTmp -> panelTmp.setFrame(this));
         Optional.ofNullable(this.panel).map(SwingPanel::getPanel).ifPresent(getFrame()::add);
         getFrame().validate();
         getFrame().repaint();

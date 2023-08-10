@@ -10,4 +10,6 @@ public interface SwingPanel {
     SwingFrame getFrame();
 
     void setFrame(SwingFrame frame);
+
+    void destroy();
 }

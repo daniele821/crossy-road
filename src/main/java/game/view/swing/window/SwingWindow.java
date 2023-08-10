@@ -12,6 +12,7 @@ public class SwingWindow extends AbstractWindow {
     private final SwingFrame frame = new SwingFrameImpl();
 
     public SwingWindow() {
+        this.frame.setSwingWindow(this);
         this.frame.setSwingPanel(new SwingMenuPanelImpl());
     }
 

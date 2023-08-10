@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 
 import game.view.swing.frame.SwingFrame;
 
-public class SwingPanelImpl extends JPanel implements SwingPanel {
+public abstract class AbstractSwingPanel extends JPanel implements SwingPanel {
     private static final long serialVersionUID = 2115458124524211780L;
     private SwingFrame frame;
 
