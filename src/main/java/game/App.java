@@ -8,6 +8,6 @@ public final class App {
     }
 
     public static void main(final String[] args) {
-        new WindowFactoryImpl().createWindow(GraphicalRenderer.SWING);
+        new WindowFactoryImpl().createWindow(GraphicalRenderer.SWING).start();
     }
 }

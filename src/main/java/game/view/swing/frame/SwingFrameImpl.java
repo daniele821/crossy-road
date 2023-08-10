@@ -10,8 +10,8 @@ import game.view.swing.window.SwingWindow;
 
 public class SwingFrameImpl extends JFrame implements SwingFrame {
     private static final long serialVersionUID = -1492508066498442465L;
-    private transient Optional<SwingPanel> panel;
-    private transient Optional<SwingWindow> window;
+    private transient Optional<SwingPanel> panel = Optional.empty();
+    private transient Optional<SwingWindow> window = Optional.empty();
 
     public SwingFrameImpl() {
         setTitle("Crossy-Road");
