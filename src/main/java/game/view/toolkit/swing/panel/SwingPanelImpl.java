@@ -12,7 +12,7 @@ import javax.swing.KeyStroke;
 import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 
-public abstract class AbstractSwingPanel extends JPanel implements SwingPanel {
+public class SwingPanelImpl extends JPanel implements SwingPanel {
     private static final long serialVersionUID = 2115458124524211780L;
     private transient Optional<SwingFrame> frame = Optional.empty();
     private transient int actionId;
@@ -51,6 +51,11 @@ public abstract class AbstractSwingPanel extends JPanel implements SwingPanel {
         this.actionId = 0;
         getPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).clear();
         getPanel().getActionMap().clear();
+    }
+
+    @Override
+    public void destroy() {
+
     }
 
 }
