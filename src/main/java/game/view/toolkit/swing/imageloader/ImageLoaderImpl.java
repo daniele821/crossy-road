@@ -1,4 +1,4 @@
-package game.view.swing.imageloader;
+package game.view.toolkit.swing.imageloader;
 
 import java.awt.Image;
 import java.io.IOException;

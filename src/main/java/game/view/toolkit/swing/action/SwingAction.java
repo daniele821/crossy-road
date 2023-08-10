@@ -1,4 +1,4 @@
-package game.view.swing.action;
+package game.view.toolkit.swing.action;
 
 import java.awt.event.ActionEvent;
 

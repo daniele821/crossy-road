@@ -1,11 +1,11 @@
-package game.view.swing;
+package game.view.toolkit.swing;
 
 import java.awt.Toolkit;
 
 import game.utility.ProgressiveTime;
-import game.view.swing.frame.SwingFrame;
-import game.view.swing.frame.SwingFrameImpl;
-import game.view.swing.panel.SwingMenuPanelImpl;
+import game.view.toolkit.swing.frame.SwingFrame;
+import game.view.toolkit.swing.frame.SwingFrameImpl;
+import game.view.toolkit.swing.panel.SwingMenuPanelImpl;
 import game.view.window.AbstractWindow;
 
 public class SwingWindow extends AbstractWindow {

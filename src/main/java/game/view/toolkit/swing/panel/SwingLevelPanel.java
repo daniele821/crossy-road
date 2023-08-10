@@ -1,4 +1,4 @@
-package game.view.swing.panel;
+package game.view.toolkit.swing.panel;
 
 public interface SwingLevelPanel extends SwingPanel {
 

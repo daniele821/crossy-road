@@ -1,4 +1,4 @@
-package game.view.swing.panel;
+package game.view.toolkit.swing.panel;
 
 import java.awt.event.ActionEvent;
 import java.util.List;
@@ -9,8 +9,8 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import game.view.swing.action.SwingAction;
-import game.view.swing.frame.SwingFrame;
+import game.view.toolkit.swing.action.SwingAction;
+import game.view.toolkit.swing.frame.SwingFrame;
 
 public abstract class AbstractSwingPanel extends JPanel implements SwingPanel {
     private static final long serialVersionUID = 2115458124524211780L;

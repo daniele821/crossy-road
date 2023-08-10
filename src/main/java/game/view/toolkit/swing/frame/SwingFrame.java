@@ -1,9 +1,9 @@
-package game.view.swing.frame;
+package game.view.toolkit.swing.frame;
 
 import javax.swing.JFrame;
 
-import game.view.swing.SwingWindow;
-import game.view.swing.panel.SwingPanel;
+import game.view.toolkit.swing.SwingWindow;
+import game.view.toolkit.swing.panel.SwingPanel;
 
 public interface SwingFrame {
     JFrame getFrame();
