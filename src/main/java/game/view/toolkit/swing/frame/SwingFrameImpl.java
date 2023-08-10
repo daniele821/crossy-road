@@ -22,6 +22,13 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
     }
 
     @Override
+    public void updateRenderer() {
+        getFrame().validate();
+        getFrame().repaint();
+        Toolkit.getDefaultToolkit().sync();
+    }
+
+    @Override
     public JFrame getFrame() {
         return this;
     }
@@ -39,9 +46,7 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
         this.panel.ifPresent(panelTmp -> panelTmp.setFrame(this));
         this.panel.map(SwingPanel::getPanel).ifPresent(getFrame()::add);
         this.panel.ifPresent(SwingPanel::start);
-        getFrame().validate();
-        getFrame().repaint();
-        Toolkit.getDefaultToolkit().sync();
+        updateRenderer();
     }
 
     @Override

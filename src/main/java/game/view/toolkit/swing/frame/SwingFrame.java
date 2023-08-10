@@ -9,6 +9,8 @@ public interface SwingFrame {
 
     void start();
 
+    void updateRenderer();
+
     JFrame getFrame();
 
     SwingPanel getSwingPanel();

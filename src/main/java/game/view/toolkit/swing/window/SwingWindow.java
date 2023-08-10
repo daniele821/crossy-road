@@ -1,7 +1,5 @@
 package game.view.toolkit.swing.window;
 
-import java.awt.Toolkit;
-
 import game.utility.ProgressiveTime;
 import game.view.renderer.AbstractWindow;
 import game.view.toolkit.swing.frame.SwingFrame;
@@ -20,8 +18,7 @@ public class SwingWindow extends AbstractWindow {
 
     @Override
     public void update(final ProgressiveTime elapsedTime) {
-        this.frame.getFrame().repaint();
-        Toolkit.getDefaultToolkit().sync();
+        this.frame.updateRenderer();
     }
 
 }
