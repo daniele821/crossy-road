@@ -1,4 +1,4 @@
-package game.view.swing.window;
+package game.view.swing;
 
 import java.awt.Toolkit;
 
