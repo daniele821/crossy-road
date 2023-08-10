@@ -10,8 +10,8 @@ import game.view.swing.window.SwingWindow;
 
 public class SwingFrameImpl extends JFrame implements SwingFrame {
     private static final long serialVersionUID = -1492508066498442465L;
-    private transient SwingPanel panel;
-    private transient SwingWindow window;
+    private transient Optional<SwingPanel> panel;
+    private transient Optional<SwingWindow> window;
 
     public SwingFrameImpl() {
         setTitle("Crossy-Road");
@@ -27,16 +27,16 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
 
     @Override
     public SwingPanel getSwingPanel() {
-        return this.panel;
+        return this.panel.get();
     }
 
     @Override
     public void setSwingPanel(final SwingPanel panel) {
-        Optional.ofNullable(this.panel).map(SwingPanel::getPanel).ifPresent(getFrame()::remove);
-        Optional.ofNullable(this.panel).ifPresent(panelTmp -> panelTmp.destroy());
-        this.panel = panel;
-        Optional.ofNullable(this.panel).ifPresent(panelTmp -> panelTmp.setFrame(this));
-        Optional.ofNullable(this.panel).map(SwingPanel::getPanel).ifPresent(getFrame()::add);
+        this.panel.map(SwingPanel::getPanel).ifPresent(getFrame()::remove);
+        this.panel.ifPresent(panelTmp -> panelTmp.destroy());
+        this.panel = Optional.ofNullable(panel);
+        this.panel.ifPresent(panelTmp -> panelTmp.setFrame(this));
+        this.panel.map(SwingPanel::getPanel).ifPresent(getFrame()::add);
         getFrame().validate();
         getFrame().repaint();
         Toolkit.getDefaultToolkit().sync();
@@ -44,12 +44,12 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
 
     @Override
     public SwingWindow getSwingWindow() {
-        return this.window;
+        return this.window.get();
     }
 
     @Override
     public void setSwingWindow(final SwingWindow swingWindow) {
-        this.window = swingWindow;
+        this.window = Optional.ofNullable(swingWindow);
     }
 
 }

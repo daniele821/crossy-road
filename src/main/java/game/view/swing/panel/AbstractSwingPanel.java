@@ -2,6 +2,7 @@ package game.view.swing.panel;
 
 import java.awt.event.ActionEvent;
 import java.util.List;
+import java.util.Optional;
 
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
@@ -13,8 +14,8 @@ import game.view.swing.frame.SwingFrame;
 
 public abstract class AbstractSwingPanel extends JPanel implements SwingPanel {
     private static final long serialVersionUID = 2115458124524211780L;
-    private transient SwingFrame frame;
-    private transient int actionId = 0;
+    private transient Optional<SwingFrame> frame = Optional.empty();
+    private transient int actionId;
 
     @Override
     public JPanel getPanel() {
@@ -23,12 +24,12 @@ public abstract class AbstractSwingPanel extends JPanel implements SwingPanel {
 
     @Override
     public SwingFrame getFrame() {
-        return this.frame;
+        return this.frame.get();
     }
 
     @Override
     public void setFrame(final SwingFrame frame) {
-        this.frame = frame;
+        this.frame = Optional.ofNullable(frame);
     }
 
     @Override
