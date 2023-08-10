@@ -28,25 +28,25 @@ public class SwingPanelImpl extends JPanel implements SwingPanel {
     }
 
     @Override
-    public JPanel getPanel() {
+    public JPanel getJPanel() {
         return this;
     }
 
     @Override
-    public SwingFrame getFrame() {
+    public SwingFrame getSwingFrame() {
         return this.frame.get();
     }
 
     @Override
-    public void setFrame(final SwingFrame frame) {
+    public void setSwingFrame(final SwingFrame frame) {
         this.frame = Optional.ofNullable(frame);
     }
 
     @Override
     public void putAction(final List<KeyStroke> keyStrokes, final SwingAction swingAction) {
         final var actionId = ++this.actionId;
-        final var inputMap = getPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        final var actionMap = getPanel().getActionMap();
+        final var inputMap = getJPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        final var actionMap = getJPanel().getActionMap();
         keyStrokes.forEach(key -> inputMap.put(key, actionId));
         actionMap.put(actionId, new AbstractAction() {
             @Override
@@ -59,8 +59,8 @@ public class SwingPanelImpl extends JPanel implements SwingPanel {
     @Override
     public void clearActions() {
         this.actionId = 0;
-        getPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).clear();
-        getPanel().getActionMap().clear();
+        getJPanel().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).clear();
+        getJPanel().getActionMap().clear();
     }
 
 }

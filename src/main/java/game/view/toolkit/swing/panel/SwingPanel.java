@@ -13,11 +13,11 @@ public interface SwingPanel {
 
     void destroy();
 
-    JPanel getPanel();
+    JPanel getJPanel();
 
-    SwingFrame getFrame();
+    SwingFrame getSwingFrame();
 
-    void setFrame(SwingFrame frame);
+    void setSwingFrame(SwingFrame frame);
 
     void putAction(List<KeyStroke> keyStrokes, SwingAction swingAction);
 

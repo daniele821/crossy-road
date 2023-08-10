@@ -10,8 +10,8 @@ public class SwingMenuPanelImpl extends SwingPanelImpl implements SwingMenuPanel
     @Override
     public void start() {
         super.start();
-        getPanel().add(levelButton);
-        getPanel().add(quitButton);
+        getJPanel().add(levelButton);
+        getJPanel().add(quitButton);
     }
 
 }
