@@ -11,6 +11,8 @@ public interface SwingFrame {
 
     void updateRenderer();
 
+    void closeApplication();
+
     JFrame getJFrame();
 
     SwingPanel getSwingPanel();

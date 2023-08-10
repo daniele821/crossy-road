@@ -29,6 +29,12 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
     }
 
     @Override
+    public void closeApplication() {
+        getSwingPanel().destroy();
+        getJFrame().dispose();
+    }
+
+    @Override
     public JFrame getJFrame() {
         return this;
     }
