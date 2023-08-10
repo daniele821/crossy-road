@@ -17,7 +17,7 @@ public class SwingWindow extends AbstractWindow {
 
     @Override
     public void update(final ProgressiveTime elapsedTime) {
-        frame.getFrame().repaint();
+        this.frame.getFrame().repaint();
         Toolkit.getDefaultToolkit().sync();
     }
 
