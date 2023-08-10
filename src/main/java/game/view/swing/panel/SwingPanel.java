@@ -1,7 +1,11 @@
 package game.view.swing.panel;
 
-import javax.swing.JPanel;
+import java.util.List;
 
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+
+import game.view.swing.action.SwingAction;
 import game.view.swing.frame.SwingFrame;
 
 public interface SwingPanel {
@@ -12,4 +16,8 @@ public interface SwingPanel {
     void setFrame(SwingFrame frame);
 
     void destroy();
+
+    void putAction(KeyStroke keyStroke, List<SwingAction> swingAction);
+
+    void clearActions();
 }
