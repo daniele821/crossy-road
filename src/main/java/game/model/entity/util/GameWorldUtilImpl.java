@@ -45,7 +45,7 @@ public class GameWorldUtilImpl implements GameWorldUtil {
 
     @Override
     public Optional<GameObject> modifyPresentObject(final int objectId, final GameWorld world) {
-        return modifyPresentObject(objectId, world).filter(GameObject::isPresent);
+        return modifyObject(objectId, world).filter(GameObject::isPresent);
     }
 
 }

@@ -12,11 +12,11 @@ public interface GameWorldUtil {
 
     List<Pair<Integer, GameObject>> getPresentObjectsId(GameWorld world);
 
-    public Optional<GameObject> getObject(int objectId, GameWorld world);
+    Optional<GameObject> getObject(int objectId, GameWorld world);
 
-    public Optional<GameObject> getPresentObject(int objectId, GameWorld world);
+    Optional<GameObject> getPresentObject(int objectId, GameWorld world);
 
-    public Optional<GameObject> modifyObject(int objectId, GameWorld world);
+    Optional<GameObject> modifyObject(int objectId, GameWorld world);
 
-    public Optional<GameObject> modifyPresentObject(int objectId, GameWorld world);
+    Optional<GameObject> modifyPresentObject(int objectId, GameWorld world);
 }
