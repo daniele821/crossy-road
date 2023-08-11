@@ -23,6 +23,16 @@ public class GameWorldUtilImpl implements GameWorldUtil {
     }
 
     @Override
+    public List<GameObject> getObjects(final GameWorld world) {
+        return world.getObjects();
+    }
+
+    @Override
+    public List<GameObject> getPresentObjects(final GameWorld world) {
+        return getPresentObjectsWithId(world).stream().map(Pair::getB).toList();
+    }
+
+    @Override
     public Optional<GameObject> getObject(final int objectId, final GameWorld world) {
         if (objectId < 0 || objectId >= world.getObjects().size()) {
             return Optional.empty();
