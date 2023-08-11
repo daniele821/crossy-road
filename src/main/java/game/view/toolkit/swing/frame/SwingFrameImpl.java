@@ -28,6 +28,8 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
         getJFrame().setTitle("Crossy-Road");
         getJFrame().setLocationByPlatform(true);
         getJFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getJFrame().setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        getJFrame().setExtendedState(getJFrame().getExtendedState() | JFrame.MAXIMIZED_BOTH);
         getJFrame().setVisible(true);
     }
 
