@@ -4,10 +4,11 @@ import java.util.Optional;
 
 import game.controller.engine.GameEngine;
 import game.view.toolkit.swing.camera.Camera;
+import game.view.toolkit.swing.camera.BasicCamera;
 
 public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel {
     private static final long serialVersionUID = 2115458124524211780L;
-    private transient Optional<Camera> camera = Optional.empty();
+    private transient Optional<Camera> camera = Optional.ofNullable(new BasicCamera());
 
     @Override
     public void start() {
