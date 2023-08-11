@@ -37,6 +37,10 @@ public class Algorithms {
         return new Vector2D(vector.getX() * factor, vector.getY() * factor);
     }
 
+    public Rectangle multiply(final Rectangle rect, final double scale) {
+        return new Rectangle(rect.getX() * scale, rect.getY() * scale, rect.getLenX() * scale, rect.getLenY() * scale);
+    }
+
     public Vector2D multiplyMembers(final Vector2D vect1, final Vector2D vect2) {
         return new Vector2D(vect1.getX() * vect2.getX(), vect1.getY() * vect2.getY());
     }
