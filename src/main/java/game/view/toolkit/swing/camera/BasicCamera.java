@@ -11,15 +11,15 @@ import game.view.toolkit.swing.imageloader.ImageBufferedLoader;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoaderImpl;
 
 public class BasicCamera implements Camera {
-    private static final double FACTOR = 8;
+    private static final double FACTOR = 5;
     private final GameWorldUtil worldUtil = new GameWorldUtilImpl();
     private final ImageBufferedLoader imageLoader = new ImageBufferedLoaderImpl();
 
     @Override
     public void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {
         worldUtil.getPresentObjects(world).forEach(obj -> {
-            final int x = (int) (FACTOR * obj.getPosition().getX());
-            final int y = (int) (FACTOR * obj.getPosition().getY());
+            final int x = (int) (FACTOR * (obj.getPosition().getX() - world.getGameWorldInfo().getWorldBounds().getX()));
+            final int y = (int) (FACTOR * (obj.getPosition().getY() - world.getGameWorldInfo().getWorldBounds().getY()));
             final int lenX = (int) (FACTOR * obj.getPosition().getLenX());
             final int lenY = (int) (FACTOR * obj.getPosition().getLenY());
             final Image image = this.imageLoader.loadImage(obj.getObjectType().getPath(), lenX, lenY);
