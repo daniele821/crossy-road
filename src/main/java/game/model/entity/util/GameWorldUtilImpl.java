@@ -11,15 +11,15 @@ import game.utility.Pair;
 public class GameWorldUtilImpl implements GameWorldUtil {
 
     @Override
-    public List<Pair<Integer, GameObject>> getObjectsId(final GameWorld world) {
+    public List<Pair<Integer, GameObject>> getObjectsWithId(final GameWorld world) {
         return IntStream.range(0, world.getObjects().size())
                 .mapToObj(i -> new Pair<>(i, world.getObjects().get(i)))
                 .toList();
     }
 
     @Override
-    public List<Pair<Integer, GameObject>> getPresentObjectsId(final GameWorld world) {
-        return getObjectsId(world).stream().filter(pair -> pair.getB().isPresent()).toList();
+    public List<Pair<Integer, GameObject>> getPresentObjectsWithId(final GameWorld world) {
+        return getObjectsWithId(world).stream().filter(pair -> pair.getB().isPresent()).toList();
     }
 
     @Override

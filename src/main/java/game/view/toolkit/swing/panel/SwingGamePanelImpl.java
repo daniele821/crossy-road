@@ -39,7 +39,7 @@ public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel
     protected void paintComponent(final Graphics drawer) {
         super.paintComponent(drawer);
         final var world = getSwingFrame().getCurrentWorld();
-        final var pov = WORLD_UTIL.getPresentObjectsId(world).stream()
+        final var pov = WORLD_UTIL.getPresentObjectsWithId(world).stream()
                 .filter(pair -> pair.getB().getObjectType().getKind() == GameObjectKind.PLAYER)
                 .map(Pair::getA)
                 .toList();

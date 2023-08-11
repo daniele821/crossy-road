@@ -8,9 +8,9 @@ import game.model.entity.GameWorld;
 import game.utility.Pair;
 
 public interface GameWorldUtil {
-    List<Pair<Integer, GameObject>> getObjectsId(GameWorld world);
+    List<Pair<Integer, GameObject>> getObjectsWithId(GameWorld world);
 
-    List<Pair<Integer, GameObject>> getPresentObjectsId(GameWorld world);
+    List<Pair<Integer, GameObject>> getPresentObjectsWithId(GameWorld world);
 
     Optional<GameObject> getObject(int objectId, GameWorld world);
 

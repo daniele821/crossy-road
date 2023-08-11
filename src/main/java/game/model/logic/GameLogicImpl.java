@@ -31,7 +31,7 @@ public class GameLogicImpl implements GameLogic {
 
     @Override
     public void updateAll(final ProgressiveTime elapsedTime, final GameWorld gameWorld) {
-        WORLD_UTIL.getPresentObjectsId(gameWorld)
+        WORLD_UTIL.getPresentObjectsWithId(gameWorld)
                 .stream()
                 .map(pair -> new Pair<>(pair.getA(), ALGORITHMS.moveVector(pair.getB(), elapsedTime)))
                 .forEach(pair -> moveObject(pair.getA(), pair.getB(), gameWorld));
