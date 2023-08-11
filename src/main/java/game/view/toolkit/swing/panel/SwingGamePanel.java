@@ -1,5 +1,7 @@
 package game.view.toolkit.swing.panel;
 
-public interface SwingGamePanel extends SwingPanel {
+import game.view.toolkit.swing.camera.Camera;
 
+public interface SwingGamePanel extends SwingPanel {
+    void setCamera(Camera camera);
 }

@@ -1,9 +1,13 @@
 package game.view.toolkit.swing.panel;
 
+import java.util.Optional;
+
 import game.controller.engine.GameEngine;
+import game.view.toolkit.swing.camera.Camera;
 
 public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel {
     private static final long serialVersionUID = 2115458124524211780L;
+    private transient Optional<Camera> camera = Optional.empty();
 
     @Override
     public void start() {
@@ -17,6 +21,11 @@ public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel
     public void destroy() {
         super.destroy();
         getSwingFrame().actOnGameEngine(GameEngine::killThread);
+    }
+
+    @Override
+    public void setCamera(final Camera camera) {
+        this.camera = Optional.ofNullable(camera);
     }
 
 }
