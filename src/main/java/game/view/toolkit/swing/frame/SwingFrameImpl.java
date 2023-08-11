@@ -25,10 +25,10 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
 
     @Override
     public void start() {
-        setTitle("Crossy-Road");
-        setLocationByPlatform(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
+        getJFrame().setTitle("Crossy-Road");
+        getJFrame().setLocationByPlatform(true);
+        getJFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getJFrame().setVisible(true);
     }
 
     @Override
