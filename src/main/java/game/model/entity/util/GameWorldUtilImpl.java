@@ -29,7 +29,7 @@ public class GameWorldUtilImpl implements GameWorldUtil {
 
     @Override
     public List<GameObject> getPresentObjects(final GameWorld world) {
-        return getPresentObjectsWithId(world).stream().map(Pair::getB).toList();
+        return getObjects(world).stream().filter(GameObject::isPresent).toList();
     }
 
     @Override
