@@ -18,7 +18,7 @@ public class GameLogicImpl implements GameLogic {
 
     @Override
     public void moveObject(final int objectId, final Vector2D movement, final GameWorld gameWorld) {
-        final Optional<GameObject> objectOpt = WORLD_UTIL.modifyPresentObjectSafely(objectId, gameWorld);
+        final Optional<GameObject> objectOpt = WORLD_UTIL.modifyPresentObject(objectId, gameWorld);
         if (objectOpt.isEmpty() || movement.equals(new Vector2D(0, 0))) {
             return;
         }
@@ -31,7 +31,7 @@ public class GameLogicImpl implements GameLogic {
 
     @Override
     public void updateAll(final ProgressiveTime elapsedTime, final GameWorld gameWorld) {
-        WORLD_UTIL.getPresentObjectsWithId(gameWorld)
+        WORLD_UTIL.getPresentObjectsId(gameWorld)
                 .stream()
                 .map(pair -> new Pair<>(pair.getA(), ALGORITHMS.moveVector(pair.getB(), elapsedTime)))
                 .forEach(pair -> moveObject(pair.getA(), pair.getB(), gameWorld));

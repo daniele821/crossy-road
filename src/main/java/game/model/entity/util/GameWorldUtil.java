@@ -8,15 +8,15 @@ import game.model.entity.GameWorld;
 import game.utility.Pair;
 
 public interface GameWorldUtil {
-    List<Pair<Integer, GameObject>> getObjectsWithId(GameWorld world);
+    List<Pair<Integer, GameObject>> getObjectsId(GameWorld world);
 
-    List<Pair<Integer, GameObject>> getPresentObjectsWithId(GameWorld world);
+    List<Pair<Integer, GameObject>> getPresentObjectsId(GameWorld world);
 
-    public Optional<GameObject> getObjectSafely(int objectId, GameWorld world);
+    public Optional<GameObject> getObject(int objectId, GameWorld world);
 
-    public Optional<GameObject> getPresentObjectSafely(int objectId, GameWorld world);
+    public Optional<GameObject> getPresentObject(int objectId, GameWorld world);
 
-    public Optional<GameObject> modifyObjectSafely(int objectId, GameWorld world);
+    public Optional<GameObject> modifyObject(int objectId, GameWorld world);
 
-    public Optional<GameObject> modifyPresentObjectSafely(int objectId, GameWorld world);
+    public Optional<GameObject> modifyPresentObject(int objectId, GameWorld world);
 }

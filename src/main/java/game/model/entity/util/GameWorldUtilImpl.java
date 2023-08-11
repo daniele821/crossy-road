@@ -11,19 +11,19 @@ import game.utility.Pair;
 public class GameWorldUtilImpl implements GameWorldUtil {
 
     @Override
-    public List<Pair<Integer, GameObject>> getObjectsWithId(final GameWorld world) {
+    public List<Pair<Integer, GameObject>> getObjectsId(final GameWorld world) {
         return IntStream.range(0, world.getObjects().size())
                 .mapToObj(i -> new Pair<>(i, world.getObjects().get(i)))
                 .toList();
     }
 
     @Override
-    public List<Pair<Integer, GameObject>> getPresentObjectsWithId(final GameWorld world) {
-        return getObjectsWithId(world).stream().filter(pair -> pair.getB().isPresent()).toList();
+    public List<Pair<Integer, GameObject>> getPresentObjectsId(final GameWorld world) {
+        return getObjectsId(world).stream().filter(pair -> pair.getB().isPresent()).toList();
     }
 
     @Override
-    public Optional<GameObject> getObjectSafely(final int objectId, final GameWorld world) {
+    public Optional<GameObject> getObject(final int objectId, final GameWorld world) {
         if (objectId < 0 || objectId >= world.getObjects().size()) {
             return Optional.empty();
         }
@@ -31,12 +31,12 @@ public class GameWorldUtilImpl implements GameWorldUtil {
     }
 
     @Override
-    public Optional<GameObject> getPresentObjectSafely(final int objectId, final GameWorld world) {
-        return getObjectSafely(objectId, world).filter(GameObject::isPresent);
+    public Optional<GameObject> getPresentObject(final int objectId, final GameWorld world) {
+        return getObject(objectId, world).filter(GameObject::isPresent);
     }
 
     @Override
-    public Optional<GameObject> modifyObjectSafely(final int objectId, final GameWorld world) {
+    public Optional<GameObject> modifyObject(final int objectId, final GameWorld world) {
         if (objectId < 0 || objectId >= world.getObjects().size()) {
             return Optional.empty();
         }
@@ -44,8 +44,8 @@ public class GameWorldUtilImpl implements GameWorldUtil {
     }
 
     @Override
-    public Optional<GameObject> modifyPresentObjectSafely(final int objectId, final GameWorld world) {
-        return modifyPresentObjectSafely(objectId, world).filter(GameObject::isPresent);
+    public Optional<GameObject> modifyPresentObject(final int objectId, final GameWorld world) {
+        return modifyPresentObject(objectId, world).filter(GameObject::isPresent);
     }
 
 }
