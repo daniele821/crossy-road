@@ -23,7 +23,8 @@ public abstract class AbstractWindow implements Window {
                 .forEach(action -> gameLogic.moveObject(action.getObjectId(), action.getMovement(), gameWorld));
     }
 
-    protected void addInputHandler(final InputHandler inputHandler) {
+    @Override
+    public void addInputHandler(final InputHandler inputHandler) {
         this.inputHandlers.add(inputHandler);
     }
 
