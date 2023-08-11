@@ -22,8 +22,12 @@ public class PlayerCamera implements Camera {
     @Override
     public void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {
         // TODO multiple area subdivision
+        // TODO handle objectId
+        if (objectId == null || objectId.isEmpty()) {
+            return;
+        }
         final var area = drawer.getClip().getBounds();
-        draw(new Rectangle(0, 0, area.getWidth(), area.getHeight()), drawer, world, objectId.get(0));
+        draw(new Rectangle(0, 0, area.getWidth(), area.getHeight()), drawer, world, 0);
     }
 
     public void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final int objectId) {
