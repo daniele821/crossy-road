@@ -10,7 +10,6 @@ import game.model.entity.util.GameWorldUtil;
 import game.model.entity.util.GameWorldUtilImpl;
 import game.utility.Algorithms;
 import game.utility.Rectangle;
-import game.utility.Vector2D;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoader;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoaderImpl;
 
@@ -22,20 +21,21 @@ public class PlayerCamera implements Camera {
 
     @Override
     public void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {
-        final var info = world.getGameWorldInfo();
-        final var canvas = drawer.getClipBounds();
-        final GameObject player = WORLD_UTIL.getPresentObject(objectId.get(0), world).get();
-        final Rectangle playerPos = ALGORITHMS.multiply(player.getPosition(), FACTOR);
-        final Vector2D playerToBorder = new Vector2D(
-                (canvas.getWidth() - playerPos.getLenX()) / 2,
-                (canvas.getHeight() - playerPos.getLenY()) / 2);
-        final Vector2D topLeftCorner = new Vector2D(
-                playerToBorder.getX() - playerPos.getX(),
-                playerToBorder.getY() - playerPos.getY());
+        // TODO multiple area subdivision
+        final var area = drawer.getClip().getBounds();
+        draw(new Rectangle(0, 0, area.getWidth(), area.getHeight()), drawer, world, objectId.get(0));
+    }
 
+    public void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final int objectId) {
+        final GameObject object = WORLD_UTIL.getPresentObject(objectId, world).get();
+        final Rectangle objectPos = ALGORITHMS.multiply(object.getPosition(), FACTOR);
+        final double objectToBorderOriz = (drawArea.getLenX() - objectPos.getLenX()) / 2;
+        final double objectToBorderVert = (drawArea.getLenY() - objectPos.getLenY()) / 2;
+        final double leftCorner = objectToBorderOriz - objectPos.getX();
+        final double topCorner = objectToBorderVert - objectPos.getY();
         WORLD_UTIL.getPresentObjects(world).forEach(obj -> {
-            final int x = (int) (FACTOR * (obj.getPosition().getX() - info.getWorldBounds().getX()) + topLeftCorner.getX());
-            final int y = (int) (FACTOR * (obj.getPosition().getY() - info.getWorldBounds().getY()) + topLeftCorner.getY());
+            final int x = (int) (FACTOR * (obj.getPosition().getX()) + leftCorner + drawArea.getX());
+            final int y = (int) (FACTOR * (obj.getPosition().getY()) + topCorner + drawArea.getY());
             final int lenX = (int) (FACTOR * obj.getPosition().getLenX());
             final int lenY = (int) (FACTOR * obj.getPosition().getLenY());
             final Image image = this.imageLoader.loadImage(obj.getObjectType().getPath(), lenX, lenY);
