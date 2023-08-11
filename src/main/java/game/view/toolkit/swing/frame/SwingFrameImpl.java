@@ -2,14 +2,24 @@ package game.view.toolkit.swing.frame;
 
 import java.awt.Toolkit;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 import javax.swing.JFrame;
 
+import game.controller.engine.GameEngine;
+import game.controller.engine.GameEngineImpl;
+import game.controller.maploader.MapLoader;
+import game.controller.maploader.MapLoaderImpl;
+import game.model.entity.GameWorld;
+import game.model.entity.GameWorldLevel;
 import game.view.toolkit.swing.panel.SwingPanel;
 import game.view.toolkit.swing.window.SwingWindow;
 
 public class SwingFrameImpl extends JFrame implements SwingFrame {
     private static final long serialVersionUID = -1492508066498442465L;
+    private static final GameEngine ENGINE = new GameEngineImpl();
+    private static final MapLoader MAP_LOADER = new MapLoaderImpl();
+    private transient Optional<GameWorld> currentWorld = Optional.empty();
     private transient Optional<SwingPanel> panel = Optional.empty();
     private transient Optional<SwingWindow> window = Optional.empty();
 
@@ -63,6 +73,21 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
     @Override
     public void setSwingWindow(final SwingWindow swingWindow) {
         this.window = Optional.ofNullable(swingWindow);
+    }
+
+    @Override
+    public GameWorld getCurrentWorld() {
+        return this.currentWorld.get();
+    }
+
+    @Override
+    public void actOnGameEngine(final Consumer<GameEngine> engineAction) {
+        engineAction.accept(ENGINE);
+    }
+
+    @Override
+    public void loadMap(final GameWorldLevel level) {
+        this.currentWorld = Optional.ofNullable(MAP_LOADER.loadWorld(level.getPath()));
     }
 
 }

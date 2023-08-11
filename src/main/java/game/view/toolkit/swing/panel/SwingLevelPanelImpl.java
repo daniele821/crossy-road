@@ -11,26 +11,27 @@ import game.utility.Pair;
 
 public class SwingLevelPanelImpl extends SwingPanelImpl implements SwingLevelPanel {
     private static final long serialVersionUID = 2115458124524211780L;
-    private final List<Pair<GameWorldLevel, JButton>> levelButtons = new ArrayList<>();
-    private final JButton quitButton = new JButton("QUIT");
+    private static final List<Pair<GameWorldLevel, JButton>> LEVEL_BUTTONS = new ArrayList<>();
+    private static final JButton QUIT_BUTTON = new JButton("QUIT");
 
     @Override
     public void start() {
         super.start();
 
-        this.quitButton.addActionListener(e -> getSwingFrame().closeApplication());
-        getJPanel().add(this.quitButton);
+        QUIT_BUTTON.addActionListener(e -> getSwingFrame().closeApplication());
+        getJPanel().add(QUIT_BUTTON);
 
         Arrays.asList(GameWorldLevel.values()).stream()
                 .map(level -> new Pair<>(level, new JButton(level.getLevelName())))
                 .peek(this::addActionListener)
-                .peek(this.levelButtons::add)
+                .peek(LEVEL_BUTTONS::add)
                 .map(Pair::getB)
                 .forEach(getJPanel()::add);
     }
 
     private void addActionListener(final Pair<GameWorldLevel, JButton> pair) {
-        // TODO
+        throw new UnsupportedOperationException(pair.toString());
+        // TODO implementation
     }
 
 }
