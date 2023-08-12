@@ -17,11 +17,7 @@ public class PlayerCamera implements Camera {
     private static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
     private static final Algorithms ALGORITHMS = new Algorithms();
     private final ImageBufferedLoader imageLoader = new ImageBufferedLoaderImpl();
-    private final double factor;
-
-    public PlayerCamera(final double factor) {
-        this.factor = factor;
-    }
+    private final double factor = 10;
 
     @Override
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D, final GameWorld world, final int objectId) {
