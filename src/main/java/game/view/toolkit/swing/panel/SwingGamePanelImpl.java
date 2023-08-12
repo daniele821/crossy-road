@@ -1,10 +1,8 @@
 package game.view.toolkit.swing.panel;
 
 import java.awt.Graphics;
-import java.util.List;
 
 import game.controller.engine.GameEngine;
-import game.view.toolkit.swing.camera.VerticalCameraLayout;
 
 public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel {
     private static final long serialVersionUID = 2115458124524211780L;
@@ -26,7 +24,6 @@ public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel
     @Override
     protected void paintComponent(final Graphics drawer) {
         super.paintComponent(drawer);
-        new VerticalCameraLayout().draw(drawer, getSwingFrame().getCurrentWorld(), List.of(31));
         // TODO draw game
     }
 

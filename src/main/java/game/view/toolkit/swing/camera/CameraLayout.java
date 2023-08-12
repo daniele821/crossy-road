@@ -6,5 +6,5 @@ import java.util.List;
 import game.model.entity.GameWorld;
 
 public interface CameraLayout {
-    void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId);
+    void draw(Graphics drawer, GameWorld world, List<Integer> objectId);
 }
