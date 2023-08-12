@@ -9,5 +9,5 @@ import game.utility.Rectangle;
 public interface Camera {
     void draw(Rectangle drawArea, Graphics2D drawer2D, GameWorld world, int objectId);
 
-    void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final int objectId);
+    void draw(Rectangle drawArea, Graphics drawer, GameWorld world, int objectId);
 }

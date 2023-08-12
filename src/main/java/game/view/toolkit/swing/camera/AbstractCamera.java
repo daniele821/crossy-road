@@ -7,6 +7,7 @@ import game.model.entity.GameWorld;
 import game.utility.Rectangle;
 
 public abstract class AbstractCamera implements Camera {
+    @Override
     public void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final int objectId) {
         if (!(drawer instanceof Graphics2D)) {
             throw new IllegalStateException("cannot cast from Graphics to Graphics2D");
