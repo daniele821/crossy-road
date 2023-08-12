@@ -13,7 +13,7 @@ import game.utility.Rectangle;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoader;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoaderImpl;
 
-public class PlayerCamera extends AbstractCamera {
+public class ScalerCamera extends AbstractCamera {
     // 1: fix white lines, 0: precise image size
     private static final int INCREASE_IMAGE_SIZE_BY = 1;
     private static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
