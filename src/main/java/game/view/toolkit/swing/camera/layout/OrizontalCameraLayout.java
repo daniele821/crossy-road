@@ -10,13 +10,16 @@ import game.view.toolkit.swing.camera.Camera;
 import game.view.toolkit.swing.camera.PlayerCamera;
 
 public class OrizontalCameraLayout implements CameraLayout {
-    private static final Camera CAMERA = new PlayerCamera(8);
+    private static final Camera CAMERA = new PlayerCamera(5);
 
     @Override
     public void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {
-        final var height = drawer.getClipBounds().getHeight() / objectId.size();
-        IntStream.range(0, objectId.size()).forEach(i -> {
-            CAMERA.draw(new Rectangle(0, i * height, 0, (i + 1) * height), drawer, world, objectId.get(i));
+        final var quantity = objectId.size();
+        final var heightTot = drawer.getClipBounds().getHeight();
+        final var widthTot = drawer.getClipBounds().getWidth();
+        final var height = heightTot / quantity;
+        IntStream.range(0, quantity).forEach(i -> {
+            CAMERA.draw(new Rectangle(0, i * height, widthTot, height), drawer, world, objectId.get(i));
         });
     }
 
