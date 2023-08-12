@@ -1,6 +1,6 @@
 package game.view.toolkit.swing.camera;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 
 import game.model.entity.GameWorld;
@@ -16,7 +16,7 @@ public class BasicCamera implements Camera {
     private final ImageBufferedLoader imageLoader = new ImageBufferedLoaderImpl();
 
     @Override
-    public void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final int objectId) {
+    public void draw(final Rectangle drawArea, final Graphics2D drawer2D, final GameWorld world, final int objectId) {
         WORLD_UTIL.getPresentObjects(world).forEach(obj -> {
             final var info = world.getGameWorldInfo();
             final int x = (int) (FACTOR * (obj.getPosition().getX() - info.getWorldBounds().getX()));
@@ -24,7 +24,7 @@ public class BasicCamera implements Camera {
             final int lenX = (int) (FACTOR * obj.getPosition().getLenX());
             final int lenY = (int) (FACTOR * obj.getPosition().getLenY());
             final Image image = this.imageLoader.loadImage(obj.getObjectType().getPath(), lenX, lenY);
-            drawer.drawImage(image, x, y, null);
+            drawer2D.drawImage(image, (int) (x + drawArea.getX()), (int) (y + drawArea.getY()), null);
         });
     }
 

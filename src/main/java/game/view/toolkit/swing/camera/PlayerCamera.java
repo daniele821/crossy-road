@@ -1,6 +1,5 @@
 package game.view.toolkit.swing.camera;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
@@ -20,19 +19,14 @@ public class PlayerCamera implements Camera {
     private final ImageBufferedLoader imageLoader = new ImageBufferedLoaderImpl();
 
     @Override
-    public void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final int objectId) {
-        final Graphics2D drawer2D = (Graphics2D) drawer;
+    public void draw(final Rectangle drawArea, final Graphics2D drawer2D, final GameWorld world, final int objectId) {
         final GameObject object = WORLD_UTIL.getPresentObject(objectId, world).get();
         final Rectangle objectPos = ALGORITHMS.multiply(object.getPosition(), FACTOR);
         final double objectToBorderOriz = (drawArea.getLenX() - objectPos.getLenX()) / 2;
         final double objectToBorderVert = (drawArea.getLenY() - objectPos.getLenY()) / 2;
         final double leftCorner = objectToBorderOriz - objectPos.getX();
         final double topCorner = objectToBorderVert - objectPos.getY();
-        final int drawAreaX = (int) drawArea.getX();
-        final int drawAreaY = (int) drawArea.getY();
-        final int drawAreaLenX = (int) drawArea.getLenX();
-        final int drawAreaLenY = (int) drawArea.getLenY();
-        drawer2D.clip(new java.awt.Rectangle(drawAreaX, drawAreaY, drawAreaLenX, drawAreaLenY));
+        
         WORLD_UTIL.getPresentObjects(world).forEach(obj -> {
             final int x = (int) (FACTOR * (obj.getPosition().getX()) + leftCorner + drawArea.getX());
             final int y = (int) (FACTOR * (obj.getPosition().getY()) + topCorner + drawArea.getY());
