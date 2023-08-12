@@ -1,4 +1,4 @@
-package game.view.toolkit.swing.camera.layout;
+package game.view.toolkit.swing.camera;
 
 import java.awt.Graphics;
 import java.util.List;
