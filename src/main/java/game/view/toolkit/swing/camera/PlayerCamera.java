@@ -12,7 +12,7 @@ import game.utility.Rectangle;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoader;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoaderImpl;
 
-public class PlayerCamera implements Camera {
+public class PlayerCamera extends AbstractCamera {
     private static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
     private static final Algorithms ALGORITHMS = new Algorithms();
     private final ImageBufferedLoader imageLoader = new ImageBufferedLoaderImpl();
