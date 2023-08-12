@@ -17,7 +17,6 @@ public class PlayerCamera implements Camera {
     private static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
     private static final Algorithms ALGORITHMS = new Algorithms();
     private final ImageBufferedLoader imageLoader = new ImageBufferedLoaderImpl();
-    private final double factor = 10;
 
     @Override
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D, final GameWorld world, final int objectId) {
@@ -27,7 +26,7 @@ public class PlayerCamera implements Camera {
         final double heightCanvas = drawArea.getLenY();
         final double widthCanvas = drawArea.getLenX();
         final double factor = Double.max(heightCanvas / heightMap, widthCanvas / widthMap);
-        draw(drawArea, drawer2D, world, objectId, Double.max(this.factor, factor));
+        draw(drawArea, drawer2D, world, objectId, factor);
     }
 
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D,
