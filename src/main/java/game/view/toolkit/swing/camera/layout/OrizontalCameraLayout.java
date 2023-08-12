@@ -14,11 +14,9 @@ public class OrizontalCameraLayout implements CameraLayout {
 
     @Override
     public void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {
-        final var quantity = objectId.size();
-        final var heightTot = drawer.getClipBounds().getHeight();
-        final var height = heightTot / quantity;
-        IntStream.range(0, quantity).forEach(i -> {
-            CAMERA.draw(new Rectangle(0, i * height, 0, (i + 1) * height), drawer, world, i);
+        final var height = drawer.getClipBounds().getHeight() / objectId.size();
+        IntStream.range(0, objectId.size()).forEach(i -> {
+            CAMERA.draw(new Rectangle(0, i * height, 0, (i + 1) * height), drawer, world, objectId.get(i));
         });
     }
 
