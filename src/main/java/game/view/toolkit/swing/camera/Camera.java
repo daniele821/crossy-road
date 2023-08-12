@@ -9,7 +9,10 @@ import game.utility.Rectangle;
 public interface Camera {
     void draw(Rectangle drawArea, Graphics2D drawer2D, GameWorld world, int objectId);
 
-    default void draw(Rectangle drawArea, Graphics drawer, GameWorld world, int objectId) {
+    default void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final int objectId) {
+        if (!(drawer instanceof Graphics2D)) {
+            throw new IllegalStateException("cannot cast from Graphics to Graphics2D");
+        }
         final Graphics2D drawer2D = (Graphics2D) drawer;
         drawer2D.clip(new java.awt.Rectangle((int) drawArea.getX(), (int) drawArea.getY(),
                 (int) drawArea.getLenX(), (int) drawArea.getLenY()));

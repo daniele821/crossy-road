@@ -26,7 +26,7 @@ public class PlayerCamera implements Camera {
         final double objectToBorderVert = (drawArea.getLenY() - objectPos.getLenY()) / 2;
         final double leftCorner = objectToBorderOriz - objectPos.getX();
         final double topCorner = objectToBorderVert - objectPos.getY();
-        
+
         WORLD_UTIL.getPresentObjects(world).forEach(obj -> {
             final int x = (int) (FACTOR * (obj.getPosition().getX()) + leftCorner + drawArea.getX());
             final int y = (int) (FACTOR * (obj.getPosition().getY()) + topCorner + drawArea.getY());
