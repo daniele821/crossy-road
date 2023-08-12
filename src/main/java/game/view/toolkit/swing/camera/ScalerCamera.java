@@ -13,6 +13,20 @@ import game.utility.Rectangle;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoader;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoaderImpl;
 
+/**
+ * <p>
+ * Camera scales.
+ * </p>
+ * <p>
+ * Scaling is based on space available to always show the most map possible.
+ * </p>
+ * <p>
+ * On canvas size increase map is zommed out and viceversa.
+ * </p>
+ * <p>
+ * It is not possible to set the maximum rectangle dimension to draw.
+ * </p>
+ */
 public class ScalerCamera extends AbstractCamera {
     // 1: fix white lines, 0: precise image size
     private static final int INCREASE_IMAGE_SIZE_BY = 1;
