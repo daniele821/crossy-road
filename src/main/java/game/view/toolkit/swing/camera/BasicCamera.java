@@ -2,11 +2,11 @@ package game.view.toolkit.swing.camera;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.List;
 
 import game.model.entity.GameWorld;
 import game.model.entity.util.GameWorldUtil;
 import game.model.entity.util.GameWorldUtilImpl;
+import game.utility.Rectangle;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoader;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoaderImpl;
 
@@ -16,7 +16,7 @@ public class BasicCamera implements Camera {
     private final ImageBufferedLoader imageLoader = new ImageBufferedLoaderImpl();
 
     @Override
-    public void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {
+    public void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final int objectId) {
         WORLD_UTIL.getPresentObjects(world).forEach(obj -> {
             final var info = world.getGameWorldInfo();
             final int x = (int) (FACTOR * (obj.getPosition().getX() - info.getWorldBounds().getX()));

@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.util.Optional;
 
 import game.controller.engine.GameEngine;
+import game.utility.Rectangle;
 import game.view.toolkit.swing.camera.Camera;
 import game.view.toolkit.swing.camera.PlayerCamera;
 
@@ -33,7 +34,11 @@ public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel
     @Override
     protected void paintComponent(final Graphics drawer) {
         super.paintComponent(drawer);
-        this.camera.get().draw(drawer, getSwingFrame().getCurrentWorld(), null);
+        final var width = drawer.getClipBounds().getWidth();
+        final var height = drawer.getClipBounds().getHeight();
+        final var drawArea = new Rectangle(0, 0, width, height);
+        this.camera.get().draw(drawArea, drawer, getSwingFrame().getCurrentWorld(), 0);
+        // TODO
     }
 
 }

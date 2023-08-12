@@ -3,7 +3,6 @@ package game.view.toolkit.swing.camera;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.util.List;
 
 import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
@@ -21,16 +20,6 @@ public class PlayerCamera implements Camera {
     private final ImageBufferedLoader imageLoader = new ImageBufferedLoaderImpl();
 
     @Override
-    public void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {
-        // TODO multiple area subdivision
-        // TODO handle objectId
-        if (objectId == null || objectId.isEmpty()) {
-            return;
-        }
-        final var area = drawer.getClip().getBounds();
-        draw(new Rectangle(0, 0, area.getWidth(), area.getHeight()), drawer, world, 0);
-    }
-
     public void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final int objectId) {
         final Graphics2D drawer2D = (Graphics2D) drawer;
         final GameObject object = WORLD_UTIL.getPresentObject(objectId, world).get();
