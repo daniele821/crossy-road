@@ -14,6 +14,8 @@ import game.view.toolkit.swing.imageloader.ImageBufferedLoader;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoaderImpl;
 
 public class PlayerCamera implements Camera {
+    // 1: fix white lines, 0: precise image size
+    private static final int INCREASE_IMAGE_SIZE_BY = 1;
     private static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
     private static final Algorithms ALGORITHMS = new Algorithms();
     private final ImageBufferedLoader imageLoader = new ImageBufferedLoaderImpl();
@@ -62,8 +64,8 @@ public class PlayerCamera implements Camera {
         WORLD_UTIL.getPresentObjects(world).forEach(obj -> {
             final int x = (int) (factor * (obj.getPosition().getX()) + leftCorner + drawArea.getX() + offsetOriz);
             final int y = (int) (factor * (obj.getPosition().getY()) + topCorner + drawArea.getY() + offsetVert);
-            final int lenX = 1 + (int) (factor * obj.getPosition().getLenX());
-            final int lenY = 1 + (int) (factor * obj.getPosition().getLenY());
+            final int lenX = INCREASE_IMAGE_SIZE_BY + (int) (factor * obj.getPosition().getLenX());
+            final int lenY = INCREASE_IMAGE_SIZE_BY + (int) (factor * obj.getPosition().getLenY());
             final Image image = this.imageLoader.loadImage(obj.getObjectType().getPath(), lenX, lenY);
             drawer2D.drawImage(image, x, y, null);
         });
