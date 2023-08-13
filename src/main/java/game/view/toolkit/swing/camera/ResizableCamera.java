@@ -1,6 +1,7 @@
 package game.view.toolkit.swing.camera;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.util.Optional;
 
 import game.model.entity.GameObject;
@@ -34,6 +35,17 @@ public class ResizableCamera extends AbstractCamera {
         final double factor = calculateMinFactor(calculateMaxSizeCamera(world), drawArea);
         final Vector2D mapSize = calculateMapSize(drawArea, factor);
         final Rectangle mapArea = calculateMapArea(mapSize, world.getGameWorldInfo(), object.get());
+
+        WORLD_UTIL.getPresentObjects(world).stream()
+                .filter(obj -> ALGORITHMS.getIntersection(obj.getPosition(), mapArea).isPresent())
+                .forEach(obj -> {
+                    final int x = (int) ((factor * (obj.getPosition().getX() - mapArea.getX())) + drawArea.getX());
+                    final int y = (int) ((factor * (obj.getPosition().getY() - mapArea.getY())) + drawArea.getY());
+                    final int lenX = (int) (factor * obj.getPosition().getLenX()) + INCREASE_IMAGE_SIZE_BY;
+                    final int lenY = (int) (factor * obj.getPosition().getLenY()) + INCREASE_IMAGE_SIZE_BY;
+                    final Image image = IMAGE_LOADER.loadImage(obj.getObjectType().getPath(), lenX, lenY);
+                    drawer2d.drawImage(image, x, y, null);
+                });
     }
 
     private Vector2D calculateMaxSizeCamera(final GameWorld gameWorld) {
