@@ -8,7 +8,7 @@ import game.model.entity.GameWorld;
 import game.utility.Rectangle;
 
 public class OrizontalCameraLayout implements CameraLayout {
-    private static final Camera CAMERA = new CameraImpl();
+    private static final Camera CAMERA = new FullMapCamera();
 
     @Override
     public void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {

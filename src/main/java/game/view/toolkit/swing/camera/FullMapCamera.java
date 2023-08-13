@@ -8,7 +8,7 @@ import game.model.entity.GameWorld;
 import game.model.entity.GameWorldInfo;
 import game.utility.Rectangle;
 
-public class CameraImpl extends AbstractCamera {
+public class FullMapCamera extends AbstractCamera {
 
     @Override
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D, final GameWorld world, final int objectId) {
