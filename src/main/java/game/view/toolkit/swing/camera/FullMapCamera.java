@@ -12,16 +12,9 @@ public class FullMapCamera extends AbstractCamera {
 
     @Override
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D, final GameWorld world, final int objectId) {
-        draw(drawArea, drawer2D, world, objectId, calculateMinFactor(world, drawArea));
-    }
-
-    protected double calculateMinFactor(final GameWorld world, final Rectangle drawArea) {
-        final GameWorldInfo info = world.getGameWorldInfo();
-        final double heightMap = info.getWorldBounds().getLenY();
-        final double widthMap = info.getWorldBounds().getLenX();
-        final double heightCanvas = drawArea.getLenY();
-        final double widthCanvas = drawArea.getLenX();
-        return Double.max(heightCanvas / heightMap, widthCanvas / widthMap);
+        final Rectangle mapArea = world.getGameWorldInfo().getWorldBounds();
+        final double factor = calculateMinFactor(mapArea, drawArea);
+        draw(drawArea, drawer2D, world, objectId, factor);
     }
 
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D,
