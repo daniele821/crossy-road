@@ -6,12 +6,7 @@ import java.awt.Image;
 import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
 import game.model.entity.GameWorldInfo;
-import game.model.entity.util.GameWorldUtil;
-import game.model.entity.util.GameWorldUtilImpl;
-import game.utility.Algorithms;
 import game.utility.Rectangle;
-import game.view.toolkit.swing.imageloader.ImageBufferedLoader;
-import game.view.toolkit.swing.imageloader.ImageBufferedLoaderImpl;
 
 /**
  * <p>
@@ -28,11 +23,6 @@ import game.view.toolkit.swing.imageloader.ImageBufferedLoaderImpl;
  * </p>
  */
 public class ScalerCamera extends AbstractCamera {
-    // 1: fix white lines, 0: precise image size
-    private static final int INCREASE_IMAGE_SIZE_BY = 1;
-    private static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
-    private static final Algorithms ALGORITHMS = new Algorithms();
-    private final ImageBufferedLoader imageLoader = new ImageBufferedLoaderImpl();
 
     @Override
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D, final GameWorld world, final int objectId) {
@@ -80,7 +70,7 @@ public class ScalerCamera extends AbstractCamera {
             final int y = (int) (factor * (obj.getPosition().getY()) + topCorner + drawArea.getY() + offsetVert);
             final int lenX = INCREASE_IMAGE_SIZE_BY + (int) (factor * obj.getPosition().getLenX());
             final int lenY = INCREASE_IMAGE_SIZE_BY + (int) (factor * obj.getPosition().getLenY());
-            final Image image = this.imageLoader.loadImage(obj.getObjectType().getPath(), lenX, lenY);
+            final Image image = IMAGE_LOADER.loadImage(obj.getObjectType().getPath(), lenX, lenY);
             drawer2D.drawImage(image, x, y, null);
         });
     }
