@@ -39,8 +39,8 @@ public class ResizableCamera extends AbstractCamera {
         WORLD_UTIL.getPresentObjects(world).stream()
                 .filter(obj -> ALGORITHMS.getIntersection(obj.getPosition(), mapArea).isPresent())
                 .forEach(obj -> {
-                    final int x = (int) ((factor * (obj.getPosition().getX() - mapArea.getX())) + drawArea.getX());
-                    final int y = (int) ((factor * (obj.getPosition().getY() - mapArea.getY())) + drawArea.getY());
+                    final int x = (int) (factor * (obj.getPosition().getX() - mapArea.getX()) + drawArea.getX());
+                    final int y = (int) (factor * (obj.getPosition().getY() - mapArea.getY()) + drawArea.getY());
                     final int lenX = (int) (factor * obj.getPosition().getLenX()) + INCREASE_IMAGE_SIZE_BY;
                     final int lenY = (int) (factor * obj.getPosition().getLenY()) + INCREASE_IMAGE_SIZE_BY;
                     final Image image = IMAGE_LOADER.loadImage(obj.getObjectType().getPath(), lenX, lenY);
