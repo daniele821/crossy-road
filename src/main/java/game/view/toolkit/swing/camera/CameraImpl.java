@@ -8,25 +8,20 @@ import game.model.entity.GameWorld;
 import game.model.entity.GameWorldInfo;
 import game.utility.Rectangle;
 
-/**
- * <p>
- * Camera scales.
- * </p>
- * <p>
- * Scaling is based on space available to always show the most map possible.
- * </p>
- * <p>
- * On canvas size increase map is zommed out and viceversa.
- * </p>
- * <p>
- * It is not possible to set the maximum rectangle dimension to draw.
- * </p>
- */
-public class ScalerCamera extends AbstractCamera {
+public class CameraImpl extends AbstractCamera {
 
     @Override
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D, final GameWorld world, final int objectId) {
         draw(drawArea, drawer2D, world, objectId, calculateMinFactor(world, drawArea));
+    }
+
+    protected double calculateMinFactor(final GameWorld world, final Rectangle drawArea) {
+        final GameWorldInfo info = world.getGameWorldInfo();
+        final double heightMap = info.getWorldBounds().getLenY();
+        final double widthMap = info.getWorldBounds().getLenX();
+        final double heightCanvas = drawArea.getLenY();
+        final double widthCanvas = drawArea.getLenX();
+        return Double.max(heightCanvas / heightMap, widthCanvas / widthMap);
     }
 
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D,

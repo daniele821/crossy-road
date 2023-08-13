@@ -8,7 +8,7 @@ import game.model.entity.GameWorld;
 import game.utility.Rectangle;
 
 public class VerticalCameraLayout implements CameraLayout {
-    private static final Camera CAMERA = new ScalerCamera();
+    private static final Camera CAMERA = new CameraImpl();
 
     @Override
     public void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {

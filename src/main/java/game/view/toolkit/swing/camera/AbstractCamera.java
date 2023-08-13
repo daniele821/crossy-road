@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import game.model.entity.GameWorld;
-import game.model.entity.GameWorldInfo;
 import game.model.entity.util.GameWorldUtil;
 import game.model.entity.util.GameWorldUtilImpl;
 import game.utility.Algorithms;
@@ -31,12 +30,4 @@ public abstract class AbstractCamera implements Camera {
         drawer2D.setClip(null);
     }
 
-    protected double calculateMinFactor(final GameWorld world, final Rectangle drawArea) {
-        final GameWorldInfo info = world.getGameWorldInfo();
-        final double heightMap = info.getWorldBounds().getLenY();
-        final double widthMap = info.getWorldBounds().getLenX();
-        final double heightCanvas = drawArea.getLenY();
-        final double widthCanvas = drawArea.getLenX();
-        return Double.max(heightCanvas / heightMap, widthCanvas / widthMap);
-    }
 }
