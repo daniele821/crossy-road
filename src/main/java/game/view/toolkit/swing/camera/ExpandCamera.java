@@ -21,9 +21,19 @@ import game.utility.Rectangle;
  * </p>
  */
 public class ExpandCamera extends AbstractCamera {
+    private final double minFactor;
+
+    public ExpandCamera(final double minFactor) {
+        this.minFactor = minFactor;
+    }
 
     @Override
-    public void draw(final Rectangle drawArea, final Graphics2D drawer2d, final GameWorld world, final int objectId) {
+    public void draw(final Rectangle drawArea, final Graphics2D drawer2D, final GameWorld world, final int objectId) {
+        draw(drawArea, drawer2D, world, objectId, Double.max(this.minFactor, calculateMinFactor(world, drawArea)));
+    }
+
+    public void draw(final Rectangle drawArea, final Graphics2D drawer2D,
+            final GameWorld world, final int objectId, final double factor) {
 
     }
 

@@ -26,13 +26,7 @@ public class ScalerCamera extends AbstractCamera {
 
     @Override
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D, final GameWorld world, final int objectId) {
-        final GameWorldInfo info = world.getGameWorldInfo();
-        final double heightMap = info.getWorldBounds().getLenY();
-        final double widthMap = info.getWorldBounds().getLenX();
-        final double heightCanvas = drawArea.getLenY();
-        final double widthCanvas = drawArea.getLenX();
-        final double factor = Double.max(heightCanvas / heightMap, widthCanvas / widthMap);
-        draw(drawArea, drawer2D, world, objectId, factor);
+        draw(drawArea, drawer2D, world, objectId, calculateMinFactor(world, drawArea));
     }
 
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D,
