@@ -8,6 +8,8 @@ import game.model.entity.GameWorld;
 import game.model.entity.GameWorldInfo;
 import game.utility.Rectangle;
 
+/** @deprecated: use ResizableCamera instead */
+@Deprecated
 public class FullMapCamera extends AbstractCamera {
 
     @Override
