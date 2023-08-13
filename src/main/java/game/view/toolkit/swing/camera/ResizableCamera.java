@@ -26,15 +26,11 @@ public class ResizableCamera extends AbstractCamera {
     }
 
     @Override
-    public void draw(final Rectangle drawArea, final Graphics2D drawer2d, final GameWorld world, final int objectId) {
-        final Optional<GameObject> object = WORLD_UTIL.getPresentObject(objectId, world);
-        if (object.isEmpty()) {
-            return;
-        }
-
+    public void draw(final Rectangle drawArea, final Graphics2D drawer2d,
+            final GameWorld world, final GameObject object) {
         final double factor = calculateMinFactor(calculateMaxSizeCamera(world), drawArea);
         final Vector2D mapSize = calculateMapSize(drawArea, factor);
-        final Rectangle mapArea = calculateMapArea(mapSize, world.getGameWorldInfo(), object.get());
+        final Rectangle mapArea = calculateMapArea(mapSize, world.getGameWorldInfo(), object);
 
         WORLD_UTIL.getPresentObjects(world).stream()
                 .filter(obj -> ALGORITHMS.getIntersection(obj.getPosition(), mapArea).isPresent())

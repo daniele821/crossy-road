@@ -13,18 +13,18 @@ import game.utility.Rectangle;
 public class FullMapCamera extends AbstractCamera {
 
     @Override
-    public void draw(final Rectangle drawArea, final Graphics2D drawer2D, final GameWorld world, final int objectId) {
+    public void draw(final Rectangle drawArea, final Graphics2D drawer2D,
+            final GameWorld world, final GameObject object) {
         final Rectangle mapArea = world.getGameWorldInfo().getWorldBounds();
         final double factor = calculateMinFactor(mapArea, drawArea);
-        draw(drawArea, drawer2D, world, objectId, factor);
+        draw(drawArea, drawer2D, world, object, factor);
     }
 
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D,
-            final GameWorld world, final int objectId, final double factor) {
+            final GameWorld world, final GameObject object, final double factor) {
 
         // center object
         final GameWorldInfo info = world.getGameWorldInfo();
-        final GameObject object = WORLD_UTIL.getPresentObject(objectId, world).get();
         final Rectangle objectPos = ALGORITHMS.multiply(object.getPosition(), factor);
         final double objectToBorderOriz = (drawArea.getLenX() - objectPos.getLenX()) / 2;
         final double objectToBorderVert = (drawArea.getLenY() - objectPos.getLenY()) / 2;

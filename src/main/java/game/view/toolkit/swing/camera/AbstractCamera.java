@@ -3,6 +3,7 @@ package game.view.toolkit.swing.camera;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
 import game.model.entity.util.GameWorldUtil;
 import game.model.entity.util.GameWorldUtilImpl;
@@ -19,15 +20,17 @@ public abstract class AbstractCamera implements Camera {
     protected static final Algorithms ALGORITHMS = new Algorithms();
     protected static final ImageBufferedLoader IMAGE_LOADER = new ImageBufferedLoaderImpl();
 
+    protected abstract void draw(Rectangle drawArea, Graphics2D drawer2D, GameWorld world, GameObject object);
+
     @Override
-    public void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final int objectId) {
+    public void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final GameObject object) {
         if (!(drawer instanceof Graphics2D)) {
             throw new IllegalStateException("cannot cast from Graphics to Graphics2D");
         }
         final Graphics2D drawer2D = (Graphics2D) drawer;
         drawer2D.clip(new java.awt.Rectangle((int) drawArea.getX(), (int) drawArea.getY(),
                 (int) drawArea.getLenX(), (int) drawArea.getLenY()));
-        draw(drawArea, drawer2D, world, objectId);
+        draw(drawArea, drawer2D, world, object);
         drawer2D.setClip(null);
     }
 
