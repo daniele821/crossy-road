@@ -10,6 +10,8 @@ import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
 import game.utility.Rectangle;
 
+/** @deprecated: use TilingCameraLayout */
+@Deprecated
 public class SimpleCameraLayout extends AbstractCameraLayout {
     private final Type type;
 
