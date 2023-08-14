@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
 import game.model.entity.GameObject;
@@ -68,6 +69,12 @@ public abstract class AbstractCameraLayout implements CameraLayout {
         return IntStream.range(0, n)
                 .mapToObj(i -> new Rectangle(area.getX(), height * i + (i + 1) * bw, area.getLenX(), height))
                 .toList();
+    }
+
+    protected List<Rectangle> splitVertOrizWithBorder(final Rectangle area, final int n) {
+        final Supplier<List<Rectangle>> orizontal = () -> splitOrizontallyWithBorders(area, n);
+        final Supplier<List<Rectangle>> vertical = () -> splitVerticallyWithBorders(area, n);
+        return (area.getLenX() > area.getLenY()) ? orizontal.get() : vertical.get();
     }
 
     protected List<GameObject> getPresentObjects(final List<Integer> objectId, final GameWorld world) {
