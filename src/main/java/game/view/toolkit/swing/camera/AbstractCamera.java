@@ -23,7 +23,7 @@ public abstract class AbstractCamera implements Camera {
     protected abstract void draw(Rectangle drawArea, Graphics2D drawer2D, GameWorld world, GameObject object);
 
     @Override
-    public void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final GameObject object) {
+    public final void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final GameObject object) {
         if (!(drawer instanceof Graphics2D)) {
             throw new IllegalStateException("cannot cast from Graphics to Graphics2D");
         }
