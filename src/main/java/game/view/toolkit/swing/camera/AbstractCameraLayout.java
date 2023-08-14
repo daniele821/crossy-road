@@ -74,7 +74,7 @@ public abstract class AbstractCameraLayout implements CameraLayout {
     protected List<Rectangle> splitVertOrizWithBorder(final Rectangle area, final int n) {
         final Supplier<List<Rectangle>> orizontal = () -> splitOrizontallyWithBorders(area, n);
         final Supplier<List<Rectangle>> vertical = () -> splitVerticallyWithBorders(area, n);
-        return (area.getLenX() > area.getLenY()) ? orizontal.get() : vertical.get();
+        return (area.getLenX() > area.getLenY()) ? vertical.get() : orizontal.get();
     }
 
     protected List<GameObject> getPresentObjects(final List<Integer> objectId, final GameWorld world) {
