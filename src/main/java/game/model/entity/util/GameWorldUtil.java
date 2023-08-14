@@ -23,4 +23,8 @@ public interface GameWorldUtil {
     Optional<GameObject> modifyObject(int objectId, GameWorld world);
 
     Optional<GameObject> modifyPresentObject(int objectId, GameWorld world);
+
+    int getSize(GameWorld world);
+
+    boolean isObjectIdValid(int objectId, GameWorld world);
 }

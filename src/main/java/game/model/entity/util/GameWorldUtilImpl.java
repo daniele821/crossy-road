@@ -12,7 +12,7 @@ public class GameWorldUtilImpl implements GameWorldUtil {
 
     @Override
     public List<Pair<Integer, GameObject>> getObjectsWithId(final GameWorld world) {
-        return IntStream.range(0, world.getObjects().size())
+        return IntStream.range(0, getSize(world))
                 .mapToObj(i -> new Pair<>(i, world.getObjects().get(i)))
                 .toList();
     }
@@ -34,7 +34,7 @@ public class GameWorldUtilImpl implements GameWorldUtil {
 
     @Override
     public Optional<GameObject> getObject(final int objectId, final GameWorld world) {
-        if (objectId < 0 || objectId >= world.getObjects().size()) {
+        if (!isObjectIdValid(objectId, world)) {
             return Optional.empty();
         }
         return Optional.ofNullable(world.getObjects().get(objectId));
@@ -47,7 +47,7 @@ public class GameWorldUtilImpl implements GameWorldUtil {
 
     @Override
     public Optional<GameObject> modifyObject(final int objectId, final GameWorld world) {
-        if (objectId < 0 || objectId >= world.getObjects().size()) {
+        if (!isObjectIdValid(objectId, world)) {
             return Optional.empty();
         }
         return Optional.ofNullable(world.modifyObjects().get(objectId));
@@ -56,6 +56,16 @@ public class GameWorldUtilImpl implements GameWorldUtil {
     @Override
     public Optional<GameObject> modifyPresentObject(final int objectId, final GameWorld world) {
         return modifyObject(objectId, world).filter(GameObject::isPresent);
+    }
+
+    @Override
+    public int getSize(final GameWorld world) {
+        return world.getObjects().size();
+    }
+
+    @Override
+    public boolean isObjectIdValid(final int objectId, final GameWorld world) {
+        return objectId >= 0 && objectId < getSize(world);
     }
 
 }
