@@ -36,8 +36,8 @@ public class SimpleCameraLayout extends AbstractCameraLayout {
         // split and draw (template method)
         IntStream.range(0, objects.size()).forEach(i -> {
             final var offset = (i + 1) * bw;
-            final var orizRect = new Rectangle(bw, (height * i) + offset, widthTot - 2 * bw, height);
-            final var vertRect = new Rectangle((width * i) + offset, bw, width, heightTot - 2 * bw);
+            final var orizRect = new Rectangle(bw, height * i + offset, widthTot - 2 * bw, height);
+            final var vertRect = new Rectangle(width * i + offset, bw, width, heightTot - 2 * bw);
             final var rectangle = switch (this.type) {
                 case VERTICAL -> vertRect;
                 case ORIZONTAL -> orizRect;

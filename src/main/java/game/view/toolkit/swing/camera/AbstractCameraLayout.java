@@ -22,7 +22,7 @@ public abstract class AbstractCameraLayout implements CameraLayout {
     protected static final Color BORDER_COLOR = Color.DARK_GRAY;
     protected static final int BORDER_WIDTH = 10;
 
-    protected abstract void draw(final Graphics drawer, final List<GameObject> objects, final GameWorld world);
+    protected abstract void draw(Graphics drawer, List<GameObject> objects, GameWorld world);
 
     @Override
     public final void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {
