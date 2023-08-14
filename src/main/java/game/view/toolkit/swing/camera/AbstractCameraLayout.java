@@ -54,8 +54,9 @@ public abstract class AbstractCameraLayout implements CameraLayout {
         final double widthTot = area.getLenX();
         final double widthTotBorder = widthTot - (n - 1) * BORDER_WIDTH;
         final double width = widthTotBorder / n;
+        final double bw = BORDER_WIDTH;
         return IntStream.range(0, n)
-                .mapToObj(i -> new Rectangle(width * i, area.getY(), width, area.getLenY()))
+                .mapToObj(i -> new Rectangle(width * i + (i + 1) * bw, area.getY(), width, area.getLenY()))
                 .toList();
     }
 
@@ -63,8 +64,9 @@ public abstract class AbstractCameraLayout implements CameraLayout {
         final double heightTot = area.getLenY();
         final double heightTotBorder = heightTot - (n - 1) * BORDER_WIDTH;
         final double height = heightTotBorder / n;
+        final double bw = BORDER_WIDTH;
         return IntStream.range(0, n)
-                .mapToObj(i -> new Rectangle(area.getX(), height * i, area.getLenX(), height))
+                .mapToObj(i -> new Rectangle(area.getX(), height * i + (i + 1) * bw, area.getLenX(), height))
                 .toList();
     }
 
