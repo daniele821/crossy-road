@@ -27,9 +27,14 @@ public abstract class AbstractCamera implements Camera {
         if (!(drawer instanceof Graphics2D)) {
             throw new IllegalStateException("cannot cast from Graphics to Graphics2D");
         }
+
         final Graphics2D drawer2D = (Graphics2D) drawer;
-        drawer2D.clip(new java.awt.Rectangle((int) drawArea.getX(), (int) drawArea.getY(),
-                (int) drawArea.getLenX(), (int) drawArea.getLenY()));
+        final int x = (int) drawArea.getX();
+        final int y = (int) drawArea.getY();
+        final int lenX = (int) drawArea.getLenX();
+        final int lenY = (int) drawArea.getLenY();
+
+        drawer2D.clip(new java.awt.Rectangle(x, y, lenX, lenY));
         draw(drawArea, drawer2D, world, object);
         drawer2D.setClip(null);
     }
