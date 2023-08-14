@@ -1,5 +1,6 @@
 package game.view.toolkit.swing.camera;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.List;
 import java.util.Optional;
@@ -26,21 +27,30 @@ public class SimpleCameraLayout extends AbstractCameraLayout {
     public void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {
         super.draw(drawer, world, objectId);
 
+        // variables
         final List<GameObject> presentObject = objectId.stream()
                 .map(id -> WORLD_UTIL.getPresentObject(id, world))
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .toList();
-        if (presentObject.isEmpty()) {
-            return;
-        }
+        final double bw = BORDER_WIDTH;
         final double widthTot = drawer.getClipBounds().getWidth();
         final double heightTot = drawer.getClipBounds().getHeight();
-        final double width = widthTot / presentObject.size();
-        final double height = heightTot / presentObject.size();
+        final double widthTotBorder = widthTot - (BORDER_WIDTH * (presentObject.size() + 1));
+        final double heightTotBorder = heightTot - (BORDER_WIDTH * (presentObject.size() + 1));
+        final double width = widthTotBorder / presentObject.size();
+        final double height = heightTotBorder / presentObject.size();
+
+        // set background color
+        final Color oldColor = drawer.getColor();
+        drawer.setColor(BORDER_COLOR);
+        drawer.fillRect(0, 0, (int) widthTot, (int) heightTot);
+
+        // split and draw (template method)
         IntStream.range(0, presentObject.size()).forEach(i -> {
-            final var orizRect = new Rectangle(0, height * i, widthTot, height);
-            final var vertRect = new Rectangle(width * i, 0, width, heightTot);
+            final var offset = (i + 1) * bw;
+            final var orizRect = new Rectangle(bw, (height * i) + offset, widthTot - 2 * bw, height);
+            final var vertRect = new Rectangle((width * i) + offset, bw, width, heightTot - 2 * bw);
             final var rectangle = switch (this.type) {
                 case VERTICAL -> vertRect;
                 case ORIZONTAL -> orizRect;
@@ -49,5 +59,8 @@ public class SimpleCameraLayout extends AbstractCameraLayout {
             };
             CAMERA.draw(rectangle, drawer, world, presentObject.get(i));
         });
+
+        // restore color
+        drawer.setColor(oldColor);
     }
 }
