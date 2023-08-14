@@ -12,10 +12,12 @@ import game.model.entity.util.GameWorldUtil;
 import game.model.entity.util.GameWorldUtilImpl;
 import game.utility.Algorithms;
 import game.utility.Rectangle;
+import game.view.toolkit.swing.utility.SwingAlgorithms;
 
 public abstract class AbstractCameraLayout implements CameraLayout {
     protected static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
     protected static final Algorithms ALGORITHMS = new Algorithms();
+    protected static final SwingAlgorithms SWING_UTIL = new SwingAlgorithms();
     protected static final Camera CAMERA = new ResizableCamera();
     protected static final Color BORDER_COLOR = Color.DARK_GRAY;
     protected static final int BORDER_WIDTH = 10;
