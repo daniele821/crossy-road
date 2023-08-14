@@ -13,7 +13,9 @@ public class ImageBufferedLoaderImpl extends ImageLoaderImpl implements ImageBuf
         final var image = loadImage(classPath);
 
         if (!this.images.containsKey(imageInfo)) {
-            this.images.put(imageInfo, image.getScaledInstance(x, y, Image.SCALE_SMOOTH));
+            if (x != 0 && y != 0){
+                this.images.put(imageInfo, image.getScaledInstance(x, y, Image.SCALE_SMOOTH));
+            }
         }
 
         return this.images.get(imageInfo);
