@@ -59,17 +59,33 @@ public class TilingCameraLayout extends AbstractCameraLayout {
         }
         final int emptyAreas = vert * oriz - n;
         final List<Integer> nAreas = new ArrayList<>();
-        IntStream.range(0, oriz).forEach(i -> {
-            nAreas.add(oriz - i <= emptyAreas ? vert - 1 : vert);
-        });
-        return getAreas(area, nAreas);
+        if (oriz > vert) {
+            IntStream.range(0, oriz).forEach(i -> {
+                nAreas.add(oriz - i <= emptyAreas ? vert - 1 : vert);
+            });
+            return getAreasOriz(area, nAreas);
+        } else {
+            IntStream.range(0, vert).forEach(i -> {
+                nAreas.add(vert - i <= emptyAreas ? oriz - 1 : oriz);
+            });
+            return getAreasVert(area, nAreas);
+        }
     }
 
-    private List<Rectangle> getAreas(final Rectangle area, final List<Integer> n) {
+    private List<Rectangle> getAreasOriz(final Rectangle area, final List<Integer> n) {
         final List<Rectangle> orizSplit = splitOrizontallyWithBorders(area, n.size());
         final List<Rectangle> res = new ArrayList<>();
         IntStream.range(0, n.size()).forEach(i -> {
             res.addAll(splitVerticallyWithBorders(orizSplit.get(i), n.get(i)));
+        });
+        return res;
+    }
+
+    private List<Rectangle> getAreasVert(final Rectangle area, final List<Integer> n) {
+        final List<Rectangle> vertSplit = splitVerticallyWithBorders(area, n.size());
+        final List<Rectangle> res = new ArrayList<>();
+        IntStream.range(0, n.size()).forEach(i -> {
+            res.addAll(splitOrizontallyWithBorders(vertSplit.get(i), n.get(i)));
         });
         return res;
     }
