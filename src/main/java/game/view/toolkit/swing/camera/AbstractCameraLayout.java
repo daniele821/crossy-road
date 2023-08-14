@@ -3,8 +3,10 @@ package game.view.toolkit.swing.camera;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.IntStream;
 
+import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
 import game.model.entity.util.GameWorldUtil;
 import game.model.entity.util.GameWorldUtilImpl;
@@ -18,11 +20,24 @@ public abstract class AbstractCameraLayout implements CameraLayout {
     protected static final Color BORDER_COLOR = Color.DARK_GRAY;
     protected static final int BORDER_WIDTH = 10;
 
+    protected abstract void draw(final Graphics drawer, final List<GameObject> objects, final GameWorld world);
+
     @Override
-    public void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {
+    public final void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {
         if (objectId.stream().filter(id -> !WORLD_UTIL.isObjectIdValid(id, world)).count() != 0) {
             throw new IllegalArgumentException("objectId (" + objectId + ") is not valid!");
         }
+
+        // set background color
+        final Color oldColor = drawer.getColor();
+        drawer.setColor(BORDER_COLOR);
+        drawer.fillRect(0, 0, (int) drawer.getClipBounds().getWidth(), (int) drawer.getClipBounds().getHeight());
+
+        // actual draw
+        draw(drawer, getPresentObjects(objectId, world), world);
+
+        // restore color
+        drawer.setColor(oldColor);
     }
 
     protected Rectangle removeBorders(final Rectangle area) {
@@ -48,6 +63,14 @@ public abstract class AbstractCameraLayout implements CameraLayout {
         final double height = heightTotBorder / n;
         return IntStream.range(0, n)
                 .mapToObj(i -> new Rectangle(area.getX(), height * i, area.getLenX(), height))
+                .toList();
+    }
+
+    protected List<GameObject> getPresentObjects(final List<Integer> objectId, final GameWorld world) {
+        return objectId.stream()
+                .map(id -> WORLD_UTIL.getPresentObject(id, world))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
                 .toList();
     }
 }
