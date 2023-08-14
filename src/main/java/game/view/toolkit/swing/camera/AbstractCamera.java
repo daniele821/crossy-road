@@ -12,11 +12,13 @@ import game.utility.Rectangle;
 import game.utility.Vector2D;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoader;
 import game.view.toolkit.swing.imageloader.ImageBufferedLoaderImpl;
+import game.view.toolkit.swing.utility.SwingAlgorithms;
 
 public abstract class AbstractCamera implements Camera {
     // 1: fix white lines, 0: precise image size
     protected static final int INCREASE_IMAGE_SIZE_BY = 1;
     protected static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
+    protected static final SwingAlgorithms SWING_UTIL = new SwingAlgorithms();
     protected static final Algorithms ALGORITHMS = new Algorithms();
     protected static final ImageBufferedLoader IMAGE_LOADER = new ImageBufferedLoaderImpl();
 
@@ -29,12 +31,8 @@ public abstract class AbstractCamera implements Camera {
         }
 
         final Graphics2D drawer2D = (Graphics2D) drawer;
-        final int x = (int) drawArea.getX();
-        final int y = (int) drawArea.getY();
-        final int lenX = (int) drawArea.getLenX();
-        final int lenY = (int) drawArea.getLenY();
 
-        drawer2D.clip(new java.awt.Rectangle(x, y, lenX, lenY));
+        drawer2D.clip(SWING_UTIL.convertRectangle(drawArea));
         draw(drawArea, drawer2D, world, object);
         drawer2D.setClip(null);
     }
