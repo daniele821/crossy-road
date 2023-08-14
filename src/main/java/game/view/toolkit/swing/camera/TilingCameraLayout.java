@@ -52,24 +52,19 @@ public class TilingCameraLayout extends AbstractCameraLayout {
         final int max = (n / min) * min < n ? n / min + 1 : n / min;
         final int vert = num1 > num2 ? min : max;
         final int oriz = num1 > num2 ? max : min;
-        if (!fillEmptyAreas) {
-            return splitOrizontallyWithBorders(area, oriz).stream()
-                    .flatMap(rect -> splitVerticallyWithBorders(rect, vert).stream())
-                    .toList();
-        }
+
         final int emptyAreas = vert * oriz - n;
         final List<Integer> nAreas = new ArrayList<>();
         if (oriz > vert) {
             IntStream.range(0, oriz).forEach(i -> {
-                nAreas.add(oriz - i <= emptyAreas ? vert - 1 : vert);
+                nAreas.add((oriz - i <= emptyAreas ? (fillEmptyAreas ? -1 : 0) : 0) + vert);
             });
             return getAreasOriz(area, nAreas);
-        } else {
-            IntStream.range(0, vert).forEach(i -> {
-                nAreas.add(vert - i <= emptyAreas ? oriz - 1 : oriz);
-            });
-            return getAreasVert(area, nAreas);
         }
+        IntStream.range(0, vert).forEach(i -> {
+            nAreas.add((vert - i <= emptyAreas ? (fillEmptyAreas ? -1 : 0) : 0) + oriz);
+        });
+        return getAreasVert(area, nAreas);
     }
 
     private List<Rectangle> getAreasOriz(final Rectangle area, final List<Integer> n) {
