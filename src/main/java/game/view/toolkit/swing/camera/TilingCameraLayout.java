@@ -19,13 +19,15 @@ public class TilingCameraLayout extends AbstractCameraLayout {
         VERTICAL,
         ORIZONTAL,
         VERT_ORIZ,
-        SQUARE, 
-        OPTIMAL; 
+        OPTIMAL;
     }
 
     @Override
     protected void draw(final Graphics drawer, final List<GameObject> objects, final GameWorld world) {
         final Rectangle borderLessRect = removeBorders(SWING_UTIL.convertRectangle(drawer.getClipBounds()));
+        if (borderLessRect.getLenX() <= 0 || borderLessRect.getLenY() <= 0) {
+            return;
+        }
 
         final List<Rectangle> areas = switch (this.layout) {
             case VERTICAL -> splitOrizontallyWithBorders(borderLessRect, objects.size());
