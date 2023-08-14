@@ -33,6 +33,14 @@ public class Algorithms {
         return new Rectangle(pos.getX() + move.getX(), pos.getY() + move.getY(), pos.getLenX(), pos.getLenY());
     }
 
+    public Rectangle add(final Rectangle rect1, final Rectangle rect2) {
+        final double x = rect1.getX() + rect2.getX();
+        final double y = rect1.getY() + rect2.getY();
+        final double lenX = rect1.getLenX() + rect2.getLenX();
+        final double lenY = rect1.getLenY() + rect2.getLenY();
+        return new Rectangle(x, y, lenX, lenY);
+    }
+
     public Vector2D multiply(final Vector2D vector, final double factor) {
         return new Vector2D(vector.getX() * factor, vector.getY() * factor);
     }
