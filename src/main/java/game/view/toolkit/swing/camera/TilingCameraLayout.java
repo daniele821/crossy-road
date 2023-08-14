@@ -48,7 +48,7 @@ public class TilingCameraLayout extends AbstractCameraLayout {
         final double factorFixed = Double.max(1 / (double) n, Double.min(n, factorSides));
         final double num1 = Math.sqrt((double) n / factorFixed);
         final double num2 = (double) n / num1;
-        final int min = (int) Double.min(num1, num2);
+        final int min = (int) Math.round(Double.min(num1, num2));
         final int max = (n / min) * min < n ? n / min + 1 : n / min;
         final int vert = num1 > num2 ? min : max;
         final int oriz = num1 > num2 ? max : min;
