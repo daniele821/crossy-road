@@ -10,8 +10,8 @@ import game.model.entity.util.GameWorldUtilImpl;
 import game.utility.Algorithms;
 import game.utility.Rectangle;
 import game.utility.Vector2D;
-import game.view.toolkit.swing.imageloader.ImageBufferedLoader;
-import game.view.toolkit.swing.imageloader.ImageBufferedLoaderImpl;
+import game.view.toolkit.swing.imageloader.ImageLoader;
+import game.view.toolkit.swing.imageloader.ImageLoaderImpl;
 import game.view.toolkit.swing.utility.SwingAlgorithms;
 
 public abstract class AbstractCamera implements Camera {
@@ -20,12 +20,13 @@ public abstract class AbstractCamera implements Camera {
     protected static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
     protected static final SwingAlgorithms SWING_UTIL = new SwingAlgorithms();
     protected static final Algorithms ALGORITHMS = new Algorithms();
-    protected static final ImageBufferedLoader IMAGE_LOADER = new ImageBufferedLoaderImpl();
+    protected static final ImageLoader IMAGE_LOADER = new ImageLoaderImpl();
 
     protected abstract void draw(Rectangle drawArea, Graphics2D drawer2D, GameWorld world, GameObject object);
 
     @Override
-    public final void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world, final GameObject object) {
+    public final void draw(final Rectangle drawArea, final Graphics drawer, final GameWorld world,
+            final GameObject object) {
         if (!(drawer instanceof Graphics2D)) {
             throw new IllegalStateException("cannot cast from Graphics to Graphics2D");
         }

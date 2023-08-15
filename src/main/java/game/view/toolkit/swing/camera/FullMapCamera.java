@@ -54,8 +54,8 @@ public class FullMapCamera extends AbstractCamera {
             final int y = (int) (factor * (obj.getPosition().getY()) + topCorner + drawArea.getY() + offsetVert);
             final int lenX = INCREASE_IMAGE_SIZE_BY + (int) (factor * obj.getPosition().getLenX());
             final int lenY = INCREASE_IMAGE_SIZE_BY + (int) (factor * obj.getPosition().getLenY());
-            final Image image = IMAGE_LOADER.loadImage(obj.getObjectType().getPath(), lenX, lenY);
-            drawer2D.drawImage(image, x, y, null);
+            final Image image = IMAGE_LOADER.loadImage(obj.getObjectType().getPath());
+            drawer2D.drawImage(image, x, y, lenX, lenY, null);
         });
     }
 }

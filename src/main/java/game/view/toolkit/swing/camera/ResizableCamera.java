@@ -39,8 +39,8 @@ public class ResizableCamera extends AbstractCamera {
                     final int y = (int) (factor * (obj.getPosition().getY() - mapArea.getY()) + drawArea.getY());
                     final int lenX = (int) (factor * obj.getPosition().getLenX()) + INCREASE_IMAGE_SIZE_BY;
                     final int lenY = (int) (factor * obj.getPosition().getLenY()) + INCREASE_IMAGE_SIZE_BY;
-                    final Image image = IMAGE_LOADER.loadImage(obj.getObjectType().getPath(), lenX, lenY);
-                    drawer2d.drawImage(image, x, y, null);
+                    final Image image = IMAGE_LOADER.loadImage(obj.getObjectType().getPath());
+                    drawer2d.drawImage(image, x, y, lenX, lenY, null);
                 });
     }
 
