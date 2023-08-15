@@ -2,6 +2,7 @@ package game.controller.maploader.parser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import game.model.entity.GameObject;
 import game.model.entity.GameObjectImpl;
@@ -50,6 +51,16 @@ public class MapObjectsParser implements MapParser<List<GameObject>> {
                     this.position.addAll(convertRectToCellsToPos(this.mapParser.parseRectangle(pos)));
                 }
                 break;
+            case "pos_line":
+                for (final var pos : this.mapParser.splitElem(lineSplitted.getB())) {
+                    this.position.addAll(convertDoubleToCellsToPos(Double.parseDouble(pos)));
+                }
+                break;
+            case "pos_lines":
+                for (final var pos : this.mapParser.splitElem(lineSplitted.getB())) {
+                    this.position.addAll(convertDoublesToCellsToPos(this.mapParser.parseVector2D(pos)));
+                }
+                break;
             default:
                 break;
         }
@@ -84,4 +95,18 @@ public class MapObjectsParser implements MapParser<List<GameObject>> {
         return res;
     }
 
+    private List<Vector2D> convertDoubleToCellsToPos(final double line) {
+        final double cellX = gameWorldInfo.getCellSize().getX();
+        final int lenghtLine = (int) (gameWorldInfo.getWorldBounds().getLenX() / cellX);
+        final boolean fixLen = lenghtLine * cellX < gameWorldInfo.getWorldBounds().getLenX();
+        final int fixedLen = (fixLen ? 1 : 0) + lenghtLine;
+        return IntStream.range(0, fixedLen).mapToObj(i -> convertCellToPos(new Vector2D(i, line))).toList();
+    }
+
+    private List<Vector2D> convertDoublesToCellsToPos(final Vector2D lines) {
+        final List<Vector2D> res = new ArrayList<>();
+        IntStream.rangeClosed((int) lines.getX(), (int) lines.getY())
+                .forEach(i -> res.addAll(convertDoubleToCellsToPos(i)));
+        return res;
+    }
 }

@@ -1,6 +1,7 @@
 package game.model.entity;
 
 public enum GameWorldLevel {
+    MAP_0("0.map", "DEMO"),
     MAP_1("1.map", "1");
 
     private static final String MAP_DIR = "game/map/";
