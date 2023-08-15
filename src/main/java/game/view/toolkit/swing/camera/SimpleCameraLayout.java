@@ -13,7 +13,8 @@ import game.utility.Rectangle;
 public class SimpleCameraLayout extends AbstractCameraLayout {
     private final Type type;
 
-    public SimpleCameraLayout(final Type type) {
+    public SimpleCameraLayout(final Type type, final Camera camera) {
+        super(camera);
         this.type = type;
     }
 
@@ -44,7 +45,7 @@ public class SimpleCameraLayout extends AbstractCameraLayout {
                 case BEST_FIT -> width > height ? vertRect : orizRect;
                 default -> vertRect;
             };
-            CAMERA.draw(rectangle, drawer, world, objects.get(i));
+            getCamera().draw(rectangle, drawer, world, objects.get(i));
         });
     }
 }

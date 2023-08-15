@@ -12,7 +12,8 @@ import game.utility.Rectangle;
 public class TilingCameraLayout extends AbstractCameraLayout {
     private final Layout layout;
 
-    public TilingCameraLayout(final Layout layout) {
+    public TilingCameraLayout(final Layout layout, final Camera camera) {
+        super(camera);
         this.layout = layout;
     }
 
@@ -40,7 +41,7 @@ public class TilingCameraLayout extends AbstractCameraLayout {
             default -> throw new UnsupportedOperationException(this.layout + " layout not supported!");
         };
 
-        IntStream.range(0, objects.size()).forEach(i -> CAMERA.draw(areas.get(i), drawer, world, objects.get(i)));
+        IntStream.range(0, objects.size()).forEach(i -> getCamera().draw(areas.get(i), drawer, world, objects.get(i)));
     }
 
     private List<Rectangle> getAreas(final Rectangle area, final int n, final boolean fillEmptyAreas) {

@@ -19,9 +19,13 @@ public abstract class AbstractCameraLayout implements CameraLayout {
     protected static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
     protected static final Algorithms ALGORITHMS = new Algorithms();
     protected static final SwingAlgorithms SWING_UTIL = new SwingAlgorithms();
-    protected static final Camera CAMERA = new ResizableCamera();
     protected static final Color BORDER_COLOR = Color.DARK_GRAY;
     protected static final int BORDER_WIDTH = 10;
+    private final Camera camera;
+
+    public AbstractCameraLayout(final Camera camera) {
+        this.camera = camera;
+    }
 
     protected abstract void draw(Graphics drawer, List<GameObject> objects, GameWorld world);
 
@@ -83,5 +87,9 @@ public abstract class AbstractCameraLayout implements CameraLayout {
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .toList();
+    }
+
+    protected Camera getCamera() {
+        return this.camera;
     }
 }
