@@ -30,8 +30,10 @@ public class SwingLevelPanelImpl extends SwingPanelImpl implements SwingLevelPan
     }
 
     private void addActionListener(final Pair<GameWorldLevel, JButton> pair) {
-        getSwingFrame().loadMap(pair.getA());
-        pair.getB().addActionListener(e -> getSwingFrame().setSwingPanel(new SwingGamePanelImpl()));
+        pair.getB().addActionListener(e -> {
+            getSwingFrame().loadMap(pair.getA());
+            getSwingFrame().setSwingPanel(new SwingGamePanelImpl());
+        });
     }
 
 }
