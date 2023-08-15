@@ -7,4 +7,6 @@ import game.model.entity.GameWorld;
 
 public interface CameraLayout {
     void draw(Graphics drawer, GameWorld world, List<Integer> objectId);
+
+    void setCamera(Camera camera);
 }

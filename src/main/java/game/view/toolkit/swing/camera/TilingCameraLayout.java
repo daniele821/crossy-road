@@ -58,12 +58,12 @@ public class TilingCameraLayout extends AbstractCameraLayout {
         final List<Integer> nAreas = new ArrayList<>();
         if (oriz > vert) {
             IntStream.range(0, oriz).forEach(i -> {
-                nAreas.add((oriz - i <= emptyAreas ? (fillEmptyAreas ? -1 : 0) : 0) + vert);
+                nAreas.add((oriz - i <= emptyAreas ? fillEmptyAreas ? -1 : 0 : 0) + vert);
             });
             return getAreasOriz(area, nAreas);
         }
         IntStream.range(0, vert).forEach(i -> {
-            nAreas.add((vert - i <= emptyAreas ? (fillEmptyAreas ? -1 : 0) : 0) + oriz);
+            nAreas.add((vert - i <= emptyAreas ? fillEmptyAreas ? -1 : 0 : 0) + oriz);
         });
         return getAreasVert(area, nAreas);
     }

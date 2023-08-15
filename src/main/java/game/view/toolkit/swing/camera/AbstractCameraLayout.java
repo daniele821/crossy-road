@@ -21,10 +21,10 @@ public abstract class AbstractCameraLayout implements CameraLayout {
     protected static final SwingAlgorithms SWING_UTIL = new SwingAlgorithms();
     protected static final Color BORDER_COLOR = Color.DARK_GRAY;
     protected static final int BORDER_WIDTH = 10;
-    private final Camera camera;
+    private Camera camera;
 
     public AbstractCameraLayout(final Camera camera) {
-        this.camera = camera;
+        this.camera = Optional.ofNullable(camera).orElseThrow();
     }
 
     protected abstract void draw(Graphics drawer, List<GameObject> objects, GameWorld world);
@@ -78,18 +78,19 @@ public abstract class AbstractCameraLayout implements CameraLayout {
     protected List<Rectangle> splitVertOrizWithBorder(final Rectangle area, final int n) {
         final Supplier<List<Rectangle>> orizontal = () -> splitOrizontallyWithBorders(area, n);
         final Supplier<List<Rectangle>> vertical = () -> splitVerticallyWithBorders(area, n);
-        return (area.getLenX() > area.getLenY()) ? vertical.get() : orizontal.get();
+        return area.getLenX() > area.getLenY() ? vertical.get() : orizontal.get();
     }
 
     protected List<GameObject> getPresentObjects(final List<Integer> objectId, final GameWorld world) {
-        return objectId.stream()
-                .map(id -> WORLD_UTIL.getPresentObject(id, world))
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .toList();
+        return objectId.stream().map(id -> WORLD_UTIL.getPresentObject(id, world)).flatMap(Optional::stream).toList();
     }
 
     protected Camera getCamera() {
         return this.camera;
+    }
+
+    @Override
+    public void setCamera(final Camera camera) {
+        this.camera = Optional.ofNullable(camera).orElseThrow();
     }
 }
