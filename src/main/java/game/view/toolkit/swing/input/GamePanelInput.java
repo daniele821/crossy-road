@@ -9,13 +9,8 @@ import java.util.Optional;
 
 import javax.swing.KeyStroke;
 
-import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
-import game.model.entity.GameObjectType.GameObjectKind;
-import game.model.entity.util.GameWorldUtil;
-import game.model.entity.util.GameWorldUtilImpl;
 import game.utility.Algorithms;
-import game.utility.Pair;
 import game.utility.Vector2D;
 import game.view.input.ActionImpl;
 import game.view.input.InputHandler;
@@ -24,11 +19,9 @@ import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 
 public class GamePanelInput extends AbstractPanelInput {
-
-    private static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
     private static final Algorithms ALGORITHMS = new Algorithms();
     private final Map<List<KeyStroke>, SwingAction> actions = new HashMap<>();
-    private final List<Pair<Integer, GameObject>> players = new ArrayList<>();
+    private final List<Integer> players = new ArrayList<>();
     private Optional<GameWorld> world = Optional.empty();
     private int nthPlayer;
 
@@ -48,7 +41,7 @@ public class GamePanelInput extends AbstractPanelInput {
         if (this.nthPlayer >= this.players.size()) {
             return;
         }
-        final int playerId = this.players.get(this.nthPlayer).getA();
+        final int playerId = this.players.get(this.nthPlayer);
         final InputHandler inputUp = new InputHandlerImpl();
         final InputHandler inputDown = new InputHandlerImpl();
         final InputHandler inputLeft = new InputHandlerImpl();
@@ -79,7 +72,7 @@ public class GamePanelInput extends AbstractPanelInput {
     @Override
     public Map<List<KeyStroke>, SwingAction> getActions(final GameWorld world, final List<Integer> players) {
         this.world = Optional.ofNullable(world);
-        this.players.addAll(WORLD_UTIL.filterByKind(world, GameObjectKind.PLAYER));
+        this.players.addAll(List.copyOf(players));
         addPlayerInput();
         return copyActionsAndClear();
     }

@@ -29,7 +29,7 @@ public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel
         final var window = getSwingFrame().getSwingWindow();
         final var world = getSwingFrame().getCurrentWorld();
         this.players = WORLD_UTIL.filterByKind(world, PLAYER).stream().map(Pair::getA).toList();
-        new GamePanelInput(getSwingFrame()).getActions(world, List.of()).forEach(this::putAction);
+        new GamePanelInput(getSwingFrame()).getActions(world, this.players).forEach(this::putAction);
         this.cameraLayout = Optional.ofNullable(new CameraLayoutFactoryImpl().create(world));
         getSwingFrame().actOnGameEngine(engine -> engine.startThread(window, world));
     }
