@@ -1,21 +1,35 @@
 package game.view.toolkit.swing.panel;
 
+import static game.model.entity.GameObjectType.GameObjectKind.PLAYER;
+
 import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.List;
 
 import game.controller.engine.GameEngine;
+import game.model.entity.util.GameWorldUtil;
+import game.model.entity.util.GameWorldUtilImpl;
+import game.utility.Pair;
+import game.view.toolkit.swing.camera.CameraLayout;
+import game.view.toolkit.swing.camera.CameraLayoutFactoryImpl;
 import game.view.toolkit.swing.input.GamePanelInput;
 
 public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel {
     private static final long serialVersionUID = 2115458124524211780L;
+    private static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
+    private final List<Integer> players = new ArrayList<>();
+    private transient CameraLayout cameraLayout = new CameraLayoutFactoryImpl().create();
 
     @Override
     public void start() {
         super.start();
         final var window = getSwingFrame().getSwingWindow();
         final var world = getSwingFrame().getCurrentWorld();
-        getSwingFrame().actOnGameEngine(engine -> engine.startThread(window, world));
+        this.players.clear();
+        this.players.addAll(WORLD_UTIL.filterByKind(world, PLAYER).stream().map(Pair::getA).toList());
         new GamePanelInput(getSwingFrame()).getActions(world, List.of()).forEach(this::putAction);
+        this.cameraLayout = new CameraLayoutFactoryImpl().create(world);
+        getSwingFrame().actOnGameEngine(engine -> engine.startThread(window, world));
     }
 
     @Override
@@ -27,7 +41,7 @@ public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel
     @Override
     protected void paintComponent(final Graphics drawer) {
         super.paintComponent(drawer);
-        // TODO draw game
+        this.cameraLayout.draw(drawer, getSwingFrame().getCurrentWorld(), this.players);
     }
 
 }

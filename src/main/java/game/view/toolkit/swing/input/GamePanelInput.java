@@ -24,16 +24,17 @@ import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 
 public class GamePanelInput extends AbstractPanelInput {
-    public GamePanelInput(final SwingFrame swingFrame) {
-        super(swingFrame);
-    }
 
     private static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
     private static final Algorithms ALGORITHMS = new Algorithms();
     private final Map<List<KeyStroke>, SwingAction> actions = new HashMap<>();
     private final List<Pair<Integer, GameObject>> players = new ArrayList<>();
     private Optional<GameWorld> world = Optional.empty();
-    private int nthPlayer = 0;
+    private int nthPlayer;
+
+    public GamePanelInput(final SwingFrame swingFrame) {
+        super(swingFrame);
+    }
 
     private Map<List<KeyStroke>, SwingAction> copyActionsAndClear() {
         final var actionCopy = Map.copyOf(this.actions);
@@ -42,7 +43,8 @@ public class GamePanelInput extends AbstractPanelInput {
         return actionCopy;
     }
 
-    private void addPlayerInput(List<KeyStroke> up, List<KeyStroke> down, List<KeyStroke> left, List<KeyStroke> right) {
+    private void addPlayerInput(final List<KeyStroke> up, final List<KeyStroke> down,
+            final List<KeyStroke> left, final List<KeyStroke> right) {
         if (this.nthPlayer >= this.players.size()) {
             return;
         }
@@ -64,6 +66,7 @@ public class GamePanelInput extends AbstractPanelInput {
         this.actions.put(down, e -> inputDown.storeAction(new ActionImpl(playerId, downVect)));
         this.actions.put(right, e -> inputRight.storeAction(new ActionImpl(playerId, rightVect)));
         this.actions.put(left, e -> inputLeft.storeAction(new ActionImpl(playerId, leftVect)));
+        this.nthPlayer++;
     }
 
     private void addPlayerInput() {
@@ -78,7 +81,6 @@ public class GamePanelInput extends AbstractPanelInput {
         this.world = Optional.ofNullable(world);
         this.players.addAll(WORLD_UTIL.filterByKind(world, GameObjectKind.PLAYER));
         addPlayerInput();
-        this.nthPlayer++;
         return copyActionsAndClear();
     }
 
