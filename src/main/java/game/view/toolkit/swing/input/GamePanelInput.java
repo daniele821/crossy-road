@@ -1,6 +1,7 @@
 package game.view.toolkit.swing.input;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class GamePanelInput extends AbstractPanelInput {
     private static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
     private static final Algorithms ALGORITHMS = new Algorithms();
     private final Map<List<KeyStroke>, SwingAction> actions = new HashMap<>();
-    private final List<Pair<Integer, GameObject>> players = List.of();
+    private final List<Pair<Integer, GameObject>> players = new ArrayList<>();
     private Optional<GameWorld> world = Optional.empty();
     private int nthPlayer = 0;
 
