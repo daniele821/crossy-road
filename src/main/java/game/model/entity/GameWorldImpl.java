@@ -31,7 +31,9 @@ public class GameWorldImpl implements GameWorld {
 
     @Override
     public List<GameObject> getObjects() {
-        return List.copyOf(objects.stream().map(GameObject::copy).toList());
+        // SAFER BUT TOO SLOW!
+        // return List.copyOf(objects.stream().map(GameObject::copy).toList());
+        return List.copyOf(this.objects);
     }
 
     @Override
