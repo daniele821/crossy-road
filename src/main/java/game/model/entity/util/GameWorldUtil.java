@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
+import game.model.entity.GameObjectType.GameObjectKind;
 import game.utility.Pair;
 
 public interface GameWorldUtil {
@@ -27,4 +28,8 @@ public interface GameWorldUtil {
     int getSize(GameWorld world);
 
     boolean isObjectIdValid(int objectId, GameWorld world);
+
+    List<Pair<Integer, GameObject>> filterByKind(GameWorld world, GameObjectKind kind);
+
+    List<Pair<Integer, GameObject>> filterByKindPresent(GameWorld world, GameObjectKind kind);
 }
