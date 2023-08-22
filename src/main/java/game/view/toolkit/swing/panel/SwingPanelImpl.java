@@ -13,10 +13,10 @@ import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 import game.view.toolkit.swing.input.AllPanelInput;
 
-public class SwingPanelImpl extends JPanel implements SwingPanel {
-    private static final long serialVersionUID = 2115458124524211780L;
-    private transient Optional<SwingFrame> frame = Optional.empty();
-    private transient int actionId;
+public class SwingPanelImpl implements SwingPanel {
+    private final Optional<JPanel> panel = Optional.ofNullable(new JPanel());
+    private Optional<SwingFrame> frame = Optional.empty();
+    private int actionId;
 
     @Override
     public void start() {
@@ -30,7 +30,7 @@ public class SwingPanelImpl extends JPanel implements SwingPanel {
 
     @Override
     public JPanel getJPanel() {
-        return this;
+        return this.panel.get();
     }
 
     @Override

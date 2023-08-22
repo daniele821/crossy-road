@@ -18,14 +18,13 @@ import game.view.toolkit.swing.window.SwingWindow;
 public class SwingFrameImpl implements SwingFrame {
     private static final GameEngine ENGINE = new GameEngineImpl();
     private static final MapLoader MAP_LOADER = new MapLoaderImpl();
-    private Optional<JFrame> frame = Optional.empty();
+    private final Optional<JFrame> frame = Optional.ofNullable(new JFrame());
     private Optional<GameWorld> currentWorld = Optional.empty();
     private Optional<SwingPanel> panel = Optional.empty();
     private Optional<SwingWindow> window = Optional.empty();
 
     @Override
     public void start() {
-        this.frame = Optional.ofNullable(new JFrame());
         getJFrame().setTitle("Crossy-Road");
         getJFrame().setLocationByPlatform(true);
         getJFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

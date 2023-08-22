@@ -5,6 +5,9 @@ import static game.model.entity.GameObjectType.GameObjectKind.PLAYER;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import javax.swing.JPanel;
 
 import game.controller.engine.GameEngine;
 import game.model.entity.util.GameWorldUtil;
@@ -15,20 +18,19 @@ import game.view.toolkit.swing.camera.CameraLayoutFactoryImpl;
 import game.view.toolkit.swing.input.GamePanelInput;
 
 public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel {
-    private static final long serialVersionUID = 2115458124524211780L;
     private static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
-    private final List<Integer> players = new ArrayList<>();
-    private transient CameraLayout cameraLayout = new CameraLayoutFactoryImpl().create();
+    private final Optional<Panel> panel = Optional.ofNullable(new Panel());
+    private List<Integer> players = new ArrayList<>();
+    private Optional<CameraLayout> cameraLayout = Optional.empty();
 
     @Override
     public void start() {
         super.start();
         final var window = getSwingFrame().getSwingWindow();
         final var world = getSwingFrame().getCurrentWorld();
-        this.players.clear();
-        this.players.addAll(WORLD_UTIL.filterByKind(world, PLAYER).stream().map(Pair::getA).toList());
+        this.players = WORLD_UTIL.filterByKind(world, PLAYER).stream().map(Pair::getA).toList();
         new GamePanelInput(getSwingFrame()).getActions(world, List.of()).forEach(this::putAction);
-        this.cameraLayout = new CameraLayoutFactoryImpl().create(world);
+        this.cameraLayout = Optional.ofNullable(new CameraLayoutFactoryImpl().create(world));
         getSwingFrame().actOnGameEngine(engine -> engine.startThread(window, world));
     }
 
@@ -39,9 +41,18 @@ public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel
     }
 
     @Override
-    protected void paintComponent(final Graphics drawer) {
-        super.paintComponent(drawer);
-        this.cameraLayout.draw(drawer, getSwingFrame().getCurrentWorld(), this.players);
+    public JPanel getJPanel() {
+        return this.panel.get();
+    }
+
+    private class Panel extends JPanel {
+        private static final long serialVersionUID = 2115458124524211780L;
+
+        @Override
+        protected void paintComponent(final Graphics drawer) {
+            super.paintComponent(drawer);
+            cameraLayout.get().draw(drawer, getSwingFrame().getCurrentWorld(), players);
+        }
     }
 
 }

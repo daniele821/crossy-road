@@ -10,7 +10,6 @@ import game.model.entity.GameWorldLevel;
 import game.utility.Pair;
 
 public class SwingLevelPanelImpl extends SwingPanelImpl implements SwingLevelPanel {
-    private static final long serialVersionUID = 2115458124524211780L;
     private static final List<Pair<GameWorldLevel, JButton>> LEVEL_BUTTONS = new ArrayList<>();
     private static final JButton QUIT_BUTTON = new JButton("QUIT");
 
