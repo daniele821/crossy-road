@@ -13,9 +13,7 @@ public class GameWorldUtilImpl implements GameWorldUtil {
 
     @Override
     public List<Pair<Integer, GameObject>> getObjectsWithId(final GameWorld world) {
-        return IntStream.range(0, getSize(world))
-                .mapToObj(i -> new Pair<>(i, world.getObjects().get(i)))
-                .toList();
+        return IntStream.range(0, getSize(world)).mapToObj(i -> new Pair<>(i, world.getObjects().get(i))).toList();
     }
 
     @Override
