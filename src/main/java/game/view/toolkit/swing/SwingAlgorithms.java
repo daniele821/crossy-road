@@ -1,4 +1,4 @@
-package game.view.toolkit.swing.utility;
+package game.view.toolkit.swing;
 
 import game.utility.Rectangle;
 

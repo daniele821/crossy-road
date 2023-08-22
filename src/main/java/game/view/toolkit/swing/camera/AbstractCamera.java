@@ -10,9 +10,9 @@ import game.model.entity.util.GameWorldUtilImpl;
 import game.utility.Algorithms;
 import game.utility.Rectangle;
 import game.utility.Vector2D;
+import game.view.toolkit.swing.SwingAlgorithms;
 import game.view.toolkit.swing.imageloader.ImageLoader;
 import game.view.toolkit.swing.imageloader.ImageLoaderImpl;
-import game.view.toolkit.swing.utility.SwingAlgorithms;
 
 public abstract class AbstractCamera implements Camera {
     // 1: fix white lines, 0: precise image size

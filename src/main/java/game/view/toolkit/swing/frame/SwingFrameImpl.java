@@ -12,8 +12,8 @@ import game.controller.maploader.MapLoader;
 import game.controller.maploader.MapLoaderImpl;
 import game.model.entity.GameWorld;
 import game.model.entity.GameWorldLevel;
+import game.view.toolkit.swing.SwingWindow;
 import game.view.toolkit.swing.panel.SwingPanel;
-import game.view.toolkit.swing.window.SwingWindow;
 
 public class SwingFrameImpl implements SwingFrame {
     private static final GameEngine ENGINE = new GameEngineImpl();

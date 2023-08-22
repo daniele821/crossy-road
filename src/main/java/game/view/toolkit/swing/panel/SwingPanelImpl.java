@@ -9,9 +9,9 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 import game.view.toolkit.swing.input.AllPanelInput;
+import game.view.toolkit.swing.input.SwingAction;
 
 public class SwingPanelImpl implements SwingPanel {
     private final Optional<JPanel> panel = Optional.ofNullable(new JPanel());

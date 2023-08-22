@@ -15,7 +15,6 @@ import game.utility.Vector2D;
 import game.view.input.ActionImpl;
 import game.view.input.InputHandler;
 import game.view.input.InputHandlerImpl;
-import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 
 public class GamePanelInput extends AbstractPanelInput {

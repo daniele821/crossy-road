@@ -5,8 +5,8 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
+import game.view.toolkit.swing.input.SwingAction;
 
 public interface SwingPanel {
     void start();

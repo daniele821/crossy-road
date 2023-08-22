@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.swing.KeyStroke;
 
 import game.model.entity.GameWorld;
-import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 
 public class AllPanelInput extends AbstractPanelInput {

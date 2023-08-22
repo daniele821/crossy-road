@@ -13,7 +13,7 @@ import game.model.entity.util.GameWorldUtil;
 import game.model.entity.util.GameWorldUtilImpl;
 import game.utility.Algorithms;
 import game.utility.Rectangle;
-import game.view.toolkit.swing.utility.SwingAlgorithms;
+import game.view.toolkit.swing.SwingAlgorithms;
 
 public abstract class AbstractCameraLayout implements CameraLayout {
     protected static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
