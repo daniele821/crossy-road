@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import javax.swing.KeyStroke;
 
+import game.model.entity.GameWorld;
 import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 
@@ -18,7 +19,7 @@ public class AllPanelInput extends AbstractPanelInput {
     }
 
     @Override
-    public Map<List<KeyStroke>, SwingAction> getActions() {
+    public Map<List<KeyStroke>, SwingAction> getActions(final GameWorld world) {
         final SwingAction closeAction = e -> this.swingFrame.get().closeApplication();
         return Map.of(getKeyStrokes(KeyEvent.VK_ESCAPE), closeAction);
     }

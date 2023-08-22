@@ -20,7 +20,7 @@ public class SwingPanelImpl extends JPanel implements SwingPanel {
 
     @Override
     public void start() {
-        new AllPanelInput(getSwingFrame()).getActions().forEach(this::putAction);
+        new AllPanelInput(getSwingFrame()).getActions(null).forEach(this::putAction);
     }
 
     @Override
