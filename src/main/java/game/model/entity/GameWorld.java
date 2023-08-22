@@ -14,6 +14,4 @@ public interface GameWorld {
     void setGameWorldStatus(GameWorldStatus gameWorldStatus);
 
     List<GameObject> getObjects();
-
-    List<GameObject> modifyObjects();
 }

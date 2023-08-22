@@ -18,7 +18,7 @@ public class GameLogicImpl implements GameLogic {
 
     @Override
     public void moveObject(final int objectId, final Vector2D movement, final GameWorld gameWorld) {
-        final Optional<GameObject> objectOpt = WORLD_UTIL.modifyPresentObject(objectId, gameWorld);
+        final Optional<GameObject> objectOpt = WORLD_UTIL.getPresentObject(objectId, gameWorld);
         if (objectOpt.isEmpty() || movement.equals(new Vector2D(0, 0))) {
             return;
         }

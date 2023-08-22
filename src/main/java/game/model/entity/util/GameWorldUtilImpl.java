@@ -47,19 +47,6 @@ public class GameWorldUtilImpl implements GameWorldUtil {
     }
 
     @Override
-    public Optional<GameObject> modifyObject(final int objectId, final GameWorld world) {
-        if (!isObjectIdValid(objectId, world)) {
-            return Optional.empty();
-        }
-        return Optional.ofNullable(world.modifyObjects().get(objectId));
-    }
-
-    @Override
-    public Optional<GameObject> modifyPresentObject(final int objectId, final GameWorld world) {
-        return modifyObject(objectId, world).filter(GameObject::isPresent);
-    }
-
-    @Override
     public int getSize(final GameWorld world) {
         return world.getObjects().size();
     }
