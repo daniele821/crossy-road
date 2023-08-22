@@ -11,7 +11,7 @@ import javax.swing.KeyStroke;
 
 import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
-import game.view.toolkit.swing.input.AllPanelsInput;
+import game.view.toolkit.swing.input.AllPanelInput;
 
 public class SwingPanelImpl extends JPanel implements SwingPanel {
     private static final long serialVersionUID = 2115458124524211780L;
@@ -20,7 +20,7 @@ public class SwingPanelImpl extends JPanel implements SwingPanel {
 
     @Override
     public void start() {
-        new AllPanelsInput(getSwingFrame()).getActions().forEach(this::putAction);
+        new AllPanelInput(getSwingFrame()).getActions().forEach(this::putAction);
     }
 
     @Override

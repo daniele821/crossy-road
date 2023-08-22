@@ -10,10 +10,10 @@ import javax.swing.KeyStroke;
 import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 
-public class AllPanelsInput extends AbstractPanelInput {
+public class AllPanelInput extends AbstractPanelInput {
     private final Optional<SwingFrame> swingFrame;
 
-    public AllPanelsInput(final SwingFrame swingFrame) {
+    public AllPanelInput(final SwingFrame swingFrame) {
         this.swingFrame = Optional.ofNullable(swingFrame);
     }
 
