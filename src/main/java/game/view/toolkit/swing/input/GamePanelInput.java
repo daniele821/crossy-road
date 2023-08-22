@@ -23,7 +23,6 @@ import game.view.input.InputHandlerImpl;
 import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 
-@SuppressWarnings("all")
 public class GamePanelInput extends AbstractPanelInput {
     public GamePanelInput(final SwingFrame swingFrame) {
         super(swingFrame);
@@ -75,7 +74,7 @@ public class GamePanelInput extends AbstractPanelInput {
     }
 
     @Override
-    public Map<List<KeyStroke>, SwingAction> getActions(final GameWorld world) {
+    public Map<List<KeyStroke>, SwingAction> getActions(final GameWorld world, final List<Integer> players) {
         this.world = Optional.ofNullable(world);
         this.players.addAll(WORLD_UTIL.filterByKind(world, GameObjectKind.PLAYER));
         addPlayerInput();

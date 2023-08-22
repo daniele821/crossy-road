@@ -16,7 +16,7 @@ public class AllPanelInput extends AbstractPanelInput {
     }
 
     @Override
-    public Map<List<KeyStroke>, SwingAction> getActions(final GameWorld world) {
+    public Map<List<KeyStroke>, SwingAction> getActions(final GameWorld world, final List<Integer> players) {
         final SwingAction closeAction = e -> getSwingFrame().closeApplication();
         return Map.of(getKeyStrokes(KeyEvent.VK_ESCAPE), closeAction);
     }

@@ -1,6 +1,7 @@
 package game.view.toolkit.swing.panel;
 
 import java.awt.Graphics;
+import java.util.List;
 
 import game.controller.engine.GameEngine;
 import game.view.toolkit.swing.input.GamePanelInput;
@@ -14,7 +15,7 @@ public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel
         final var window = getSwingFrame().getSwingWindow();
         final var world = getSwingFrame().getCurrentWorld();
         getSwingFrame().actOnGameEngine(engine -> engine.startThread(window, world));
-        new GamePanelInput(getSwingFrame()).getActions(world).forEach(this::putAction);
+        new GamePanelInput(getSwingFrame()).getActions(world, List.of()).forEach(this::putAction);
     }
 
     @Override

@@ -9,5 +9,5 @@ import game.model.entity.GameWorld;
 import game.view.toolkit.swing.action.SwingAction;
 
 public interface PanelInput {
-    Map<List<KeyStroke>, SwingAction> getActions(GameWorld world);
+    Map<List<KeyStroke>, SwingAction> getActions(GameWorld world, List<Integer> players);
 }
