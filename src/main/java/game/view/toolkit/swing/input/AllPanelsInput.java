@@ -10,7 +10,7 @@ import javax.swing.KeyStroke;
 import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 
-public class AllPanelsInput implements PanelInput {
+public class AllPanelsInput extends AbstractPanelInput {
     private Optional<SwingFrame> swingFrame = Optional.empty();
 
     public AllPanelsInput(final SwingFrame swingFrame) {
@@ -20,7 +20,7 @@ public class AllPanelsInput implements PanelInput {
     @Override
     public Map<List<KeyStroke>, SwingAction> getActions() {
         final SwingAction closeAction = e -> this.swingFrame.get().closeApplication();
-        return Map.of(List.of(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0)), closeAction);
+        return Map.of(getKeyStrokes(KeyEvent.VK_ESCAPE), closeAction);
     }
 
 }
