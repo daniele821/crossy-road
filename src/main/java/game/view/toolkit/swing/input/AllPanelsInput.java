@@ -11,7 +11,7 @@ import game.view.toolkit.swing.action.SwingAction;
 import game.view.toolkit.swing.frame.SwingFrame;
 
 public class AllPanelsInput extends AbstractPanelInput {
-    private Optional<SwingFrame> swingFrame = Optional.empty();
+    private final Optional<SwingFrame> swingFrame;
 
     public AllPanelsInput(final SwingFrame swingFrame) {
         this.swingFrame = Optional.ofNullable(swingFrame);
