@@ -1,0 +1,26 @@
+package game.view.toolkit.swing.input;
+
+import java.awt.event.KeyEvent;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import javax.swing.KeyStroke;
+
+import game.view.toolkit.swing.action.SwingAction;
+import game.view.toolkit.swing.frame.SwingFrame;
+
+public class AllPanelsInput implements PanelInput {
+    private Optional<SwingFrame> swingFrame = Optional.empty();
+
+    public AllPanelsInput(final SwingFrame swingFrame) {
+        this.swingFrame = Optional.ofNullable(swingFrame);
+    }
+
+    @Override
+    public Map<List<KeyStroke>, SwingAction> getActions() {
+        final SwingAction closeAction = e -> this.swingFrame.get().closeApplication();
+        return Map.of(List.of(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0)), closeAction);
+    }
+
+}
