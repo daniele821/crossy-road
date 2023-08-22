@@ -6,6 +6,7 @@ import static game.model.entity.GameObjectType.GameObjectKind.ENEMY;
 import static game.model.entity.GameObjectType.GameObjectKind.OBSTACLE;
 import static game.model.entity.GameObjectType.GameObjectKind.PLAYER;
 import static game.model.entity.GameObjectType.GameObjectKind.POWERUP;
+import static game.model.entity.GameObjectType.GameObjectKind.TRUNK;
 
 public enum GameObjectType {
     BAC_BIKE_LANE("background/bike_lane.png", BACKGROUND, 16, 16, 0, 0),
@@ -13,7 +14,7 @@ public enum GameObjectType {
     BAC_RAIL("background/rail.png", BACKGROUND, 16, 16, 0, 0),
     BAC_ROAD("background/road.png", BACKGROUND, 16, 16, 0, 0),
     BAC_WATER("background/water.png", BACKGROUND, 16, 16, 0, 0),
-    COI_DEFAULT("coin/coin.png", COIN, 10, 10, 3, 3),
+    COI_COIN("coin/coin.png", COIN, 10, 10, 3, 3),
     ENE_CAR_1_DX("enemy/car_1_dx.png", ENEMY, 14, 8, 1, 4),
     ENE_CAR_1_SX("enemy/car_1_sx.png", ENEMY, 14, 8, 1, 4),
     ENE_CAR_2_DX("enemy/car_2_dx.png", ENEMY, 14, 9, 1, 3),
@@ -39,7 +40,9 @@ public enum GameObjectType {
     PLA_THIEF("player/thief.png", PLAYER, 10, 14, 3, 1),
     POW_IMMORTALITY("powerup/immortality.png", POWERUP, 10, 10, 3, 3),
     POW_MAGNET("powerup/magnet.png", POWERUP, 12, 10, 2, 3),
-    POW_MULTIPLIER("powerup/multiplier.png", POWERUP, 10, 10, 3, 3);
+    POW_MULTIPLIER("powerup/multiplier.png", POWERUP, 10, 10, 3, 3),
+    TRU_TRUNK_3_DX("trunk/trunk_3_dx.png", TRUNK, 48, 7, 0, 8),
+    TRU_TRUNK_3_SX("trunk/trunk_3_sx.png", TRUNK, 48, 7, 0, 8);
 
     private static final String ENTITY_DIR = "game/entity/";
     private final String path;

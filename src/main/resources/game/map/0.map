@@ -25,7 +25,7 @@ pos_cell = 0 2
 speed = -3 0
 pos_cell = 4 2
 
-> COI_DEFAULT
+> COI_COIN
 pos_cell = 2 2
 
 > PLA_DEFAULT
