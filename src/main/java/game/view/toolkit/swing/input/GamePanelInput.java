@@ -24,7 +24,7 @@ import game.view.toolkit.swing.frame.SwingFrame;
 
 @SuppressWarnings("all")
 public class GamePanelInput extends AbstractPanelInput {
-    protected GamePanelInput(final SwingFrame swingFrame) {
+    public GamePanelInput(final SwingFrame swingFrame) {
         super(swingFrame);
     }
 
