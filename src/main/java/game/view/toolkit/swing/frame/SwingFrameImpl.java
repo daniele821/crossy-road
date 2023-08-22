@@ -15,16 +15,17 @@ import game.model.entity.GameWorldLevel;
 import game.view.toolkit.swing.panel.SwingPanel;
 import game.view.toolkit.swing.window.SwingWindow;
 
-public class SwingFrameImpl extends JFrame implements SwingFrame {
-    private static final long serialVersionUID = -1492508066498442465L;
+public class SwingFrameImpl implements SwingFrame {
     private static final GameEngine ENGINE = new GameEngineImpl();
     private static final MapLoader MAP_LOADER = new MapLoaderImpl();
-    private transient Optional<GameWorld> currentWorld = Optional.empty();
-    private transient Optional<SwingPanel> panel = Optional.empty();
-    private transient Optional<SwingWindow> window = Optional.empty();
+    private Optional<JFrame> frame = Optional.empty();
+    private Optional<GameWorld> currentWorld = Optional.empty();
+    private Optional<SwingPanel> panel = Optional.empty();
+    private Optional<SwingWindow> window = Optional.empty();
 
     @Override
     public void start() {
+        this.frame = Optional.ofNullable(new JFrame());
         getJFrame().setTitle("Crossy-Road");
         getJFrame().setLocationByPlatform(true);
         getJFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +49,7 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
 
     @Override
     public JFrame getJFrame() {
-        return this;
+        return this.frame.get();
     }
 
     @Override
@@ -91,5 +92,4 @@ public class SwingFrameImpl extends JFrame implements SwingFrame {
     public void loadMap(final GameWorldLevel level) {
         this.currentWorld = Optional.ofNullable(MAP_LOADER.loadWorld(level.getPath()));
     }
-
 }
