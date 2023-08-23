@@ -1,12 +1,10 @@
-package game.model.entity.util;
+package game.model.entity;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-import game.model.entity.GameObject;
 import game.model.entity.GameObjectType.GameObjectKind;
-import game.model.entity.GameWorld;
 import game.utility.Pair;
 
 public class GameWorldUtilImpl implements GameWorldUtil {

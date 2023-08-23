@@ -10,8 +10,8 @@ import java.util.Optional;
 import javax.swing.JPanel;
 
 import game.controller.engine.GameEngine;
-import game.model.entity.util.GameWorldUtil;
-import game.model.entity.util.GameWorldUtilImpl;
+import game.model.entity.GameWorldUtil;
+import game.model.entity.GameWorldUtilImpl;
 import game.utility.Pair;
 import game.view.toolkit.swing.camera.CameraLayout;
 import game.view.toolkit.swing.camera.CameraLayoutFactoryImpl;

@@ -9,8 +9,8 @@ import java.util.stream.IntStream;
 
 import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
-import game.model.entity.util.GameWorldUtil;
-import game.model.entity.util.GameWorldUtilImpl;
+import game.model.entity.GameWorldUtil;
+import game.model.entity.GameWorldUtilImpl;
 import game.utility.Algorithms;
 import game.utility.Rectangle;
 import game.view.toolkit.swing.SwingAlgorithms;
