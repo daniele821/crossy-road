@@ -82,4 +82,9 @@ public class GameWorldUtilImpl implements GameWorldUtil {
         return new Vector2D(Math.round(x), Math.round(y));
     }
 
+    @Override
+    public Vector2D roundPosToCellPos(final Vector2D pos, final GameWorldInfo info, final GameObjectType type) {
+        return convertCellToPixel(convertPixelToCell(pos, info, type), info, type);
+    }
+
 }

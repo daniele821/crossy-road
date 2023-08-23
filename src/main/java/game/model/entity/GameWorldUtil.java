@@ -31,4 +31,6 @@ public interface GameWorldUtil {
     Vector2D convertCellToPixel(Vector2D cellPos, GameWorldInfo info, GameObjectType type);
 
     Vector2D convertPixelToCell(Vector2D cellPos, GameWorldInfo info, GameObjectType type);
+
+    Vector2D roundPosToCellPos(Vector2D pos, GameWorldInfo info, GameObjectType type);
 }
