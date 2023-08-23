@@ -3,11 +3,19 @@ package game.model.logic;
 import java.util.Optional;
 
 import game.model.entity.GameObject;
+import game.model.entity.GameObjectType.GameObjectKind;
 import game.model.entity.GameWorld;
+import game.model.entity.GameWorldUtil;
+import game.model.entity.GameWorldUtilImpl;
 import game.utility.Rectangle;
 import game.utility.Vector2D;
 
+// wraparound work well for objects moving with speed, instead of from input
+// thus to wraparound player a refactor is needed!
+
 public class MovementLogicImpl implements MovementLogic {
+    private final GameWorldUtil worldUtil = new GameWorldUtilImpl();
+
     @Override
     public Optional<Rectangle> wrapAround(final GameWorld world, final GameObject object, final Rectangle newPos) {
         final Optional<Vector2D> wrapper = object.getWraparoundDelta();
@@ -50,8 +58,13 @@ public class MovementLogicImpl implements MovementLogic {
 
     @Override
     public boolean canMove(final GameWorld world, final int objectId, final GameObject object, final Rectangle newPos) {
-        // TODO
-        return true;
+        if (object.getObjectType().getKind() != GameObjectKind.PLAYER) {
+            return true;
+        }
+        return this.worldUtil.getColliding(world, objectId, newPos)
+                .stream()
+                .filter(pair -> pair.getB().getObjectType().getKind() == GameObjectKind.OBSTACLE)
+                .count() == 0;
     }
 
     @Override

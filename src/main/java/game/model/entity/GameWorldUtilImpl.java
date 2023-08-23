@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 import game.model.entity.GameObjectType.GameObjectKind;
 import game.utility.Algorithms;
 import game.utility.Pair;
+import game.utility.Rectangle;
 import game.utility.Vector2D;
 
 public class GameWorldUtilImpl implements GameWorldUtil {
@@ -85,6 +86,18 @@ public class GameWorldUtilImpl implements GameWorldUtil {
     @Override
     public Vector2D roundPosToCellPos(final Vector2D pos, final GameWorldInfo info, final GameObjectType type) {
         return convertCellToPixel(convertPixelToCell(pos, info, type), info, type);
+    }
+
+    @Override
+    public List<Pair<Integer, GameObject>> getColliding(final GameWorld world, final int id, final Rectangle newPos) {
+        final var objectOpt = getObject(id, world);
+        if (objectOpt.isEmpty()) {
+            return List.of();
+        }
+        return getPresentObjectsWithId(world).stream()
+                .filter(pair -> pair.getA() != id)
+                .filter(pair -> algorithms.getIntersection(pair.getB().getPosition(), newPos).isPresent())
+                .toList();
     }
 
 }
