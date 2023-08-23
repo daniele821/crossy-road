@@ -66,12 +66,11 @@ public class GameWorldUtilImpl implements GameWorldUtil {
     }
 
     @Override
-    public Vector2D convertCellToPixel(final Vector2D cellPos, final GameWorld world, final GameObject object) {
-        final GameWorldInfo info = world.getGameWorldInfo();
-        final Vector2D cellSize = world.getGameWorldInfo().getCellSize();
+    public Vector2D convertCellToPixel(final Vector2D cellPos, final GameWorldInfo info, final GameObjectType type) {
+        final Vector2D cellSize = info.getCellSize();
         final Vector2D position = this.algorithms.multiplyMembers(cellSize, cellPos);
-        final double x = object.getObjectType().getDeltaX() + position.getX() + info.getWorldBounds().getX();
-        final double y = object.getObjectType().getDeltaY() + position.getY() + info.getWorldBounds().getY();
+        final double x = type.getDeltaX() + position.getX() + info.getWorldBounds().getX();
+        final double y = type.getDeltaY() + position.getY() + info.getWorldBounds().getY();
         return new Vector2D(x, y);
     }
 

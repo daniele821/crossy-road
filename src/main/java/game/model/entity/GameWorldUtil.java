@@ -28,5 +28,5 @@ public interface GameWorldUtil {
 
     List<Pair<Integer, GameObject>> filterByKindPresent(GameWorld world, GameObjectKind kind);
 
-    Vector2D convertCellToPixel(Vector2D cellPos, GameWorld world, GameObject object);
+    Vector2D convertCellToPixel(Vector2D cellPos, GameWorldInfo info, GameObjectType type);
 }

@@ -9,12 +9,13 @@ import game.model.entity.GameObject;
 import game.model.entity.GameObjectImpl;
 import game.model.entity.GameObjectType;
 import game.model.entity.GameWorldInfo;
-import game.utility.Algorithms;
+import game.model.entity.GameWorldUtil;
+import game.model.entity.GameWorldUtilImpl;
 import game.utility.Rectangle;
 import game.utility.Vector2D;
 
 public class MapObjectsParser implements MapParser<List<GameObject>> {
-    private static final Algorithms ALGORITHMS = new Algorithms();
+    private final GameWorldUtil worldUtil = new GameWorldUtilImpl();
     private final MapParserUtils mapParser = new MapParserUtils();
     private final GameObjectType type;
     private final GameWorldInfo gameWorldInfo;
@@ -80,10 +81,7 @@ public class MapObjectsParser implements MapParser<List<GameObject>> {
     }
 
     private Vector2D convertCellToPos(final Vector2D cell) {
-        final Vector2D position = ALGORITHMS.multiplyMembers(cell, this.gameWorldInfo.getCellSize());
-        return new Vector2D(
-                this.type.getDeltaX() + position.getX() + this.gameWorldInfo.getWorldBounds().getX(),
-                this.type.getDeltaY() + position.getY() + this.gameWorldInfo.getWorldBounds().getY());
+        return this.worldUtil.convertCellToPixel(cell, this.gameWorldInfo, this.type);
     }
 
     private List<Vector2D> convertRectToCellsToPos(final Rectangle rect) {
