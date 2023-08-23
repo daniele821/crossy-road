@@ -10,20 +10,20 @@ import game.model.entity.GameWorldLevel;
 import game.utility.Pair;
 
 public class SwingLevelPanelImpl extends SwingPanelImpl implements SwingLevelPanel {
-    private static final List<Pair<GameWorldLevel, JButton>> LEVEL_BUTTONS = new ArrayList<>();
-    private static final JButton QUIT_BUTTON = new JButton("QUIT");
+    private final List<Pair<GameWorldLevel, JButton>> levelButtons = new ArrayList<>();
+    private final JButton quitButton = new JButton("QUIT");
 
     @Override
     public void start() {
         super.start();
 
-        QUIT_BUTTON.addActionListener(e -> getSwingFrame().closeApplication());
-        getJPanel().add(QUIT_BUTTON);
+        quitButton.addActionListener(e -> getSwingFrame().closeApplication());
+        getJPanel().add(quitButton);
 
         Arrays.asList(GameWorldLevel.values()).stream()
                 .map(level -> new Pair<>(level, new JButton(level.getLevelName())))
                 .peek(this::addActionListener)
-                .peek(LEVEL_BUTTONS::add)
+                .peek(levelButtons::add)
                 .map(Pair::getB)
                 .forEach(getJPanel()::add);
     }

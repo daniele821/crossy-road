@@ -11,16 +11,12 @@ import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
 import game.model.entity.GameWorldUtil;
 import game.model.entity.GameWorldUtilImpl;
-import game.utility.Algorithms;
 import game.utility.Rectangle;
-import game.view.toolkit.swing.SwingAlgorithms;
 
 public abstract class AbstractCameraLayout implements CameraLayout {
-    protected static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
-    protected static final Algorithms ALGORITHMS = new Algorithms();
-    protected static final SwingAlgorithms SWING_UTIL = new SwingAlgorithms();
     protected static final Color BORDER_COLOR = Color.DARK_GRAY;
     protected static final int BORDER_WIDTH = 10;
+    private final GameWorldUtil worldUtil = new GameWorldUtilImpl();
     private Camera camera;
 
     public AbstractCameraLayout(final Camera camera) {
@@ -31,7 +27,7 @@ public abstract class AbstractCameraLayout implements CameraLayout {
 
     @Override
     public final void draw(final Graphics drawer, final GameWorld world, final List<Integer> objectId) {
-        if (objectId.stream().filter(id -> !WORLD_UTIL.isObjectIdValid(id, world)).count() != 0) {
+        if (objectId.stream().filter(id -> !worldUtil.isObjectIdValid(id, world)).count() != 0) {
             throw new IllegalArgumentException("objectId (" + objectId + ") is not valid!");
         }
 
@@ -82,7 +78,7 @@ public abstract class AbstractCameraLayout implements CameraLayout {
     }
 
     protected List<GameObject> getPresentObjects(final List<Integer> objectId, final GameWorld world) {
-        return objectId.stream().map(id -> WORLD_UTIL.getPresentObject(id, world)).flatMap(Optional::stream).toList();
+        return objectId.stream().map(id -> worldUtil.getPresentObject(id, world)).flatMap(Optional::stream).toList();
     }
 
     protected Camera getCamera() {

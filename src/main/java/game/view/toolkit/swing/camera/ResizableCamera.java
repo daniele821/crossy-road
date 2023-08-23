@@ -32,14 +32,14 @@ public class ResizableCamera extends AbstractCamera {
         final Vector2D mapSize = calculateMapSize(drawArea, factor);
         final Rectangle mapArea = calculateMapArea(mapSize, world.getGameWorldInfo(), object);
 
-        WORLD_UTIL.getPresentObjects(world).stream()
-                .filter(obj -> ALGORITHMS.getIntersection(obj.getPosition(), mapArea).isPresent())
+        worldUtil.getPresentObjects(world).stream()
+                .filter(obj -> algorithms.getIntersection(obj.getPosition(), mapArea).isPresent())
                 .forEach(obj -> {
                     final int x = (int) (factor * (obj.getPosition().getX() - mapArea.getX()) + drawArea.getX());
                     final int y = (int) (factor * (obj.getPosition().getY() - mapArea.getY()) + drawArea.getY());
                     final int lenX = (int) (factor * obj.getPosition().getLenX()) + INCREASE_IMAGE_SIZE_BY;
                     final int lenY = (int) (factor * obj.getPosition().getLenY()) + INCREASE_IMAGE_SIZE_BY;
-                    final Image image = IMAGE_LOADER.loadImage(obj.getObjectType().getPath());
+                    final Image image = imageLoader.loadImage(obj.getObjectType().getPath());
                     drawer2d.drawImage(image, x, y, lenX, lenY, null);
                 });
     }
@@ -55,7 +55,7 @@ public class ResizableCamera extends AbstractCamera {
 
     private Vector2D calculateMapSize(final Rectangle drawArea, final double factor) {
         final Vector2D drawAreaSize = new Vector2D(drawArea.getLenX(), drawArea.getLenY());
-        return ALGORITHMS.multiply(drawAreaSize, 1.0 / factor);
+        return algorithms.multiply(drawAreaSize, 1.0 / factor);
     }
 
     private Rectangle calculateMapArea(final Vector2D mapSize, final GameWorldInfo info, final GameObject object) {

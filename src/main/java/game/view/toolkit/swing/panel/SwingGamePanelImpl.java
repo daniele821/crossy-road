@@ -18,7 +18,7 @@ import game.view.toolkit.swing.camera.CameraLayoutFactoryImpl;
 import game.view.toolkit.swing.input.GamePanelInput;
 
 public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel {
-    private static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
+    private final GameWorldUtil worldUtil = new GameWorldUtilImpl();
     private final Optional<Panel> panel = Optional.ofNullable(new Panel());
     private List<Integer> players = new ArrayList<>();
     private Optional<CameraLayout> cameraLayout = Optional.empty();
@@ -28,7 +28,7 @@ public class SwingGamePanelImpl extends SwingPanelImpl implements SwingGamePanel
         super.start();
         final var window = getSwingFrame().getSwingWindow();
         final var world = getSwingFrame().getCurrentWorld();
-        this.players = WORLD_UTIL.filterByKind(world, PLAYER).stream().map(Pair::getA).toList();
+        this.players = worldUtil.filterByKind(world, PLAYER).stream().map(Pair::getA).toList();
         new GamePanelInput(getSwingFrame()).getActions(world, this.players).forEach(this::putAction);
         this.cameraLayout = Optional.ofNullable(new CameraLayoutFactoryImpl().create(world));
         getSwingFrame().actOnGameEngine(engine -> engine.startThread(window, world));

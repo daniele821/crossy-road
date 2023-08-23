@@ -16,8 +16,8 @@ import game.view.toolkit.swing.SwingWindow;
 import game.view.toolkit.swing.panel.SwingPanel;
 
 public class SwingFrameImpl implements SwingFrame {
-    private static final GameEngine ENGINE = new GameEngineImpl();
-    private static final MapLoader MAP_LOADER = new MapLoaderImpl();
+    private final GameEngine engine = new GameEngineImpl();
+    private final MapLoader mapLoader = new MapLoaderImpl();
     private final Optional<JFrame> frame = Optional.ofNullable(new JFrame());
     private Optional<GameWorld> currentWorld = Optional.empty();
     private Optional<SwingPanel> panel = Optional.empty();
@@ -84,11 +84,11 @@ public class SwingFrameImpl implements SwingFrame {
 
     @Override
     public void actOnGameEngine(final Consumer<GameEngine> engineAction) {
-        engineAction.accept(ENGINE);
+        engineAction.accept(engine);
     }
 
     @Override
     public void loadMap(final GameWorldLevel level) {
-        this.currentWorld = Optional.ofNullable(MAP_LOADER.loadWorld(level.getPath()));
+        this.currentWorld = Optional.ofNullable(mapLoader.loadWorld(level.getPath()));
     }
 }

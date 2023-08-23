@@ -8,8 +8,10 @@ import java.util.stream.IntStream;
 import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
 import game.utility.Rectangle;
+import game.view.toolkit.swing.SwingAlgorithms;
 
 public class TilingCameraLayout extends AbstractCameraLayout {
+    private final SwingAlgorithms swingUtil = new SwingAlgorithms();
     private final Layout layout;
 
     public TilingCameraLayout(final Layout layout, final Camera camera) {
@@ -27,7 +29,7 @@ public class TilingCameraLayout extends AbstractCameraLayout {
 
     @Override
     protected void draw(final Graphics drawer, final List<GameObject> objects, final GameWorld world) {
-        final Rectangle borderLessRect = removeBorders(SWING_UTIL.convertRectangle(drawer.getClipBounds()));
+        final Rectangle borderLessRect = removeBorders(swingUtil.convertRectangle(drawer.getClipBounds()));
         if (borderLessRect.getLenX() <= 0 || borderLessRect.getLenY() <= 0) {
             return;
         }

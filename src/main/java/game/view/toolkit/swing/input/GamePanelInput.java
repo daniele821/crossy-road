@@ -18,7 +18,7 @@ import game.view.input.InputHandlerImpl;
 import game.view.toolkit.swing.frame.SwingFrame;
 
 public class GamePanelInput extends AbstractPanelInput {
-    private static final Algorithms ALGORITHMS = new Algorithms();
+    private final Algorithms algorithms = new Algorithms();
     private final Map<List<KeyStroke>, SwingAction> actions = new HashMap<>();
     private final List<Integer> players = new ArrayList<>();
     private Optional<GameWorld> world = Optional.empty();
@@ -46,10 +46,10 @@ public class GamePanelInput extends AbstractPanelInput {
         final InputHandler inputLeft = new InputHandlerImpl();
         final InputHandler inputRight = new InputHandlerImpl();
         final Vector2D cellSize = this.world.get().getGameWorldInfo().getCellSize();
-        final Vector2D upVect = ALGORITHMS.multiplyMembers(new Vector2D(0, -1), cellSize);
-        final Vector2D downVect = ALGORITHMS.multiplyMembers(new Vector2D(0, 1), cellSize);
-        final Vector2D leftVect = ALGORITHMS.multiplyMembers(new Vector2D(-1, 0), cellSize);
-        final Vector2D rightVect = ALGORITHMS.multiplyMembers(new Vector2D(1, 0), cellSize);
+        final Vector2D upVect = algorithms.multiplyMembers(new Vector2D(0, -1), cellSize);
+        final Vector2D downVect = algorithms.multiplyMembers(new Vector2D(0, 1), cellSize);
+        final Vector2D leftVect = algorithms.multiplyMembers(new Vector2D(-1, 0), cellSize);
+        final Vector2D rightVect = algorithms.multiplyMembers(new Vector2D(1, 0), cellSize);
         getSwingFrame().getSwingWindow().addInputHandler(inputUp);
         getSwingFrame().getSwingWindow().addInputHandler(inputDown);
         getSwingFrame().getSwingWindow().addInputHandler(inputLeft);

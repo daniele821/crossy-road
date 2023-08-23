@@ -25,7 +25,7 @@ public class FullMapCamera extends AbstractCamera {
 
         // center object
         final GameWorldInfo info = world.getGameWorldInfo();
-        final Rectangle objectPos = ALGORITHMS.multiply(object.getPosition(), factor);
+        final Rectangle objectPos = algorithms.multiply(object.getPosition(), factor);
         final double objectToBorderOriz = (drawArea.getLenX() - objectPos.getLenX()) / 2;
         final double objectToBorderVert = (drawArea.getLenY() - objectPos.getLenY()) / 2;
         final double leftCorner = objectToBorderOriz - objectPos.getX();
@@ -49,12 +49,12 @@ public class FullMapCamera extends AbstractCamera {
         final double up = (upMap - upObj) * factor;
         final double offsetVert = Double.max(0, objectToBorderVert - down) - Double.max(0, objectToBorderVert + up);
 
-        WORLD_UTIL.getPresentObjects(world).forEach(obj -> {
+        worldUtil.getPresentObjects(world).forEach(obj -> {
             final int x = (int) (factor * (obj.getPosition().getX()) + leftCorner + drawArea.getX() + offsetOriz);
             final int y = (int) (factor * (obj.getPosition().getY()) + topCorner + drawArea.getY() + offsetVert);
             final int lenX = INCREASE_IMAGE_SIZE_BY + (int) (factor * obj.getPosition().getLenX());
             final int lenY = INCREASE_IMAGE_SIZE_BY + (int) (factor * obj.getPosition().getLenY());
-            final Image image = IMAGE_LOADER.loadImage(obj.getObjectType().getPath());
+            final Image image = imageLoader.loadImage(obj.getObjectType().getPath());
             drawer2D.drawImage(image, x, y, lenX, lenY, null);
         });
     }

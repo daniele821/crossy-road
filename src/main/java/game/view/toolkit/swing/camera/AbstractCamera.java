@@ -17,10 +17,10 @@ import game.view.toolkit.swing.imageloader.ImageLoaderImpl;
 public abstract class AbstractCamera implements Camera {
     // 1: fix white lines, 0: precise image size
     protected static final int INCREASE_IMAGE_SIZE_BY = 1;
-    protected static final GameWorldUtil WORLD_UTIL = new GameWorldUtilImpl();
-    protected static final SwingAlgorithms SWING_UTIL = new SwingAlgorithms();
-    protected static final Algorithms ALGORITHMS = new Algorithms();
-    protected static final ImageLoader IMAGE_LOADER = new ImageLoaderImpl();
+    protected final GameWorldUtil worldUtil = new GameWorldUtilImpl();
+    protected final SwingAlgorithms swingUtil = new SwingAlgorithms();
+    protected final Algorithms algorithms = new Algorithms();
+    protected final ImageLoader imageLoader = new ImageLoaderImpl();
 
     protected abstract void draw(Rectangle drawArea, Graphics2D drawer2D, GameWorld world, GameObject object);
 
@@ -33,7 +33,7 @@ public abstract class AbstractCamera implements Camera {
 
         final Graphics2D drawer2D = (Graphics2D) drawer;
 
-        drawer2D.clip(SWING_UTIL.convertRectangle(drawArea));
+        drawer2D.clip(swingUtil.convertRectangle(drawArea));
         draw(drawArea, drawer2D, world, object);
         drawer2D.setClip(null);
     }
