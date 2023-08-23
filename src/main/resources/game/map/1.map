@@ -43,44 +43,54 @@ pos_cell = 9 85, 2 88, 3 88, 14 88, 2 89, 4 89, 13 89, 10 92, 1 94, 7 95, 4 96, 
 
 > TRU_TRUNK_3_SX
 speed = -16 0
+wraparound = 0 0
 pos_cell = 14 0, 7 26, 14 26, 8 28, 13 28, 3 54, 10 54
 pos_cell = 5 70, 12 70, 1 72, 6 72, 14 72, 7 74, 14 74, 13 90
 
 > TRU_TRUNK_3_DX
 speed = 16 0
+wraparound = 0 0
 pos_cell = -2 27, 5 27, 5 37, -1 55, 8 55
 pos_cell = -2 71, 6 71, -2 73, 4 73, 9 73
 
 > ENE_BIKE_DX
 speed = 8 0
+wraparound = 0 0
 pos_cell = 0 41, 11 41, 0 43, 9 43, 0 93, 7 93
 
 > ENE_BIKE_SX
 speed = -8 0
+wraparound = 0 0
 pos_cell = 6 7, 10 41, 14 41, 4 43, 14 43, 14 93
 
 > ENE_TRAIN_2_SX
 speed = -64 0
+wraparound = 0 0
 pos_cell = 14 84
 
 > ENE_TRAIN_3_SX
 speed = -64 0
+wraparound = 0 0
 pos_cell = 14 5, 14 50
 
 > ENE_TRAIN_4_SX
 speed = -64 0
+wraparound = 0 0
 pos_cell = 14 32
 
 > ENE_TRAIN_2_DX
 speed = 64 0
+wraparound = 0 0
 pos_cell = -1 86
 
 > ENE_TRAIN_3_DX
 speed = 64 0
+wraparound = 0 0
 pos_cell = -2 33, -2 62
 
 > ENE_TRAIN_4_DX
 speed = 64 0
+wraparound = 0 0
 pos_cell = -3 22
 
 > COI_COIN

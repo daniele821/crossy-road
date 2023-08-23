@@ -2,6 +2,7 @@ package game.controller.maploader.parser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.IntStream;
 
 import game.model.entity.GameObject;
@@ -17,9 +18,10 @@ public class MapObjectsParser implements MapParser<List<GameObject>> {
     private final MapParserUtils mapParser = new MapParserUtils();
     private final GameObjectType type;
     private final GameWorldInfo gameWorldInfo;
+    private final List<Vector2D> position = new ArrayList<>();
+    private Optional<Vector2D> wraparound = Optional.empty();
     private Vector2D speed = new Vector2D(0, 0);
     private boolean isPresent = true;
-    private final List<Vector2D> position = new ArrayList<>();
 
     public MapObjectsParser(final GameObjectType type, final GameWorldInfo gameWorldInfo) {
         this.type = type;
@@ -35,6 +37,9 @@ public class MapObjectsParser implements MapParser<List<GameObject>> {
                 break;
             case "speed":
                 this.speed = this.mapParser.parseVector2D(lineSplitted.getB());
+                break;
+            case "wraparound":
+                this.wraparound = Optional.ofNullable(this.mapParser.parseVector2D(lineSplitted.getB()));
                 break;
             case "position":
                 for (final var pos : this.mapParser.splitElem(lineSplitted.getB())) {
@@ -70,7 +75,7 @@ public class MapObjectsParser implements MapParser<List<GameObject>> {
     public List<GameObject> getParsedObject() {
         return this.position.stream()
                 .map(vect -> new Rectangle(vect.getX(), vect.getY(), type.getLenX(), type.getLenY()))
-                .map(rect -> (GameObject) new GameObjectImpl(rect, speed, type, isPresent))
+                .map(rect -> (GameObject) new GameObjectImpl(rect, speed, type, isPresent, wraparound))
                 .toList();
     }
 
