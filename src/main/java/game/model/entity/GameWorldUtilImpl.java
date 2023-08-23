@@ -5,9 +5,12 @@ import java.util.Optional;
 import java.util.stream.IntStream;
 
 import game.model.entity.GameObjectType.GameObjectKind;
+import game.utility.Algorithms;
 import game.utility.Pair;
+import game.utility.Vector2D;
 
 public class GameWorldUtilImpl implements GameWorldUtil {
+    private final Algorithms algorithms = new Algorithms();
 
     @Override
     public List<Pair<Integer, GameObject>> getObjectsWithId(final GameWorld world) {
@@ -60,6 +63,16 @@ public class GameWorldUtilImpl implements GameWorldUtil {
     @Override
     public List<Pair<Integer, GameObject>> filterByKindPresent(final GameWorld world, final GameObjectKind kind) {
         return filterByKind(world, kind).stream().filter(i -> i.getB().isPresent()).toList();
+    }
+
+    @Override
+    public Vector2D convertCellToPixel(final Vector2D cellPos, final GameWorld world, final GameObject object) {
+        final GameWorldInfo info = world.getGameWorldInfo();
+        final Vector2D cellSize = world.getGameWorldInfo().getCellSize();
+        final Vector2D position = this.algorithms.multiplyMembers(cellSize, cellPos);
+        final double x = object.getObjectType().getDeltaX() + position.getX() + info.getWorldBounds().getX();
+        final double y = object.getObjectType().getDeltaY() + position.getY() + info.getWorldBounds().getY();
+        return new Vector2D(x, y);
     }
 
 }

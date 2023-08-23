@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import game.model.entity.GameObjectType.GameObjectKind;
 import game.utility.Pair;
+import game.utility.Vector2D;
 
 public interface GameWorldUtil {
     List<GameObject> getObjects(GameWorld world);
@@ -26,4 +27,6 @@ public interface GameWorldUtil {
     List<Pair<Integer, GameObject>> filterByKind(GameWorld world, GameObjectKind kind);
 
     List<Pair<Integer, GameObject>> filterByKindPresent(GameWorld world, GameObjectKind kind);
+
+    Vector2D convertCellToPixel(Vector2D cellPos, GameWorld world, GameObject object);
 }
