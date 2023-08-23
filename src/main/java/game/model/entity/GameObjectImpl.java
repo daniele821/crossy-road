@@ -1,25 +1,29 @@
 package game.model.entity;
 
+import java.util.Optional;
+
 import game.utility.Rectangle;
 import game.utility.Vector2D;
 
 public class GameObjectImpl implements GameObject {
+    private Optional<Vector2D> wraparound;
     private GameObjectType objectType;
     private Rectangle position;
     private Vector2D speed;
     private boolean isPresent;
 
     public GameObjectImpl(final Rectangle pos, final Vector2D speed, final GameObjectType type,
-            final boolean isPresent) {
+            final boolean isPresent, final Optional<Vector2D> wraparound) {
         this.position = pos;
         this.speed = speed;
         this.objectType = type;
         this.isPresent = isPresent;
+        this.wraparound = wraparound;
     }
 
     @Override
     public GameObject copy() {
-        return new GameObjectImpl(this.position, this.speed, this.objectType, this.isPresent);
+        return new GameObjectImpl(this.position, this.speed, this.objectType, this.isPresent, this.wraparound);
     }
 
     @Override
@@ -63,11 +67,13 @@ public class GameObjectImpl implements GameObject {
     }
 
     @Override
-    public String toString() {
-        return "GameObjectImpl [objectType=" + objectType
-                + ", position=" + position
-                + ", speed=" + speed
-                + ", isPresent=" + isPresent + "]";
+    public Optional<Vector2D> getWraparoundDelta() {
+        return this.wraparound;
+    }
+
+    @Override
+    public void setWraparoundDelta(final Optional<Vector2D> delta) {
+        this.wraparound = delta;
     }
 
 }
