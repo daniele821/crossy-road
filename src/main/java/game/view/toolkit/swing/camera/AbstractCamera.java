@@ -5,22 +5,13 @@ import java.awt.Graphics2D;
 
 import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
-import game.model.entity.GameWorldUtil;
-import game.model.entity.GameWorldUtilImpl;
-import game.utility.Algorithms;
 import game.utility.Rectangle;
 import game.utility.Vector2D;
 import game.view.toolkit.swing.SwingAlgorithms;
-import game.view.toolkit.swing.imageloader.ImageLoader;
-import game.view.toolkit.swing.imageloader.ImageLoaderImpl;
 
 public abstract class AbstractCamera implements Camera {
-    // 1: fix white lines, 0: precise image size
     protected static final int INCREASE_IMAGE_SIZE_BY = 1;
-    protected final GameWorldUtil worldUtil = new GameWorldUtilImpl();
-    protected final SwingAlgorithms swingUtil = new SwingAlgorithms();
-    protected final Algorithms algorithms = new Algorithms();
-    protected final ImageLoader imageLoader = new ImageLoaderImpl();
+    private final SwingAlgorithms swingUtil = new SwingAlgorithms();
 
     protected abstract void draw(Rectangle drawArea, Graphics2D drawer2D, GameWorld world, GameObject object);
 

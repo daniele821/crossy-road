@@ -13,17 +13,17 @@ public class MovementLogicImpl implements MovementLogic {
         final Optional<Vector2D> wrapper = object.getWraparoundDelta();
         final Rectangle worldSize = world.getGameWorldInfo().getWorldBounds();
         final double leftDelta = worldSize.getX() - newPos.getX();
-        final double rightDelta = (newPos.getX() + newPos.getLenX()) - (worldSize.getX() + worldSize.getLenX());
+        final double rightDelta = newPos.getX() + newPos.getLenX() - (worldSize.getX() + worldSize.getLenX());
         final double topDelta = worldSize.getY() - newPos.getY();
-        final double downDelta = (newPos.getY() + newPos.getLenY()) - (worldSize.getY() + worldSize.getLenY());
+        final double downDelta = newPos.getY() + newPos.getLenY() - (worldSize.getY() + worldSize.getLenY());
         final double speedX = object.getSpeed().getX();
         final double speedY = object.getSpeed().getY();
 
         if (wrapper.isEmpty()) {
-            if ((leftDelta > 0 && speedX <= 0) || (rightDelta > 0 && speedX >= 0)) {
+            if (leftDelta > 0 && speedX <= 0 || rightDelta > 0 && speedX >= 0) {
                 return Optional.ofNullable(object.getPosition());
             }
-            if ((topDelta > 0 && speedY <= 0) || (downDelta > 0 && speedY >= 0)) {
+            if (topDelta > 0 && speedY <= 0 || downDelta > 0 && speedY >= 0) {
                 return Optional.ofNullable(object.getPosition());
             }
             return Optional.empty();

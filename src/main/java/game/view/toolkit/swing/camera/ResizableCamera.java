@@ -7,11 +7,19 @@ import java.util.Optional;
 import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
 import game.model.entity.GameWorldInfo;
+import game.model.entity.GameWorldUtil;
+import game.model.entity.GameWorldUtilImpl;
+import game.utility.Algorithms;
 import game.utility.Rectangle;
 import game.utility.Vector2D;
+import game.view.toolkit.swing.imageloader.ImageLoader;
+import game.view.toolkit.swing.imageloader.ImageLoaderImpl;
 
 public class ResizableCamera extends AbstractCamera {
     private final Optional<Vector2D> maxSizeCamera;
+    private final Algorithms algorithms = new Algorithms();
+    private final GameWorldUtil worldUtil = new GameWorldUtilImpl();
+    private final ImageLoader imageLoader = new ImageLoaderImpl();
 
     private ResizableCamera(final Optional<Vector2D> maxSizeCamera) {
         this.maxSizeCamera = maxSizeCamera;

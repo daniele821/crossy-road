@@ -6,11 +6,19 @@ import java.awt.Image;
 import game.model.entity.GameObject;
 import game.model.entity.GameWorld;
 import game.model.entity.GameWorldInfo;
+import game.model.entity.GameWorldUtil;
+import game.model.entity.GameWorldUtilImpl;
+import game.utility.Algorithms;
 import game.utility.Rectangle;
+import game.view.toolkit.swing.imageloader.ImageLoader;
+import game.view.toolkit.swing.imageloader.ImageLoaderImpl;
 
 /** @deprecated: use ResizableCamera instead */
 @Deprecated
 public class FullMapCamera extends AbstractCamera {
+    private final Algorithms algorithms = new Algorithms();
+    private final GameWorldUtil worldUtil = new GameWorldUtilImpl();
+    private final ImageLoader imageLoader = new ImageLoaderImpl();
 
     @Override
     public void draw(final Rectangle drawArea, final Graphics2D drawer2D,
