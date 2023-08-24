@@ -35,5 +35,14 @@ public interface GameWorldUtil {
 
     Vector2D roundPosToCellPos(Vector2D pos, GameWorldInfo info, GameObjectType type);
 
+    Rectangle convertCellToPixel(Rectangle cellPos, GameWorldInfo info, GameObjectType type);
+
+    Rectangle convertPixelToCell(Rectangle cellPos, GameWorldInfo info, GameObjectType type);
+
+    Rectangle roundPosToCellPos(Rectangle pos, GameWorldInfo info, GameObjectType type);
+
+    List<Pair<Integer, GameObject>> getColliding(GameWorld world, Rectangle newPos);
+
     List<Pair<Integer, GameObject>> getColliding(GameWorld world, int objectId, Rectangle newPos);
+
 }

@@ -89,6 +89,24 @@ public class GameWorldUtilImpl implements GameWorldUtil {
     }
 
     @Override
+    public Rectangle convertCellToPixel(final Rectangle cellPos, final GameWorldInfo info, final GameObjectType type) {
+        final Vector2D res = convertCellToPixel(new Vector2D(cellPos.getX(), cellPos.getY()), info, type);
+        return new Rectangle(res.getX(), res.getY(), cellPos.getLenX(), cellPos.getLenY());
+    }
+
+    @Override
+    public Rectangle convertPixelToCell(final Rectangle cellPos, final GameWorldInfo info, final GameObjectType type) {
+        final Vector2D res = convertPixelToCell(new Vector2D(cellPos.getX(), cellPos.getY()), info, type);
+        return new Rectangle(res.getX(), res.getY(), cellPos.getLenX(), cellPos.getLenY());
+    }
+
+    @Override
+    public Rectangle roundPosToCellPos(final Rectangle cellPos, final GameWorldInfo info, final GameObjectType type) {
+        final Vector2D res = roundPosToCellPos(new Vector2D(cellPos.getX(), cellPos.getY()), info, type);
+        return new Rectangle(res.getX(), res.getY(), cellPos.getLenX(), cellPos.getLenY());
+    }
+
+    @Override
     public List<Pair<Integer, GameObject>> getColliding(final GameWorld world, final int id, final Rectangle newPos) {
         final var objectOpt = getObject(id, world);
         if (objectOpt.isEmpty()) {
@@ -96,6 +114,13 @@ public class GameWorldUtilImpl implements GameWorldUtil {
         }
         return getPresentObjectsWithId(world).stream()
                 .filter(pair -> pair.getA() != id)
+                .filter(pair -> algorithms.getIntersection(pair.getB().getPosition(), newPos).isPresent())
+                .toList();
+    }
+
+    @Override
+    public List<Pair<Integer, GameObject>> getColliding(GameWorld world, Rectangle newPos) {
+        return getPresentObjectsWithId(world).stream()
                 .filter(pair -> algorithms.getIntersection(pair.getB().getPosition(), newPos).isPresent())
                 .toList();
     }
