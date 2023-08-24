@@ -1,5 +1,6 @@
 package game.view.toolkit.swing.input;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.KeyStroke;
@@ -26,6 +27,10 @@ public abstract class AbstractPanelInput implements PanelInput {
     }
 
     protected List<KeyStroke> getKeyStrokes(final List<Integer> keyEvent) {
-        return keyEvent.stream().map(this::getKeyStroke).toList();
+        final List<KeyStroke> res = new ArrayList<>(keyEvent.size());
+        for (final int i : keyEvent) {
+            res.add(getKeyStroke(i));
+        }
+        return res;
     }
 }
