@@ -1,6 +1,6 @@
-package game.utility.util;
+package game.common.util;
 
-import game.utility.Rectangle;
+import game.common.Rectangle;
 
 public final class Rectangles {
 

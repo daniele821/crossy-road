@@ -1,4 +1,4 @@
-package game.utility;
+package game.common;
 
 public class Pair<A, B> {
     private final A a;

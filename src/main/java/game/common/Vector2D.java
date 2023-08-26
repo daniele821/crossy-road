@@ -1,4 +1,4 @@
-package game.utility;
+package game.common;
 
 public class Vector2D {
     private double x;
