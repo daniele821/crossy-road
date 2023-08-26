@@ -1,10 +1,10 @@
 package game.utility;
 
 public class Rectangle {
-    private final double x;
-    private final double y;
-    private final double lenX;
-    private final double lenY;
+    private double x;
+    private double y;
+    private double lenX;
+    private double lenY;
 
     public Rectangle(final double x, final double y, final double lenX, final double lenY) {
         this.x = x;
@@ -53,28 +53,30 @@ public class Rectangle {
 
     // modifiers
 
-    public Rectangle modifyX(final double x) {
-        return new Rectangle(x, y, lenX, lenY);
+    public void setX(final double x) {
+        this.x = x;
     }
 
-    public Rectangle modifyY(final double y) {
-        return new Rectangle(x, y, lenX, lenY);
+    public void setY(final double y) {
+        this.y = y;
     }
 
-    public Rectangle modifyLenX(final double lenX) {
-        return new Rectangle(x, y, lenX, lenY);
+    public void setLenX(final double lenX) {
+        this.lenX = lenX;
     }
 
-    public Rectangle modifyLenY(final double lenY) {
-        return new Rectangle(x, y, lenX, lenY);
+    public void setLenY(final double lenY) {
+        this.lenY = lenY;
     }
 
-    public Rectangle modifyPos(final Vector2D pos) {
-        return new Rectangle(pos.getX(), pos.getY(), lenX, lenY);
+    public void setPos(final Vector2D pos) {
+        this.x = pos.getX();
+        this.y = pos.getY();
     }
 
-    public Rectangle modifySize(final Vector2D size) {
-        return new Rectangle(x, y, size.getX(), size.getY());
+    public void setSize(final Vector2D size) {
+        this.lenX = size.getX();
+        this.lenY = size.getY();
     }
 
     // calculations

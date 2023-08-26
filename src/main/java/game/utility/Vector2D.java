@@ -1,8 +1,8 @@
 package game.utility;
 
 public class Vector2D {
-    private final double x;
-    private final double y;
+    private double x;
+    private double y;
 
     public Vector2D(final double x, final double y) {
         this.x = x;
@@ -21,12 +21,12 @@ public class Vector2D {
 
     // modifiers
 
-    public Vector2D modifyX(final double x) {
-        return new Vector2D(x, y);
+    public void setX(final double x) {
+        this.x = x;
     }
 
-    public Vector2D modifyY(final double y) {
-        return new Vector2D(x, y);
+    public void setY(final double y) {
+        this.y = y;
     }
 
     // inherited from Object
