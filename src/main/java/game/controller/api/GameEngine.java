@@ -16,11 +16,11 @@ public interface GameEngine {
     }
 
     /**
-     * set GameEngine status.
+     * change GameEngine status.
      * 
      * @param status
      */
-    void setStatus(GameEngineStatus status);
+    void changeStatus(GameEngineStatus status);
 
     /**
      * set the drawer which will render the game.
