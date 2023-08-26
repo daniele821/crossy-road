@@ -20,3 +20,6 @@ build/
 
 # ignore mac files
 .DS_Store
+
+# ignore vim tmp files
+*.swp
