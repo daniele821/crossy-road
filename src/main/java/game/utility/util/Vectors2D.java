@@ -1,4 +1,6 @@
-package game.utility;
+package game.utility.util;
+
+import game.utility.Vector2D;
 
 public final class Vectors2D {
 
