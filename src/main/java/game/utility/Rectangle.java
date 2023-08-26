@@ -13,6 +13,18 @@ public class Rectangle {
         this.lenY = lenY;
     }
 
+    public Rectangle(final Vector2D pos, final double lenX, final double lenY) {
+        this(pos.getX(), pos.getY(), lenX, lenY);
+    }
+
+    public Rectangle(final double x, final double y, final Vector2D size) {
+        this(x, y, size.getX(), size.getY());
+    }
+
+    public Rectangle(final Vector2D pos, final Vector2D size) {
+        this(pos.getX(), pos.getY(), size.getX(), size.getY());
+    }
+
     // getters
 
     public double getX() {
