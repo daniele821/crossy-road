@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import game.controller.api.GameEngine;
 import game.controller.api.GameEngineFactory;
-import game.model.resources.GameWorldLevel;
+import game.model.api.resources.GameWorldLevel;
 import game.view.api.GameDrawer;
 
 public class GameEngineFactoryImpl implements GameEngineFactory {

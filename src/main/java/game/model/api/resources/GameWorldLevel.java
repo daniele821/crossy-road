@@ -1,4 +1,4 @@
-package game.model.resources;
+package game.model.api.resources;
 
 /** stores info about all available maps. */
 public enum GameWorldLevel {

@@ -2,7 +2,7 @@ package game.controller.api;
 
 import java.util.Optional;
 
-import game.model.resources.GameWorldLevel;
+import game.model.api.resources.GameWorldLevel;
 import game.view.api.GameDrawer;
 
 public interface GameEngineFactory {

@@ -3,8 +3,7 @@ package game.controller.engine;
 import java.util.Optional;
 
 import game.controller.api.GameEngine;
-import game.model.api.GameWorld;
-import game.model.resources.GameWorldLevel;
+import game.model.api.resources.GameWorldLevel;
 import game.view.api.GameDrawer;
 
 @SuppressWarnings("unused")

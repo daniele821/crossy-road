@@ -1,6 +1,6 @@
 package game.model.api;
 
-import game.model.resources.GameWorldLevel;
+import game.model.api.resources.GameWorldLevel;
 
 public interface GameWorldFactory {
     static GameWorldFactory getDefaultFactory() {
