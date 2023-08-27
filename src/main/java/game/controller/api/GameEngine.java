@@ -1,6 +1,6 @@
 package game.controller.api;
 
-import game.model.resources.GameWorldLevel;
+import game.model.api.resources.GameWorldLevel;
 import game.view.api.GameDrawer;
 
 /** game engine. */
