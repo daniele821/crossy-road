@@ -1,6 +1,6 @@
 package game.controller.api;
 
-import game.model.api.GameWorld;
+import game.model.resources.GameWorldLevel;
 import game.view.api.GameDrawer;
 
 /** game engine. */
@@ -30,9 +30,9 @@ public interface GameEngine {
     void setDrawer(GameDrawer drawer);
 
     /**
-     * set the world which will be played.
+     * set the world level which will be played.
      * 
-     * @param world
+     * @param level
      */
-    void setWorld(GameWorld world);
+    void setWorld(GameWorldLevel level);
 }
