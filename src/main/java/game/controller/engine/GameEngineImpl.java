@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import game.controller.api.GameEngine;
 import game.model.api.GameWorld;
+import game.model.resources.GameWorldLevel;
 import game.view.api.GameDrawer;
 
 @SuppressWarnings("unused")
@@ -12,17 +13,17 @@ public class GameEngineImpl implements GameEngine {
     private final int frameDuration;
     private Optional<Thread> engineThread = Optional.empty();
     private GameEngineStatus status = GameEngineStatus.KILLED;
+    private GameWorldLevel level;
     private GameDrawer drawer;
-    private GameWorld world;
 
-    public GameEngineImpl(final int frameDuration, final GameDrawer drawer, final GameWorld world) {
+    public GameEngineImpl(final int frameDuration, final GameDrawer drawer, final GameWorldLevel level) {
         this.frameDuration = frameDuration;
         this.drawer = drawer;
-        this.world = world;
+        this.level = level;
     }
 
-    public GameEngineImpl(final GameDrawer drawer, final GameWorld world) {
-        this(DEFAULT_FRAME_DURATION, drawer, world);
+    public GameEngineImpl(final GameDrawer drawer, final GameWorldLevel level) {
+        this(DEFAULT_FRAME_DURATION, drawer, level);
     }
 
     // private methods
@@ -82,15 +83,10 @@ public class GameEngineImpl implements GameEngine {
     @Override
     public void changeStatus(final GameEngineStatus status) {
         setStatus(status);
-        switch (status) {
-            case RUNNING:
-                startThread();
-                break;
-            case KILLED:
-                killThread();
-                break;
-            default:
-                break;
+        if (status == GameEngineStatus.RUNNING) {
+            startThread();
+        } else if (status == GameEngineStatus.KILLED) {
+            killThread();
         }
     }
 
@@ -100,8 +96,8 @@ public class GameEngineImpl implements GameEngine {
     }
 
     @Override
-    public void setWorld(final GameWorld world) {
-        this.world = world;
+    public void setWorld(final GameWorldLevel level) {
+        this.level = level;
     }
 }
 
