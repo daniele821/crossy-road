@@ -7,6 +7,8 @@ public final class Rectangles {
     private Rectangles() {
     }
 
+    // algrebric operations
+
     public static Rectangle multiplyScalar(final double factor, final Rectangle rect) {
         final double x = factor * rect.getX();
         final double y = factor * rect.getY();

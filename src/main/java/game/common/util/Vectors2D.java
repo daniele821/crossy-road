@@ -27,4 +27,10 @@ public final class Vectors2D {
         final double millisecInSec = 1000.0;
         return multiplyScalar(elapsedTimeMillisec / millisecInSec, speed);
     }
+
+    // comparison
+
+    public static boolean areEquals(final Vector2D vect1, final Vector2D vect2) {
+        return vect1.getX() == vect2.getX() && vect1.getY() == vect2.getY();
+    }
 }
